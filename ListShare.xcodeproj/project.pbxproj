@@ -7,21 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0140FB974D8141E2A53EBAF0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A7FD259FA495C85A3A1C3 /* libPods.a */; };
+		9DC1E0FF196DA7CD003F8F83 /* LSDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1E0FE196DA7CD003F8F83 /* LSDesignFactory.m */; };
+		9DC1E103196DD308003F8F83 /* LSListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1E102196DD308003F8F83 /* LSListTableViewController.m */; };
 		9DC5D704196B4F9800F7239C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D703196B4F9800F7239C /* Foundation.framework */; };
 		9DC5D706196B4F9800F7239C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D705196B4F9800F7239C /* CoreGraphics.framework */; };
 		9DC5D708196B4F9800F7239C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D707196B4F9800F7239C /* UIKit.framework */; };
 		9DC5D70E196B4F9800F7239C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D70C196B4F9800F7239C /* InfoPlist.strings */; };
 		9DC5D710196B4F9800F7239C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D70F196B4F9800F7239C /* main.m */; };
 		9DC5D714196B4F9800F7239C /* LSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D713196B4F9800F7239C /* LSAppDelegate.m */; };
-		9DC5D717196B4F9800F7239C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D715196B4F9800F7239C /* Main.storyboard */; };
-		9DC5D71A196B4F9800F7239C /* LSMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D719196B4F9800F7239C /* LSMasterViewController.m */; };
-		9DC5D71D196B4F9800F7239C /* LSDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D71C196B4F9800F7239C /* LSDetailViewController.m */; };
 		9DC5D71F196B4F9800F7239C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D71E196B4F9800F7239C /* Images.xcassets */; };
 		9DC5D726196B4F9800F7239C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D725196B4F9800F7239C /* XCTest.framework */; };
 		9DC5D727196B4F9800F7239C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D703196B4F9800F7239C /* Foundation.framework */; };
 		9DC5D728196B4F9800F7239C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D707196B4F9800F7239C /* UIKit.framework */; };
 		9DC5D730196B4F9800F7239C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D72E196B4F9800F7239C /* InfoPlist.strings */; };
 		9DC5D732196B4F9800F7239C /* ListShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D731196B4F9800F7239C /* ListShareTests.m */; };
+		9DC5D741196B4FCF00F7239C /* LSList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D740196B4FCF00F7239C /* LSList.m */; };
+		9DC5D745196B50FA00F7239C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D744196B50FA00F7239C /* Accounts.framework */; };
+		9DC5D747196B510700F7239C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D746196B510700F7239C /* AudioToolbox.framework */; };
+		9DC5D749196B510B00F7239C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D748196B510B00F7239C /* CFNetwork.framework */; };
+		9DC5D74B196B511A00F7239C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D74A196B511A00F7239C /* CoreLocation.framework */; };
+		9DC5D74D196B512300F7239C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D74C196B512300F7239C /* libz.dylib */; };
+		9DC5D74F196B512B00F7239C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D74E196B512B00F7239C /* MobileCoreServices.framework */; };
+		9DC5D751196B513200F7239C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D750196B513200F7239C /* QuartzCore.framework */; };
+		9DC5D753196B513900F7239C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D752196B513900F7239C /* Security.framework */; };
+		9DC5D755196B513E00F7239C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D754196B513E00F7239C /* Social.framework */; };
+		9DC5D757196B514400F7239C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D756196B514400F7239C /* StoreKit.framework */; };
+		9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D758196B514C00F7239C /* SystemConfiguration.framework */; };
+		9DC5D75D196B520700F7239C /* LSContactManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D75C196B520700F7239C /* LSContactManagerTableViewController.m */; };
+		9DCEE8A7196B63D7007D890E /* LSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8A6196B63D7007D890E /* LSLoginViewController.m */; };
+		9DCEE8AA196B6460007D890E /* LSSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8A9196B6460007D890E /* LSSignUpViewController.m */; };
+		9DCEE8AE196B652A007D890E /* LSSubclassConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8AC196B652A007D890E /* LSSubclassConfigViewController.m */; };
+		9DCEE8AF196B652A007D890E /* LSSubclassConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCEE8AD196B652A007D890E /* LSSubclassConfigViewController.xib */; };
+		9DCEE8B3196B6994007D890E /* LSListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8B2196B6994007D890E /* LSListManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		363954C34A3343099B8B6A02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9D1E992C196CA3ED00E94D8A /* LSPresenterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSPresenterDelegate.h; sourceTree = "<group>"; };
+		9DC1E0FD196DA7CD003F8F83 /* LSDesignFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDesignFactory.h; sourceTree = "<group>"; };
+		9DC1E0FE196DA7CD003F8F83 /* LSDesignFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDesignFactory.m; sourceTree = "<group>"; };
+		9DC1E101196DD308003F8F83 /* LSListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSListTableViewController.h; sourceTree = "<group>"; };
+		9DC1E102196DD308003F8F83 /* LSListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSListTableViewController.m; sourceTree = "<group>"; };
 		9DC5D700196B4F9800F7239C /* ListShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC5D703196B4F9800F7239C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DC5D705196B4F9800F7239C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,17 +69,37 @@
 		9DC5D711196B4F9800F7239C /* ListShare-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ListShare-Prefix.pch"; sourceTree = "<group>"; };
 		9DC5D712196B4F9800F7239C /* LSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSAppDelegate.h; sourceTree = "<group>"; };
 		9DC5D713196B4F9800F7239C /* LSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSAppDelegate.m; sourceTree = "<group>"; };
-		9DC5D716196B4F9800F7239C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9DC5D718196B4F9800F7239C /* LSMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSMasterViewController.h; sourceTree = "<group>"; };
-		9DC5D719196B4F9800F7239C /* LSMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSMasterViewController.m; sourceTree = "<group>"; };
-		9DC5D71B196B4F9800F7239C /* LSDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSDetailViewController.h; sourceTree = "<group>"; };
-		9DC5D71C196B4F9800F7239C /* LSDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSDetailViewController.m; sourceTree = "<group>"; };
 		9DC5D71E196B4F9800F7239C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9DC5D724196B4F9800F7239C /* ListShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ListShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC5D725196B4F9800F7239C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9DC5D72D196B4F9800F7239C /* ListShareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ListShareTests-Info.plist"; sourceTree = "<group>"; };
 		9DC5D72F196B4F9800F7239C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9DC5D731196B4F9800F7239C /* ListShareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListShareTests.m; sourceTree = "<group>"; };
+		9DC5D73F196B4FCF00F7239C /* LSList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSList.h; sourceTree = "<group>"; };
+		9DC5D740196B4FCF00F7239C /* LSList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSList.m; sourceTree = "<group>"; };
+		9DC5D744196B50FA00F7239C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		9DC5D746196B510700F7239C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9DC5D748196B510B00F7239C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9DC5D74A196B511A00F7239C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9DC5D74C196B512300F7239C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9DC5D74E196B512B00F7239C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9DC5D750196B513200F7239C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9DC5D752196B513900F7239C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9DC5D754196B513E00F7239C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		9DC5D756196B514400F7239C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		9DC5D758196B514C00F7239C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9DC5D75B196B520700F7239C /* LSContactManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSContactManagerTableViewController.h; sourceTree = "<group>"; };
+		9DC5D75C196B520700F7239C /* LSContactManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSContactManagerTableViewController.m; sourceTree = "<group>"; };
+		9DCEE8A5196B63D7007D890E /* LSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLoginViewController.h; sourceTree = "<group>"; };
+		9DCEE8A6196B63D7007D890E /* LSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLoginViewController.m; sourceTree = "<group>"; };
+		9DCEE8A8196B6460007D890E /* LSSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSignUpViewController.h; sourceTree = "<group>"; };
+		9DCEE8A9196B6460007D890E /* LSSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSignUpViewController.m; sourceTree = "<group>"; };
+		9DCEE8AB196B652A007D890E /* LSSubclassConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSubclassConfigViewController.h; sourceTree = "<group>"; };
+		9DCEE8AC196B652A007D890E /* LSSubclassConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSubclassConfigViewController.m; sourceTree = "<group>"; };
+		9DCEE8AD196B652A007D890E /* LSSubclassConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSSubclassConfigViewController.xib; sourceTree = "<group>"; };
+		9DCEE8B1196B6994007D890E /* LSListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSListManager.h; sourceTree = "<group>"; };
+		9DCEE8B2196B6994007D890E /* LSListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSListManager.m; sourceTree = "<group>"; };
+		F63A7FD259FA495C85A3A1C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +107,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */,
+				9DC5D757196B514400F7239C /* StoreKit.framework in Frameworks */,
+				9DC5D755196B513E00F7239C /* Social.framework in Frameworks */,
+				9DC5D753196B513900F7239C /* Security.framework in Frameworks */,
+				9DC5D751196B513200F7239C /* QuartzCore.framework in Frameworks */,
+				9DC5D74F196B512B00F7239C /* MobileCoreServices.framework in Frameworks */,
+				9DC5D74D196B512300F7239C /* libz.dylib in Frameworks */,
+				9DC5D74B196B511A00F7239C /* CoreLocation.framework in Frameworks */,
 				9DC5D706196B4F9800F7239C /* CoreGraphics.framework in Frameworks */,
+				9DC5D749196B510B00F7239C /* CFNetwork.framework in Frameworks */,
+				9DC5D747196B510700F7239C /* AudioToolbox.framework in Frameworks */,
+				9DC5D745196B50FA00F7239C /* Accounts.framework in Frameworks */,
 				9DC5D708196B4F9800F7239C /* UIKit.framework in Frameworks */,
 				9DC5D704196B4F9800F7239C /* Foundation.framework in Frameworks */,
+				0140FB974D8141E2A53EBAF0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +138,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D1E992B196CA3DD00E94D8A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9D1E992C196CA3ED00E94D8A /* LSPresenterDelegate.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9DC1E100196DD2D2003F8F83 /* List Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				9DC1E101196DD308003F8F83 /* LSListTableViewController.h */,
+				9DC1E102196DD308003F8F83 /* LSListTableViewController.m */,
+			);
+			path = "List Viewer";
+			sourceTree = "<group>";
+		};
 		9DC5D6F7196B4F9800F7239C = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +162,7 @@
 				9DC5D72B196B4F9800F7239C /* ListShareTests */,
 				9DC5D702196B4F9800F7239C /* Frameworks */,
 				9DC5D701196B4F9800F7239C /* Products */,
+				363954C34A3343099B8B6A02 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,10 +178,22 @@
 		9DC5D702196B4F9800F7239C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DC5D758196B514C00F7239C /* SystemConfiguration.framework */,
+				9DC5D756196B514400F7239C /* StoreKit.framework */,
+				9DC5D754196B513E00F7239C /* Social.framework */,
+				9DC5D752196B513900F7239C /* Security.framework */,
+				9DC5D750196B513200F7239C /* QuartzCore.framework */,
+				9DC5D74E196B512B00F7239C /* MobileCoreServices.framework */,
+				9DC5D74C196B512300F7239C /* libz.dylib */,
+				9DC5D74A196B511A00F7239C /* CoreLocation.framework */,
+				9DC5D748196B510B00F7239C /* CFNetwork.framework */,
+				9DC5D746196B510700F7239C /* AudioToolbox.framework */,
+				9DC5D744196B50FA00F7239C /* Accounts.framework */,
 				9DC5D703196B4F9800F7239C /* Foundation.framework */,
 				9DC5D705196B4F9800F7239C /* CoreGraphics.framework */,
 				9DC5D707196B4F9800F7239C /* UIKit.framework */,
 				9DC5D725196B4F9800F7239C /* XCTest.framework */,
+				F63A7FD259FA495C85A3A1C3 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,13 +201,16 @@
 		9DC5D709196B4F9800F7239C /* ListShare */ = {
 			isa = PBXGroup;
 			children = (
+				9DC1E100196DD2D2003F8F83 /* List Viewer */,
+				9D1E992B196CA3DD00E94D8A /* Protocols */,
+				9DCEE8B0196B696E007D890E /* List Manager */,
+				9DCEE8A4196B6394007D890E /* LoginView */,
+				9DC5D75A196B51F100F7239C /* ContactManager */,
+				9DC5D73B196B4FAC00F7239C /* Models */,
 				9DC5D712196B4F9800F7239C /* LSAppDelegate.h */,
 				9DC5D713196B4F9800F7239C /* LSAppDelegate.m */,
-				9DC5D715196B4F9800F7239C /* Main.storyboard */,
-				9DC5D718196B4F9800F7239C /* LSMasterViewController.h */,
-				9DC5D719196B4F9800F7239C /* LSMasterViewController.m */,
-				9DC5D71B196B4F9800F7239C /* LSDetailViewController.h */,
-				9DC5D71C196B4F9800F7239C /* LSDetailViewController.m */,
+				9DC1E0FD196DA7CD003F8F83 /* LSDesignFactory.h */,
+				9DC1E0FE196DA7CD003F8F83 /* LSDesignFactory.m */,
 				9DC5D71E196B4F9800F7239C /* Images.xcassets */,
 				9DC5D70A196B4F9800F7239C /* Supporting Files */,
 			);
@@ -157,6 +246,47 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9DC5D73B196B4FAC00F7239C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9DC5D73F196B4FCF00F7239C /* LSList.h */,
+				9DC5D740196B4FCF00F7239C /* LSList.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9DC5D75A196B51F100F7239C /* ContactManager */ = {
+			isa = PBXGroup;
+			children = (
+				9DC5D75B196B520700F7239C /* LSContactManagerTableViewController.h */,
+				9DC5D75C196B520700F7239C /* LSContactManagerTableViewController.m */,
+			);
+			path = ContactManager;
+			sourceTree = "<group>";
+		};
+		9DCEE8A4196B6394007D890E /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				9DCEE8A5196B63D7007D890E /* LSLoginViewController.h */,
+				9DCEE8A6196B63D7007D890E /* LSLoginViewController.m */,
+				9DCEE8A8196B6460007D890E /* LSSignUpViewController.h */,
+				9DCEE8A9196B6460007D890E /* LSSignUpViewController.m */,
+				9DCEE8AB196B652A007D890E /* LSSubclassConfigViewController.h */,
+				9DCEE8AC196B652A007D890E /* LSSubclassConfigViewController.m */,
+				9DCEE8AD196B652A007D890E /* LSSubclassConfigViewController.xib */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		9DCEE8B0196B696E007D890E /* List Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9DCEE8B1196B6994007D890E /* LSListManager.h */,
+				9DCEE8B2196B6994007D890E /* LSListManager.m */,
+			);
+			path = "List Manager";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9DC5D735196B4F9800F7239C /* Build configuration list for PBXNativeTarget "ListShare" */;
 			buildPhases = (
+				5A66F26CD4E7458789C4C916 /* Check Pods Manifest.lock */,
 				9DC5D6FC196B4F9800F7239C /* Sources */,
 				9DC5D6FD196B4F9800F7239C /* Frameworks */,
 				9DC5D6FE196B4F9800F7239C /* Resources */,
+				272AE518E6FF4CE8BCD29943 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,7 +368,7 @@
 			files = (
 				9DC5D71F196B4F9800F7239C /* Images.xcassets in Resources */,
 				9DC5D70E196B4F9800F7239C /* InfoPlist.strings in Resources */,
-				9DC5D717196B4F9800F7239C /* Main.storyboard in Resources */,
+				9DCEE8AF196B652A007D890E /* LSSubclassConfigViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,15 +382,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		272AE518E6FF4CE8BCD29943 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A66F26CD4E7458789C4C916 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9DC5D6FC196B4F9800F7239C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DC5D71D196B4F9800F7239C /* LSDetailViewController.m in Sources */,
 				9DC5D710196B4F9800F7239C /* main.m in Sources */,
-				9DC5D71A196B4F9800F7239C /* LSMasterViewController.m in Sources */,
+				9DC5D75D196B520700F7239C /* LSContactManagerTableViewController.m in Sources */,
+				9DC1E103196DD308003F8F83 /* LSListTableViewController.m in Sources */,
+				9DC5D741196B4FCF00F7239C /* LSList.m in Sources */,
+				9DCEE8A7196B63D7007D890E /* LSLoginViewController.m in Sources */,
 				9DC5D714196B4F9800F7239C /* LSAppDelegate.m in Sources */,
+				9DC1E0FF196DA7CD003F8F83 /* LSDesignFactory.m in Sources */,
+				9DCEE8B3196B6994007D890E /* LSListManager.m in Sources */,
+				9DCEE8AE196B652A007D890E /* LSSubclassConfigViewController.m in Sources */,
+				9DCEE8AA196B6460007D890E /* LSSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,14 +458,6 @@
 				9DC5D70D196B4F9800F7239C /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9DC5D715196B4F9800F7239C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9DC5D716196B4F9800F7239C /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		9DC5D72E196B4F9800F7239C /* InfoPlist.strings */ = {
@@ -380,9 +543,14 @@
 		};
 		9DC5D736196B4F9800F7239C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 363954C34A3343099B8B6A02 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ListShare/ListShare-Prefix.pch";
 				INFOPLIST_FILE = "ListShare/ListShare-Info.plist";
@@ -393,9 +561,14 @@
 		};
 		9DC5D737196B4F9800F7239C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 363954C34A3343099B8B6A02 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ListShare/ListShare-Prefix.pch";
 				INFOPLIST_FILE = "ListShare/ListShare-Info.plist";
@@ -463,6 +636,7 @@
 				9DC5D737196B4F9800F7239C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DC5D738196B4F9800F7239C /* Build configuration list for PBXNativeTarget "ListShareTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +645,7 @@
 				9DC5D73A196B4F9800F7239C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
