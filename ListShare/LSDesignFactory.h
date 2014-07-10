@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FlatUIKit.h"
 
 @interface LSDesignFactory : NSObject
+
++ (void)configureNavBarDesign:(UINavigationController *)nav;
+
++ (UIColor *)mainBackgroundColor;
+
++ (UIColor *)cellSeparatorColor;
+
++ (UIColor *)cellBackgroundColor;
+
++ (UIColor *)iconTintColor;
+
++ (UIColor *)textColor;
 
 @end

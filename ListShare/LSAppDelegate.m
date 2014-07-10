@@ -7,12 +7,34 @@
 //
 
 #import "LSAppDelegate.h"
+#import "LSContactManagerTableViewController.h"
+#import "LSSubclassConfigViewController.h"
+#import "LSPresenterDelegate.h"
+#import "LSDesignFactory.h"
+#import <Parse/Parse.h>
+
+@interface LSAppDelegate() <LSPresenterDelegate>
+
+//Nav Controllers
+@property (nonatomic, strong) UINavigationController *mainNav;
+
+
+@end
 
 @implementation LSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [Parse setApplicationId:@"3HPUHzjWZjPNd0ZDrYIvdpkdkiYExT69mHCclEoe"
+                  clientKey:@"NTQCUlnjQ2P5Wtf0MAkni9eA4BE2xj6epqWYHwkW"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]
+                                                   bounds]];
+    self.window.backgroundColor = [LSDesignFactory mainBackgroundColor];
+    [self.window makeKeyAndVisible];
+    [self setup];
     return YES;
 }
 							
@@ -42,5 +64,35 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
+#pragma mark - Setup
+
+-(void) setup
+{
+    /*self.mainNav = [[UINavigationController alloc] initWithRootViewController:[[LSContactManagerTableViewController
+                                                                                alloc] initWithStyle:UITableViewStylePlain]];*/
+    UIViewController *initialController = [[LSSubclassConfigViewController alloc]
+                                           initWithDelegate:self];
+    self.mainNav = [[UINavigationController alloc]
+                    initWithRootViewController:initialController];
+    [LSDesignFactory configureNavBarDesign:self.mainNav];
+    self.window.rootViewController = self.mainNav;
+    
+}
+
+#pragma mark - Delegates
+
+- (void)presentAsMainViewController:(UIViewController *)viewController
+{
+    
+    [self.mainNav setViewControllers:@[viewController] animated:YES];
+    
+    viewController.navigationItem.leftBarButtonItem = self.window.rootViewController.navigationItem.leftBarButtonItem;
+    
+}
+
+
 
 @end
