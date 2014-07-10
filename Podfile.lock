@@ -1,0 +1,19 @@
+PODS:
+  - Bolts (1.1.0)
+  - Facebook-iOS-SDK (3.15.1):
+    - Bolts
+  - FlatUIKit (1.4)
+  - Parse (1.2.19):
+    - Facebook-iOS-SDK (~> 3.11)
+
+DEPENDENCIES:
+  - FlatUIKit
+  - Parse
+
+SPEC CHECKSUMS:
+  Bolts: 91c2af8eae1d44e1dd75946a5b0ae04a43ea43e4
+  Facebook-iOS-SDK: 56214af8e0ef16e751eb2804250326b709e571b8
+  FlatUIKit: edc1ed0c130687dc64a10e45851cc58925f6893d
+  Parse: ffebaecaddd32cb52671010f81567c298ff93d04
+
+COCOAPODS: 0.33.1
