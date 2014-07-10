@@ -7,7 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
-@interface LSItem : NSObject
+@interface LSList : NSObject
+
+@property (nonatomic, strong) NSString *itemName;
+@property (nonatomic, strong) NSNumber *completed; //generate using [NSNumber numberWithBool:YES/NO];
+@property (nonatomic, strong) NSDate *dateCreated;
+@property (nonatomic, strong) NSString *creatorUserName;
+@property (nonatomic, strong) NSMutableArray *listParticipants;
+
+- (PFObject *)saveAsPFObject;
+- (PFObject *)returnAsPFObject;
+
+/*
++ (NSString *)getListName:(PFObject *)object;
++ (NSNumber *)getCompleted:(PFObject *)object;
++ (NSDate *)getDateCreated:(PFObject *)object;
++ (NSString *)getCreatorUserName:(PFObject *)object;
++ (NSMutableArray *)getlistParticipants:(PFObject *)object;
+*/
 
 @end
