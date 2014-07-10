@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface LSListManager : UITableViewController
+@interface LSListManager : PFQueryTableViewController <UITextFieldDelegate>
+
+@property (nonatomic, strong) NSMutableArray *contacts;
+@property (nonatomic, strong) NSMutableArray *lists;
 
 @end
