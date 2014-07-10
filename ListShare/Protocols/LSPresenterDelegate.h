@@ -10,4 +10,6 @@
 
 @protocol LSPresenterDelegate <NSObject>
 
+-(void) presentAsMainViewController:(UIViewController *)viewController;
+
 @end
