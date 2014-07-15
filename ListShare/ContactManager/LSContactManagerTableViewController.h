@@ -10,4 +10,6 @@
 
 @interface LSContactManagerTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *contacts;
+
 @end

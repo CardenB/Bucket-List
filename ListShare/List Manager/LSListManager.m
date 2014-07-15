@@ -20,6 +20,10 @@
 
 @implementation LSAddListCell
 
+#warning need to work out selection kinks, selecting text field doesn't select the cell, selecting the button makes the cell permanently selected, touching button doesn't set the textfield to first responder
+
+#warning need to set background of load new page cell
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -150,6 +154,8 @@ static NSString *addListCellID = @"Add List Cell";
 // all objects ordered by createdAt descending.
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"creatorName" equalTo:[PFUser currentUser].username];
+    //[query whereKey:@"participants" containsString:[PFUser currentUser].username];
     
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
@@ -210,8 +216,11 @@ static NSString *addListCellID = @"Add List Cell";
     if (indexPath.row == 0) {
         [((LSAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField becomeFirstResponder];
     } else {
-        for (NSIndexPath *indexPath in tableView.indexPathsForSelectedRows) {
-            [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        for (NSIndexPath *path in tableView.indexPathsForSelectedRows) {
+            if (path != indexPath) {
+                [tableView deselectRowAtIndexPath:path animated:NO];
+            }
+
         }
     }
 }
@@ -253,33 +262,26 @@ static NSString *addListCellID = @"Add List Cell";
 {
     // Return NO if you do not want the specified item to be editable.
     if (indexPath.row == 0) {
-        return YES;
-    } else
         return NO;
+    } else
+        return YES;
 }
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    /*
-     if (indexPath.row == 0) {
-     return UITableViewCellEditingStyleInsert;
-     } else
-     return UITableViewCellEditingStyleNone;
-     */
-    return UITableViewCellEditingStyleNone;
-}
-
-
 
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super tableView:tableView commitEditingStyle:editingStyle forRowAtIndexPath:indexPath];
-    /*
+    
+#warning Will need to handle the case where a list with multiple owners is deleted
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        PFObject *object = [self objectAtIndexPath:indexPath];
+#warning display activity indicator and create a background task
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            [self loadObjects];
+        }];
+    }
+    /*
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         if (indexPath.row == 0) {
             if ([self.addListTextField.text length] > 0) {
@@ -296,6 +298,8 @@ static NSString *addListCellID = @"Add List Cell";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+#warning trim the text
+#warning display activity indicator and create a background task
     if ([textField.text length] > 0) {
         LSList *listItem = [[LSList alloc] init];
         listItem.itemName = textField.text;
@@ -321,4 +325,5 @@ static NSString *addListCellID = @"Add List Cell";
     }
     return NO;
 }
+
 @end
