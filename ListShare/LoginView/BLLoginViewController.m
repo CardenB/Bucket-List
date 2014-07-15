@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSLoginViewController.h"
+#import "BLLoginViewController.h"
 #import "UIColor+FlatUI.h"
 
-@interface LSLoginViewController ()
+@interface BLLoginViewController ()
 
 @end
 
-@implementation LSLoginViewController
+@implementation BLLoginViewController
 
 - (void)viewDidLoad
 {

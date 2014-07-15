@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSSubclassConfigViewController.h"
-#import "LSSignUpViewController.h"
-#import "LSLoginViewController.h"
-#import "LSListManager.h"
+#import "BLSubclassConfigViewController.h"
+#import "BLSignUpViewController.h"
+#import "BLLoginViewController.h"
+#import "BLListManager.h"
 
-@interface LSSubclassConfigViewController ()
+@interface BLSubclassConfigViewController ()
 
 @end
 
-@implementation LSSubclassConfigViewController
+@implementation BLSubclassConfigViewController
 
--(id) initWithDelegate:(id<LSPresenterDelegate>)delegate
+-(id) initWithDelegate:(id<BLPresenterDelegate>)delegate
 {
-    self = [super initWithNibName:@"LSSubclassConfigViewController" bundle:[NSBundle mainBundle]];
+    self = [super initWithNibName:@"BLSubclassConfigViewController" bundle:[NSBundle mainBundle]];
     self.delegate = delegate;
     return self;
 }
@@ -30,7 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([PFUser currentUser]) {
-        [self.delegate presentAsMainViewController:[[LSListManager alloc] initWithStyle:UITableViewStylePlain]];
+        [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain]];
     } else {
         self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
@@ -41,11 +41,11 @@
     
     if (![PFUser currentUser]) { // No user logged in
         // Create the log in view controller
-        PFLogInViewController *logInViewController = [[LSLoginViewController alloc] init];
+        PFLogInViewController *logInViewController = [[BLLoginViewController alloc] init];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Create the sign up view controller
-        PFSignUpViewController *signUpViewController = [[LSSignUpViewController alloc] init];
+        PFSignUpViewController *signUpViewController = [[BLSignUpViewController alloc] init];
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Assign our sign up controller to be displayed from the login controller

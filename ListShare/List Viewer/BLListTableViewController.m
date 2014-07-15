@@ -6,32 +6,127 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSListTableViewController.h"
-#import "LSList.h"
-#import "LSDesignFactory.h"
+#import "BLListTableViewController.h"
+#import "BLList.h"
+#import "BLItem.h"
+#import "BLDesignFactory.h"
 
-@interface LSListTableViewController ()
+@interface BLListItemCell : UITableViewCell
+
+@property (nonatomic, strong) IBOutlet FUITextField *textField;
+@property (nonatomic, strong) IBOutlet FUIButton *completedButton;
+@property (nonatomic, strong) IBOutlet FUIButton *starButton;
+@property (nonatomic, strong) BLItem *listItem;
+
+@property (nonatomic, weak) id<UITextFieldDelegate> textFieldDelegate;
 
 @end
 
-@implementation LSListTableViewController
+@implementation BLListItemCell
+
+#warning need to work out selection kinks, selecting text field doesn't select the cell, selecting the button makes the cell permanently selected, touching button doesn't set the textfield to first responder
+
+#warning need to set background of load new page cell
+
+- (id)initWithStyle:(UITableViewCellStyle)style
+    reuseIdentifier:(NSString *)reuseIdentifier
+              model:(BLItem *)listItem
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self.textField = [[FUITextField alloc] init];
+    self.completedButton = [[FUIButton alloc] init];
+    self.starButton = [[FUIButton alloc] init];
+
+    
+    self.listItem = listItem;
+    return self;
+}
+
+- (void)layoutSubviews
+{
+#warning replace completed and star buttons with icons
+    //replace with imageview for completion icon
+    self.completedButton.frame = CGRectMake(15, 0, 30, 44);
+    [self.completedButton.titleLabel setFont:[UIFont lightFlatFontOfSize:30]];
+    [self.completedButton setTitle:@"O" forState:UIControlStateNormal];
+    [self.completedButton setTitleColor:[BLDesignFactory iconTintColor] forState:UIControlStateNormal];
+    [self.completedButton addTarget:self action:@selector(completedButtonPressedEvent)
+              forControlEvents:UIControlEventTouchDown];
+    
+    
+    self.textField.placeholder = @"Add a new list!";
+    [self.textField setTextColor:[BLDesignFactory textColor]];
+    self.textField.returnKeyType = UIReturnKeyDone;
+    //left side at 50 pixels to give room for 15 pixel margin and 30 pixel left icon
+    //right side at 110 pixels to give room for 50 pixel left side, 30 pixel margin, and 30 pixel right icon
+    self.textField.frame = CGRectMake(50, 12,
+                                      CGRectGetMaxX(self.contentView.bounds) - 110,
+                                      CGRectGetMaxY(self.contentView.bounds) - 18);
+    
+    self.starButton.frame = CGRectMake( CGRectGetMaxX(self.contentView.bounds) - 95,
+                                  0, 30, 44);
+    [self.starButton.titleLabel setFont:[UIFont lightFlatFontOfSize:30]];
+    [self.starButton setTitle:@"*" forState:UIControlStateNormal];
+    [self.starButton setTitleColor:[BLDesignFactory iconTintColor] forState:UIControlStateNormal];
+    [self.starButton addTarget:self action:@selector(starButtonPressedEvent) forControlEvents:UIControlEventTouchDown];
+    
+    [self.contentView addSubview:self.completedButton];
+    [self.contentView addSubview:self.textField];
+    [self.contentView addSubview:self.starButton];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+}
+
+- (void)completedButtonPressedEvent
+{
+    self.listItem.completed = [NSNumber numberWithBool:!self.listItem.completed];
+    
+    if (self.listItem.completed)
+        [self.completedButton setTitle:@"X" forState:UIControlStateNormal];
+    else
+        [self.completedButton setTitle:@"O" forState:UIControlStateNormal];
+}
+
+- (void)starButtonPressedEvent
+{
+    self.listItem.starred = [NSNumber numberWithBool:!self.listItem.starred];
+    
+    if (self.listItem.starred)
+        [self.starButton setTitle:@"**" forState:UIControlStateNormal];
+}
+
+@end
+
+
+
+
+@interface BLListTableViewController ()
+
+@property (nonatomic, strong) BLList *list;
+@property (nonatomic, strong) NSMutableArray *itemArray;
+
+@end
+
+@implementation BLListTableViewController
 
 static NSString *cellID = @"List Item Cell";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
+#warning allow for multiple selection
     self = [super initWithStyle:style];
     if (self) {
         // Custom the table
         
         // The className to query on
-        self.parseClassName = @"LSListItem";
+        self.parseClassName = @"LSList";
         
         // The key of the PFObject to display in the label of the default cell style
         self.textKey = @"name";
         
         // The title for this table in the Navigation Controller.
-        self.title = @"Items";
+        self.title = self.list.name;
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -53,14 +148,15 @@ static NSString *cellID = @"List Item Cell";
     
     [super viewDidLoad];
     [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
-    self.tableView.separatorColor = [LSDesignFactory cellSeparatorColor];
-    self.tableView.backgroundColor = [LSDesignFactory mainBackgroundColor];
+    self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
+    self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [self.tableView registerClass:[BLListItemCell class] forCellReuseIdentifier:cellID];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

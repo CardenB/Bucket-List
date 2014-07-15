@@ -1,5 +1,5 @@
 //
-//  LSAppDelegate.h
+//  LSLoginViewController.h
 //  ListShare
 //
 //  Created by Carden Bagwell on 7/7/14.
@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface LSAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface BLLoginViewController : PFLogInViewController
 @end

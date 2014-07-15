@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0140FB974D8141E2A53EBAF0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A7FD259FA495C85A3A1C3 /* libPods.a */; };
-		9DC1E0FF196DA7CD003F8F83 /* LSDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1E0FE196DA7CD003F8F83 /* LSDesignFactory.m */; };
-		9DC1E103196DD308003F8F83 /* LSListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1E102196DD308003F8F83 /* LSListTableViewController.m */; };
+		9DC1E0FF196DA7CD003F8F83 /* BLDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1E0FE196DA7CD003F8F83 /* BLDesignFactory.m */; };
+		9DC1E103196DD308003F8F83 /* BLListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC1E102196DD308003F8F83 /* BLListTableViewController.m */; };
 		9DC5D704196B4F9800F7239C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D703196B4F9800F7239C /* Foundation.framework */; };
 		9DC5D706196B4F9800F7239C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D705196B4F9800F7239C /* CoreGraphics.framework */; };
 		9DC5D708196B4F9800F7239C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D707196B4F9800F7239C /* UIKit.framework */; };
 		9DC5D70E196B4F9800F7239C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D70C196B4F9800F7239C /* InfoPlist.strings */; };
 		9DC5D710196B4F9800F7239C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D70F196B4F9800F7239C /* main.m */; };
-		9DC5D714196B4F9800F7239C /* LSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D713196B4F9800F7239C /* LSAppDelegate.m */; };
+		9DC5D714196B4F9800F7239C /* BLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D713196B4F9800F7239C /* BLAppDelegate.m */; };
 		9DC5D71F196B4F9800F7239C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D71E196B4F9800F7239C /* Images.xcassets */; };
 		9DC5D726196B4F9800F7239C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D725196B4F9800F7239C /* XCTest.framework */; };
 		9DC5D727196B4F9800F7239C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D703196B4F9800F7239C /* Foundation.framework */; };
 		9DC5D728196B4F9800F7239C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D707196B4F9800F7239C /* UIKit.framework */; };
 		9DC5D730196B4F9800F7239C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9DC5D72E196B4F9800F7239C /* InfoPlist.strings */; };
 		9DC5D732196B4F9800F7239C /* ListShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D731196B4F9800F7239C /* ListShareTests.m */; };
-		9DC5D741196B4FCF00F7239C /* LSList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D740196B4FCF00F7239C /* LSList.m */; };
+		9DC5D741196B4FCF00F7239C /* BLList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D740196B4FCF00F7239C /* BLList.m */; };
 		9DC5D745196B50FA00F7239C /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D744196B50FA00F7239C /* Accounts.framework */; };
 		9DC5D747196B510700F7239C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D746196B510700F7239C /* AudioToolbox.framework */; };
 		9DC5D749196B510B00F7239C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D748196B510B00F7239C /* CFNetwork.framework */; };
@@ -34,12 +34,13 @@
 		9DC5D755196B513E00F7239C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D754196B513E00F7239C /* Social.framework */; };
 		9DC5D757196B514400F7239C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D756196B514400F7239C /* StoreKit.framework */; };
 		9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D758196B514C00F7239C /* SystemConfiguration.framework */; };
-		9DC5D75D196B520700F7239C /* LSContactManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D75C196B520700F7239C /* LSContactManagerTableViewController.m */; };
-		9DCEE8A7196B63D7007D890E /* LSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8A6196B63D7007D890E /* LSLoginViewController.m */; };
-		9DCEE8AA196B6460007D890E /* LSSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8A9196B6460007D890E /* LSSignUpViewController.m */; };
-		9DCEE8AE196B652A007D890E /* LSSubclassConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8AC196B652A007D890E /* LSSubclassConfigViewController.m */; };
-		9DCEE8AF196B652A007D890E /* LSSubclassConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCEE8AD196B652A007D890E /* LSSubclassConfigViewController.xib */; };
-		9DCEE8B3196B6994007D890E /* LSListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8B2196B6994007D890E /* LSListManager.m */; };
+		9DC5D75D196B520700F7239C /* BLContactManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC5D75C196B520700F7239C /* BLContactManagerTableViewController.m */; };
+		9DC7B5EE197589F700C3176F /* BLItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC7B5ED197589F700C3176F /* BLItem.m */; };
+		9DCEE8A7196B63D7007D890E /* BLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8A6196B63D7007D890E /* BLLoginViewController.m */; };
+		9DCEE8AA196B6460007D890E /* BLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8A9196B6460007D890E /* BLSignUpViewController.m */; };
+		9DCEE8AE196B652A007D890E /* BLSubclassConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8AC196B652A007D890E /* BLSubclassConfigViewController.m */; };
+		9DCEE8AF196B652A007D890E /* BLSubclassConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DCEE8AD196B652A007D890E /* BLSubclassConfigViewController.xib */; };
+		9DCEE8B3196B6994007D890E /* BLListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DCEE8B2196B6994007D890E /* BLListManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,29 +55,29 @@
 
 /* Begin PBXFileReference section */
 		363954C34A3343099B8B6A02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		9D1E992C196CA3ED00E94D8A /* LSPresenterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSPresenterDelegate.h; sourceTree = "<group>"; };
-		9DC1E0FD196DA7CD003F8F83 /* LSDesignFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSDesignFactory.h; sourceTree = "<group>"; };
-		9DC1E0FE196DA7CD003F8F83 /* LSDesignFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSDesignFactory.m; sourceTree = "<group>"; };
-		9DC1E101196DD308003F8F83 /* LSListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSListTableViewController.h; sourceTree = "<group>"; };
-		9DC1E102196DD308003F8F83 /* LSListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSListTableViewController.m; sourceTree = "<group>"; };
-		9DC5D700196B4F9800F7239C /* ListShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D1E992C196CA3ED00E94D8A /* BLPresenterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLPresenterDelegate.h; sourceTree = "<group>"; };
+		9DC1E0FD196DA7CD003F8F83 /* BLDesignFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLDesignFactory.h; sourceTree = "<group>"; };
+		9DC1E0FE196DA7CD003F8F83 /* BLDesignFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLDesignFactory.m; sourceTree = "<group>"; };
+		9DC1E101196DD308003F8F83 /* BLListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLListTableViewController.h; sourceTree = "<group>"; };
+		9DC1E102196DD308003F8F83 /* BLListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLListTableViewController.m; sourceTree = "<group>"; };
+		9DC5D700196B4F9800F7239C /* Bucket List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bucket List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC5D703196B4F9800F7239C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9DC5D705196B4F9800F7239C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9DC5D707196B4F9800F7239C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9DC5D70B196B4F9800F7239C /* ListShare-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ListShare-Info.plist"; sourceTree = "<group>"; };
+		9DC5D70B196B4F9800F7239C /* Bucket List-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bucket List-Info.plist"; sourceTree = "<group>"; };
 		9DC5D70D196B4F9800F7239C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9DC5D70F196B4F9800F7239C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9DC5D711196B4F9800F7239C /* ListShare-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ListShare-Prefix.pch"; sourceTree = "<group>"; };
-		9DC5D712196B4F9800F7239C /* LSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSAppDelegate.h; sourceTree = "<group>"; };
-		9DC5D713196B4F9800F7239C /* LSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSAppDelegate.m; sourceTree = "<group>"; };
+		9DC5D711196B4F9800F7239C /* Bucket List-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bucket List-Prefix.pch"; sourceTree = "<group>"; };
+		9DC5D712196B4F9800F7239C /* BLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLAppDelegate.h; sourceTree = "<group>"; };
+		9DC5D713196B4F9800F7239C /* BLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BLAppDelegate.m; sourceTree = "<group>"; };
 		9DC5D71E196B4F9800F7239C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9DC5D724196B4F9800F7239C /* ListShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ListShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DC5D724196B4F9800F7239C /* Bucket ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bucket ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC5D725196B4F9800F7239C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		9DC5D72D196B4F9800F7239C /* ListShareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ListShareTests-Info.plist"; sourceTree = "<group>"; };
+		9DC5D72D196B4F9800F7239C /* Bucket ListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bucket ListTests-Info.plist"; sourceTree = "<group>"; };
 		9DC5D72F196B4F9800F7239C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9DC5D731196B4F9800F7239C /* ListShareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListShareTests.m; sourceTree = "<group>"; };
-		9DC5D73F196B4FCF00F7239C /* LSList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSList.h; sourceTree = "<group>"; };
-		9DC5D740196B4FCF00F7239C /* LSList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSList.m; sourceTree = "<group>"; };
+		9DC5D73F196B4FCF00F7239C /* BLList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLList.h; sourceTree = "<group>"; };
+		9DC5D740196B4FCF00F7239C /* BLList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLList.m; sourceTree = "<group>"; };
 		9DC5D744196B50FA00F7239C /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		9DC5D746196B510700F7239C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9DC5D748196B510B00F7239C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -88,17 +89,19 @@
 		9DC5D754196B513E00F7239C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		9DC5D756196B514400F7239C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9DC5D758196B514C00F7239C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9DC5D75B196B520700F7239C /* LSContactManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSContactManagerTableViewController.h; sourceTree = "<group>"; };
-		9DC5D75C196B520700F7239C /* LSContactManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSContactManagerTableViewController.m; sourceTree = "<group>"; };
-		9DCEE8A5196B63D7007D890E /* LSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSLoginViewController.h; sourceTree = "<group>"; };
-		9DCEE8A6196B63D7007D890E /* LSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSLoginViewController.m; sourceTree = "<group>"; };
-		9DCEE8A8196B6460007D890E /* LSSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSignUpViewController.h; sourceTree = "<group>"; };
-		9DCEE8A9196B6460007D890E /* LSSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSignUpViewController.m; sourceTree = "<group>"; };
-		9DCEE8AB196B652A007D890E /* LSSubclassConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSSubclassConfigViewController.h; sourceTree = "<group>"; };
-		9DCEE8AC196B652A007D890E /* LSSubclassConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSSubclassConfigViewController.m; sourceTree = "<group>"; };
-		9DCEE8AD196B652A007D890E /* LSSubclassConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LSSubclassConfigViewController.xib; sourceTree = "<group>"; };
-		9DCEE8B1196B6994007D890E /* LSListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSListManager.h; sourceTree = "<group>"; };
-		9DCEE8B2196B6994007D890E /* LSListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSListManager.m; sourceTree = "<group>"; };
+		9DC5D75B196B520700F7239C /* BLContactManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLContactManagerTableViewController.h; sourceTree = "<group>"; };
+		9DC5D75C196B520700F7239C /* BLContactManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLContactManagerTableViewController.m; sourceTree = "<group>"; };
+		9DC7B5EC197589F700C3176F /* BLItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLItem.h; sourceTree = "<group>"; };
+		9DC7B5ED197589F700C3176F /* BLItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLItem.m; sourceTree = "<group>"; };
+		9DCEE8A5196B63D7007D890E /* BLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLLoginViewController.h; sourceTree = "<group>"; };
+		9DCEE8A6196B63D7007D890E /* BLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLLoginViewController.m; sourceTree = "<group>"; };
+		9DCEE8A8196B6460007D890E /* BLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSignUpViewController.h; sourceTree = "<group>"; };
+		9DCEE8A9196B6460007D890E /* BLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSignUpViewController.m; sourceTree = "<group>"; };
+		9DCEE8AB196B652A007D890E /* BLSubclassConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLSubclassConfigViewController.h; sourceTree = "<group>"; };
+		9DCEE8AC196B652A007D890E /* BLSubclassConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLSubclassConfigViewController.m; sourceTree = "<group>"; };
+		9DCEE8AD196B652A007D890E /* BLSubclassConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLSubclassConfigViewController.xib; sourceTree = "<group>"; };
+		9DCEE8B1196B6994007D890E /* BLListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLListManager.h; sourceTree = "<group>"; };
+		9DCEE8B2196B6994007D890E /* BLListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLListManager.m; sourceTree = "<group>"; };
 		F63A7FD259FA495C85A3A1C3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,7 +144,7 @@
 		9D1E992B196CA3DD00E94D8A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				9D1E992C196CA3ED00E94D8A /* LSPresenterDelegate.h */,
+				9D1E992C196CA3ED00E94D8A /* BLPresenterDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -149,8 +152,8 @@
 		9DC1E100196DD2D2003F8F83 /* List Viewer */ = {
 			isa = PBXGroup;
 			children = (
-				9DC1E101196DD308003F8F83 /* LSListTableViewController.h */,
-				9DC1E102196DD308003F8F83 /* LSListTableViewController.m */,
+				9DC1E101196DD308003F8F83 /* BLListTableViewController.h */,
+				9DC1E102196DD308003F8F83 /* BLListTableViewController.m */,
 			);
 			path = "List Viewer";
 			sourceTree = "<group>";
@@ -158,7 +161,7 @@
 		9DC5D6F7196B4F9800F7239C = {
 			isa = PBXGroup;
 			children = (
-				9DC5D709196B4F9800F7239C /* ListShare */,
+				9DC5D709196B4F9800F7239C /* Bucket List */,
 				9DC5D72B196B4F9800F7239C /* ListShareTests */,
 				9DC5D702196B4F9800F7239C /* Frameworks */,
 				9DC5D701196B4F9800F7239C /* Products */,
@@ -169,8 +172,8 @@
 		9DC5D701196B4F9800F7239C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9DC5D700196B4F9800F7239C /* ListShare.app */,
-				9DC5D724196B4F9800F7239C /* ListShareTests.xctest */,
+				9DC5D700196B4F9800F7239C /* Bucket List.app */,
+				9DC5D724196B4F9800F7239C /* Bucket ListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,7 +201,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9DC5D709196B4F9800F7239C /* ListShare */ = {
+		9DC5D709196B4F9800F7239C /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
 				9DC1E100196DD2D2003F8F83 /* List Viewer */,
@@ -207,23 +210,24 @@
 				9DCEE8A4196B6394007D890E /* LoginView */,
 				9DC5D75A196B51F100F7239C /* ContactManager */,
 				9DC5D73B196B4FAC00F7239C /* Models */,
-				9DC5D712196B4F9800F7239C /* LSAppDelegate.h */,
-				9DC5D713196B4F9800F7239C /* LSAppDelegate.m */,
-				9DC1E0FD196DA7CD003F8F83 /* LSDesignFactory.h */,
-				9DC1E0FE196DA7CD003F8F83 /* LSDesignFactory.m */,
+				9DC5D712196B4F9800F7239C /* BLAppDelegate.h */,
+				9DC5D713196B4F9800F7239C /* BLAppDelegate.m */,
+				9DC1E0FD196DA7CD003F8F83 /* BLDesignFactory.h */,
+				9DC1E0FE196DA7CD003F8F83 /* BLDesignFactory.m */,
 				9DC5D71E196B4F9800F7239C /* Images.xcassets */,
 				9DC5D70A196B4F9800F7239C /* Supporting Files */,
 			);
+			name = "Bucket List";
 			path = ListShare;
 			sourceTree = "<group>";
 		};
 		9DC5D70A196B4F9800F7239C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DC5D70B196B4F9800F7239C /* ListShare-Info.plist */,
+				9DC5D70B196B4F9800F7239C /* Bucket List-Info.plist */,
 				9DC5D70C196B4F9800F7239C /* InfoPlist.strings */,
 				9DC5D70F196B4F9800F7239C /* main.m */,
-				9DC5D711196B4F9800F7239C /* ListShare-Prefix.pch */,
+				9DC5D711196B4F9800F7239C /* Bucket List-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -240,7 +244,7 @@
 		9DC5D72C196B4F9800F7239C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9DC5D72D196B4F9800F7239C /* ListShareTests-Info.plist */,
+				9DC5D72D196B4F9800F7239C /* Bucket ListTests-Info.plist */,
 				9DC5D72E196B4F9800F7239C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -249,8 +253,10 @@
 		9DC5D73B196B4FAC00F7239C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9DC5D73F196B4FCF00F7239C /* LSList.h */,
-				9DC5D740196B4FCF00F7239C /* LSList.m */,
+				9DC5D73F196B4FCF00F7239C /* BLList.h */,
+				9DC5D740196B4FCF00F7239C /* BLList.m */,
+				9DC7B5EC197589F700C3176F /* BLItem.h */,
+				9DC7B5ED197589F700C3176F /* BLItem.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,8 +264,8 @@
 		9DC5D75A196B51F100F7239C /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
-				9DC5D75B196B520700F7239C /* LSContactManagerTableViewController.h */,
-				9DC5D75C196B520700F7239C /* LSContactManagerTableViewController.m */,
+				9DC5D75B196B520700F7239C /* BLContactManagerTableViewController.h */,
+				9DC5D75C196B520700F7239C /* BLContactManagerTableViewController.m */,
 			);
 			path = ContactManager;
 			sourceTree = "<group>";
@@ -267,13 +273,13 @@
 		9DCEE8A4196B6394007D890E /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				9DCEE8A5196B63D7007D890E /* LSLoginViewController.h */,
-				9DCEE8A6196B63D7007D890E /* LSLoginViewController.m */,
-				9DCEE8A8196B6460007D890E /* LSSignUpViewController.h */,
-				9DCEE8A9196B6460007D890E /* LSSignUpViewController.m */,
-				9DCEE8AB196B652A007D890E /* LSSubclassConfigViewController.h */,
-				9DCEE8AC196B652A007D890E /* LSSubclassConfigViewController.m */,
-				9DCEE8AD196B652A007D890E /* LSSubclassConfigViewController.xib */,
+				9DCEE8A5196B63D7007D890E /* BLLoginViewController.h */,
+				9DCEE8A6196B63D7007D890E /* BLLoginViewController.m */,
+				9DCEE8A8196B6460007D890E /* BLSignUpViewController.h */,
+				9DCEE8A9196B6460007D890E /* BLSignUpViewController.m */,
+				9DCEE8AB196B652A007D890E /* BLSubclassConfigViewController.h */,
+				9DCEE8AC196B652A007D890E /* BLSubclassConfigViewController.m */,
+				9DCEE8AD196B652A007D890E /* BLSubclassConfigViewController.xib */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -281,8 +287,8 @@
 		9DCEE8B0196B696E007D890E /* List Manager */ = {
 			isa = PBXGroup;
 			children = (
-				9DCEE8B1196B6994007D890E /* LSListManager.h */,
-				9DCEE8B2196B6994007D890E /* LSListManager.m */,
+				9DCEE8B1196B6994007D890E /* BLListManager.h */,
+				9DCEE8B2196B6994007D890E /* BLListManager.m */,
 			);
 			path = "List Manager";
 			sourceTree = "<group>";
@@ -290,9 +296,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9DC5D6FF196B4F9800F7239C /* ListShare */ = {
+		9DC5D6FF196B4F9800F7239C /* Bucket List */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9DC5D735196B4F9800F7239C /* Build configuration list for PBXNativeTarget "ListShare" */;
+			buildConfigurationList = 9DC5D735196B4F9800F7239C /* Build configuration list for PBXNativeTarget "Bucket List" */;
 			buildPhases = (
 				5A66F26CD4E7458789C4C916 /* Check Pods Manifest.lock */,
 				9DC5D6FC196B4F9800F7239C /* Sources */,
@@ -304,14 +310,14 @@
 			);
 			dependencies = (
 			);
-			name = ListShare;
+			name = "Bucket List";
 			productName = ListShare;
-			productReference = 9DC5D700196B4F9800F7239C /* ListShare.app */;
+			productReference = 9DC5D700196B4F9800F7239C /* Bucket List.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9DC5D723196B4F9800F7239C /* ListShareTests */ = {
+		9DC5D723196B4F9800F7239C /* Bucket ListTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9DC5D738196B4F9800F7239C /* Build configuration list for PBXNativeTarget "ListShareTests" */;
+			buildConfigurationList = 9DC5D738196B4F9800F7239C /* Build configuration list for PBXNativeTarget "Bucket ListTests" */;
 			buildPhases = (
 				9DC5D720196B4F9800F7239C /* Sources */,
 				9DC5D721196B4F9800F7239C /* Frameworks */,
@@ -322,9 +328,9 @@
 			dependencies = (
 				9DC5D72A196B4F9800F7239C /* PBXTargetDependency */,
 			);
-			name = ListShareTests;
+			name = "Bucket ListTests";
 			productName = ListShareTests;
-			productReference = 9DC5D724196B4F9800F7239C /* ListShareTests.xctest */;
+			productReference = 9DC5D724196B4F9800F7239C /* Bucket ListTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -333,7 +339,7 @@
 		9DC5D6F8196B4F9800F7239C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = LS;
+				CLASSPREFIX = BL;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Carden Bagwell";
 				TargetAttributes = {
@@ -345,7 +351,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9DC5D6FB196B4F9800F7239C /* Build configuration list for PBXProject "ListShare" */;
+			buildConfigurationList = 9DC5D6FB196B4F9800F7239C /* Build configuration list for PBXProject "Bucket List" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -358,8 +364,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9DC5D6FF196B4F9800F7239C /* ListShare */,
-				9DC5D723196B4F9800F7239C /* ListShareTests */,
+				9DC5D6FF196B4F9800F7239C /* Bucket List */,
+				9DC5D723196B4F9800F7239C /* Bucket ListTests */,
 			);
 		};
 /* End PBXProject section */
@@ -371,7 +377,7 @@
 			files = (
 				9DC5D71F196B4F9800F7239C /* Images.xcassets in Resources */,
 				9DC5D70E196B4F9800F7239C /* InfoPlist.strings in Resources */,
-				9DCEE8AF196B652A007D890E /* LSSubclassConfigViewController.xib in Resources */,
+				9DCEE8AF196B652A007D890E /* BLSubclassConfigViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,15 +430,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC5D710196B4F9800F7239C /* main.m in Sources */,
-				9DC5D75D196B520700F7239C /* LSContactManagerTableViewController.m in Sources */,
-				9DC1E103196DD308003F8F83 /* LSListTableViewController.m in Sources */,
-				9DC5D741196B4FCF00F7239C /* LSList.m in Sources */,
-				9DCEE8A7196B63D7007D890E /* LSLoginViewController.m in Sources */,
-				9DC5D714196B4F9800F7239C /* LSAppDelegate.m in Sources */,
-				9DC1E0FF196DA7CD003F8F83 /* LSDesignFactory.m in Sources */,
-				9DCEE8B3196B6994007D890E /* LSListManager.m in Sources */,
-				9DCEE8AE196B652A007D890E /* LSSubclassConfigViewController.m in Sources */,
-				9DCEE8AA196B6460007D890E /* LSSignUpViewController.m in Sources */,
+				9DC5D75D196B520700F7239C /* BLContactManagerTableViewController.m in Sources */,
+				9DC1E103196DD308003F8F83 /* BLListTableViewController.m in Sources */,
+				9DC5D741196B4FCF00F7239C /* BLList.m in Sources */,
+				9DCEE8A7196B63D7007D890E /* BLLoginViewController.m in Sources */,
+				9DC5D714196B4F9800F7239C /* BLAppDelegate.m in Sources */,
+				9DC1E0FF196DA7CD003F8F83 /* BLDesignFactory.m in Sources */,
+				9DCEE8B3196B6994007D890E /* BLListManager.m in Sources */,
+				9DC7B5EE197589F700C3176F /* BLItem.m in Sources */,
+				9DCEE8AE196B652A007D890E /* BLSubclassConfigViewController.m in Sources */,
+				9DCEE8AA196B6460007D890E /* BLSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +456,7 @@
 /* Begin PBXTargetDependency section */
 		9DC5D72A196B4F9800F7239C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9DC5D6FF196B4F9800F7239C /* ListShare */;
+			target = 9DC5D6FF196B4F9800F7239C /* Bucket List */;
 			targetProxy = 9DC5D729196B4F9800F7239C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -509,6 +516,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -541,6 +549,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -557,9 +566,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ListShare/ListShare-Prefix.pch";
-				INFOPLIST_FILE = "ListShare/ListShare-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ListShare/Bucket List-Prefix.pch";
+				INFOPLIST_FILE = "ListShare/Bucket List-Info.plist";
+				PRODUCT_NAME = "Bucket List";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -578,9 +587,9 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ListShare/ListShare-Prefix.pch";
-				INFOPLIST_FILE = "ListShare/ListShare-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "ListShare/Bucket List-Prefix.pch";
+				INFOPLIST_FILE = "ListShare/Bucket List-Info.plist";
+				PRODUCT_NAME = "Bucket List";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -601,8 +610,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ListShareTests/ListShareTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ListShareTests/Bucket ListTests-Info.plist";
+				PRODUCT_NAME = "Bucket ListTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -619,8 +628,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ListShare/ListShare-Prefix.pch";
-				INFOPLIST_FILE = "ListShareTests/ListShareTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "ListShareTests/Bucket ListTests-Info.plist";
+				PRODUCT_NAME = "Bucket ListTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -629,7 +638,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9DC5D6FB196B4F9800F7239C /* Build configuration list for PBXProject "ListShare" */ = {
+		9DC5D6FB196B4F9800F7239C /* Build configuration list for PBXProject "Bucket List" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DC5D733196B4F9800F7239C /* Debug */,
@@ -638,7 +647,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DC5D735196B4F9800F7239C /* Build configuration list for PBXNativeTarget "ListShare" */ = {
+		9DC5D735196B4F9800F7239C /* Build configuration list for PBXNativeTarget "Bucket List" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DC5D736196B4F9800F7239C /* Debug */,
@@ -647,7 +656,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9DC5D738196B4F9800F7239C /* Build configuration list for PBXNativeTarget "ListShareTests" */ = {
+		9DC5D738196B4F9800F7239C /* Build configuration list for PBXNativeTarget "Bucket ListTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9DC5D739196B4F9800F7239C /* Debug */,

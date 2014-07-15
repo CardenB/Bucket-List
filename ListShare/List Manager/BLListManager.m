@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSListManager.h"
-#import "LSList.h"
-#import "LSDesignFactory.h"
+#import "BLListManager.h"
+#import "BLList.h"
+#import "BLDesignFactory.h"
 
-@interface LSAddListCell : UITableViewCell
+@interface BLAddListCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet FUITextField *textField;
 
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation LSAddListCell
+@implementation BLAddListCell
 
 #warning need to work out selection kinks, selecting text field doesn't select the cell, selecting the button makes the cell permanently selected, touching button doesn't set the textfield to first responder
 
@@ -41,12 +41,12 @@
     addButton.frame = CGRectMake(15, 0, 30, 44);
     [addButton.titleLabel setFont:[UIFont lightFlatFontOfSize:30]];
     [addButton setTitle:@"+" forState:UIControlStateNormal];
-    [addButton setTitleColor:[LSDesignFactory iconTintColor] forState:UIControlStateNormal];
+    [addButton setTitleColor:[BLDesignFactory iconTintColor] forState:UIControlStateNormal];
     [addButton addTarget:self action:@selector(buttonPressedEvent) forControlEvents:UIControlEventTouchDown];
     
 
     self.textField.placeholder = @"Add a new list!";
-    [self.textField setTextColor:[LSDesignFactory textColor]];
+    [self.textField setTextColor:[BLDesignFactory textColor]];
     self.textField.returnKeyType = UIReturnKeyDone;
     self.textField.frame = CGRectMake(50, 12,
                                      CGRectGetMaxX(self.contentView.bounds) - 80,
@@ -67,12 +67,12 @@
 
 @end
 
-@interface LSListManager ()
+@interface BLListManager ()
 
 @property (nonatomic, strong) NSMutableArray *listsToBeSaved;
 @end
 
-@implementation LSListManager
+@implementation BLListManager
 
 static NSString *cellID = @"List Manager Cell";
 static NSString *addListCellID = @"Add List Cell";
@@ -112,9 +112,9 @@ static NSString *addListCellID = @"Add List Cell";
 {
     [super viewDidLoad];
     [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
-    [self.tableView registerClass:[LSAddListCell class] forCellReuseIdentifier:addListCellID];
-    self.tableView.separatorColor = [LSDesignFactory cellSeparatorColor];
-    self.tableView.backgroundColor = [LSDesignFactory mainBackgroundColor];
+    [self.tableView registerClass:[BLAddListCell class] forCellReuseIdentifier:addListCellID];
+    self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
+    self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
 }
@@ -180,11 +180,11 @@ static NSString *addListCellID = @"Add List Cell";
     if (indexPath.row == 0)
     {
         
-        LSAddListCell *cell = [tableView
+        BLAddListCell *cell = [tableView
                                dequeueReusableCellWithIdentifier:addListCellID
                                forIndexPath:indexPath];
         
-        cell.backgroundColor = [LSDesignFactory cellBackgroundColor];
+        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         cell.textField.delegate = self;
         
         return cell;
@@ -195,11 +195,11 @@ static NSString *addListCellID = @"Add List Cell";
         PFTableViewCell *cell = [tableView
                                  dequeueReusableCellWithIdentifier:cellID
                                  forIndexPath:indexPath];
-        cell.backgroundColor = [LSDesignFactory cellBackgroundColor];
-        cell.backgroundColor = [LSDesignFactory cellBackgroundColor];
+        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
+        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         
         [cell.textLabel setFont:[UIFont flatFontOfSize:28]];
-        [cell.textLabel setTextColor:[LSDesignFactory textColor]];
+        [cell.textLabel setTextColor:[BLDesignFactory textColor]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = [object objectForKey:self.textKey];
         return cell;
@@ -214,7 +214,7 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [((LSAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField becomeFirstResponder];
+        [((BLAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField becomeFirstResponder];
     } else {
         for (NSIndexPath *path in tableView.indexPathsForSelectedRows) {
             if (path != indexPath) {
@@ -228,7 +228,7 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [((LSAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField resignFirstResponder];
+        [((BLAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField resignFirstResponder];
     }
 }
 
@@ -301,11 +301,12 @@ static NSString *addListCellID = @"Add List Cell";
 #warning trim the text
 #warning display activity indicator and create a background task
     if ([textField.text length] > 0) {
-        LSList *listItem = [[LSList alloc] init];
-        listItem.itemName = textField.text;
-        listItem.completed = @NO;
+        BLList *listItem = [[BLList alloc] init];
+        listItem.name = textField.text;
+        listItem.dateLastUpdated = [NSDate date];
         listItem.dateCreated = [NSDate date];
         listItem.creatorUserName = [PFUser currentUser].username;
+        listItem.participants = [NSMutableArray arrayWithArray:@[[PFUser currentUser].username]];
         
         PFObject *item = listItem.returnAsPFObject;
         [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){

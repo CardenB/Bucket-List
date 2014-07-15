@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol LSPresenterDelegate <NSObject>
+@protocol BLPresenterDelegate <NSObject>
 
 -(void) presentAsMainViewController:(UIViewController *)viewController;
 

@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSAppDelegate.h"
-#import "LSContactManagerTableViewController.h"
-#import "LSSubclassConfigViewController.h"
-#import "LSPresenterDelegate.h"
-#import "LSDesignFactory.h"
+#import "BLAppDelegate.h"
+#import "BLContactManagerTableViewController.h"
+#import "BLSubclassConfigViewController.h"
+#import "BLPresenterDelegate.h"
+#import "BLDesignFactory.h"
 #import <Parse/Parse.h>
 
-@interface LSAppDelegate() <LSPresenterDelegate>
+@interface BLAppDelegate() <BLPresenterDelegate>
 
 //Nav Controllers
 @property (nonatomic, strong) UINavigationController *mainNav;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation LSAppDelegate
+@implementation BLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -32,7 +32,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen]
                                                    bounds]];
-    self.window.backgroundColor = [LSDesignFactory mainBackgroundColor];
+    self.window.backgroundColor = [BLDesignFactory mainBackgroundColor];
     [self.window makeKeyAndVisible];
     [self setup];
     return YES;
@@ -73,11 +73,11 @@
 {
     /*self.mainNav = [[UINavigationController alloc] initWithRootViewController:[[LSContactManagerTableViewController
                                                                                 alloc] initWithStyle:UITableViewStylePlain]];*/
-    UIViewController *initialController = [[LSSubclassConfigViewController alloc]
+    UIViewController *initialController = [[BLSubclassConfigViewController alloc]
                                            initWithDelegate:self];
     self.mainNav = [[UINavigationController alloc]
                     initWithRootViewController:initialController];
-    [LSDesignFactory configureNavBarDesign:self.mainNav];
+    [BLDesignFactory configureNavBarDesign:self.mainNav];
     self.window.rootViewController = self.mainNav;
     
 }

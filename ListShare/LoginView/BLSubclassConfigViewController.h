@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "LSPresenterDelegate.h"
+#import "BLPresenterDelegate.h"
 
-@interface LSSubclassConfigViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
+@interface BLSubclassConfigViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
-@property (nonatomic, weak) id<LSPresenterDelegate> delegate;
+@property (nonatomic, weak) id<BLPresenterDelegate> delegate;
 
 @property (nonatomic, strong) IBOutlet UILabel *welcomeLabel;
 
--(id) initWithDelegate:(id<LSPresenterDelegate>)delegate;
+-(id) initWithDelegate:(id<BLPresenterDelegate>)delegate;
 
 - (IBAction)logOutButtonTapAction:(id)sender;
 

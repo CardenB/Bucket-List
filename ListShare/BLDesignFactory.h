@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FlatUIKit.h"
 
-@interface LSDesignFactory : NSObject
+@interface BLDesignFactory : NSObject
 
 + (void)configureNavBarDesign:(UINavigationController *)nav;
 

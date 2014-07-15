@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9DC5D6FF196B4F9800F7239C"
-               BuildableName = "ListShare.app"
-               BlueprintName = "ListShare"
-               ReferencedContainer = "container:ListShare.xcodeproj">
+               BuildableName = "Bucket List.app"
+               BlueprintName = "Bucket List"
+               ReferencedContainer = "container:Bucket List.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9DC5D723196B4F9800F7239C"
-               BuildableName = "ListShareTests.xctest"
-               BlueprintName = "ListShareTests"
-               ReferencedContainer = "container:ListShare.xcodeproj">
+               BuildableName = "Bucket ListTests.xctest"
+               BlueprintName = "Bucket ListTests"
+               ReferencedContainer = "container:Bucket List.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9DC5D6FF196B4F9800F7239C"
-            BuildableName = "ListShare.app"
-            BlueprintName = "ListShare"
-            ReferencedContainer = "container:ListShare.xcodeproj">
+            BuildableName = "Bucket List.app"
+            BlueprintName = "Bucket List"
+            ReferencedContainer = "container:Bucket List.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9DC5D6FF196B4F9800F7239C"
-            BuildableName = "ListShare.app"
-            BlueprintName = "ListShare"
-            ReferencedContainer = "container:ListShare.xcodeproj">
+            BuildableName = "Bucket List.app"
+            BlueprintName = "Bucket List"
+            ReferencedContainer = "container:Bucket List.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9DC5D6FF196B4F9800F7239C"
-            BuildableName = "ListShare.app"
-            BlueprintName = "ListShare"
-            ReferencedContainer = "container:ListShare.xcodeproj">
+            BuildableName = "Bucket List.app"
+            BlueprintName = "Bucket List"
+            ReferencedContainer = "container:Bucket List.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

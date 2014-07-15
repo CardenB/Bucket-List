@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSSignUpViewController.h"
+#import "BLSignUpViewController.h"
 #import "UIColor+FlatUI.h"
 
-@interface LSSignUpViewController ()
+@interface BLSignUpViewController ()
 
 @end
 
-@implementation LSSignUpViewController
+@implementation BLSignUpViewController
 
 - (void)viewDidLoad
 {

@@ -1,5 +1,5 @@
 //
-//  LSContactManagerTableViewController.h
+//  LSListManager.h
 //  ListShare
 //
 //  Created by Carden Bagwell on 7/7/14.
@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface LSContactManagerTableViewController : UITableViewController
+@interface BLListManager : PFQueryTableViewController <UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *contacts;
+@property (nonatomic, strong) NSMutableArray *lists;
 
 @end

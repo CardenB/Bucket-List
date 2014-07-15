@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSContactManagerTableViewController.h"
+#import "BLContactManagerTableViewController.h"
 #import <Parse/Parse.h>
 
-@interface LSContactManagerTableViewController ()
+@interface BLContactManagerTableViewController ()
 
 @end
 
-@implementation LSContactManagerTableViewController
+@implementation BLContactManagerTableViewController
 
 static NSString *cellID = @"Contact Manager Cell";
 

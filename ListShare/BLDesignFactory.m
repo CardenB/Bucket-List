@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
-#import "LSDesignFactory.h"
+#import "BLDesignFactory.h"
 
 
-@implementation LSDesignFactory
+@implementation BLDesignFactory
 
 + (void)configureNavBarDesign:(UINavigationController *)nav
 {
