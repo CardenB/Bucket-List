@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D79B69F19830FFC00D83CCE /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D79B69E19830FFC00D83CCE /* BLAddItemTableViewCell.m */; };
 		9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFD19777D2F00A2E6F5 /* BLAppDelegate.m */; };
 		9DC0DD2619777D2F00A2E6F5 /* BLDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFF19777D2F00A2E6F5 /* BLDesignFactory.m */; };
 		9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0019777D2F00A2E6F5 /* Bucket List-Info.plist */; };
@@ -37,7 +38,6 @@
 		9DC5D751196B513200F7239C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D750196B513200F7239C /* QuartzCore.framework */; };
 		9DC5D753196B513900F7239C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D752196B513900F7239C /* Security.framework */; };
 		9DC5D755196B513E00F7239C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D754196B513E00F7239C /* Social.framework */; };
-		9DC5D757196B514400F7239C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D756196B514400F7239C /* StoreKit.framework */; };
 		9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D758196B514C00F7239C /* SystemConfiguration.framework */; };
 		FE8A60C089E643D7B34A95C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDB07342BF74A288781B44D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -54,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		363954C34A3343099B8B6A02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		9D79B69D19830FFC00D83CCE /* BLAddItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAddItemTableViewCell.h; sourceTree = "<group>"; };
+		9D79B69E19830FFC00D83CCE /* BLAddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAddItemTableViewCell.m; sourceTree = "<group>"; };
 		9DC0DCFC19777D2F00A2E6F5 /* BLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLAppDelegate.h; path = "Bucket List/BLAppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		9DC0DCFD19777D2F00A2E6F5 /* BLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLAppDelegate.m; path = "Bucket List/BLAppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		9DC0DCFE19777D2F00A2E6F5 /* BLDesignFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLDesignFactory.h; path = "Bucket List/BLDesignFactory.h"; sourceTree = SOURCE_ROOT; };
@@ -96,7 +98,6 @@
 		9DC5D750196B513200F7239C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9DC5D752196B513900F7239C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		9DC5D754196B513E00F7239C /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		9DC5D756196B514400F7239C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		9DC5D758196B514C00F7239C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AEDB07342BF74A288781B44D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,7 +108,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */,
-				9DC5D757196B514400F7239C /* StoreKit.framework in Frameworks */,
 				9DC5D755196B513E00F7239C /* Social.framework in Frameworks */,
 				9DC5D753196B513900F7239C /* Security.framework in Frameworks */,
 				9DC5D751196B513200F7239C /* QuartzCore.framework in Frameworks */,
@@ -137,6 +137,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D79B69C19830FE100D83CCE /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				9D79B69D19830FFC00D83CCE /* BLAddItemTableViewCell.h */,
+				9D79B69E19830FFC00D83CCE /* BLAddItemTableViewCell.m */,
+			);
+			path = TableViewCells;
+			sourceTree = SOURCE_ROOT;
+		};
 		9DC0DD0219777D2F00A2E6F5 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				9DC5D758196B514C00F7239C /* SystemConfiguration.framework */,
-				9DC5D756196B514400F7239C /* StoreKit.framework */,
 				9DC5D754196B513E00F7239C /* Social.framework */,
 				9DC5D752196B513900F7239C /* Security.framework */,
 				9DC5D750196B513200F7239C /* QuartzCore.framework */,
@@ -249,6 +257,7 @@
 		9DC5D709196B4F9800F7239C /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
+				9D79B69C19830FE100D83CCE /* TableViewCells */,
 				9DC0DD0219777D2F00A2E6F5 /* ContactManager */,
 				9DC0DD0919777D2F00A2E6F5 /* List Manager */,
 				9DC0DD0C19777D2F00A2E6F5 /* List Viewer */,
@@ -328,6 +337,11 @@
 				TargetAttributes = {
 					9DC5D6FF196B4F9800F7239C = {
 						DevelopmentTeam = N5N4Y7654F;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					9DC5D723196B4F9800F7239C = {
 						TestTargetID = 9DC5D6FF196B4F9800F7239C;
@@ -416,6 +430,7 @@
 				9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */,
 				9DC0DD2E19777D2F00A2E6F5 /* BLLoginViewController.m in Sources */,
 				9DC0DD2C19777D2F00A2E6F5 /* BLListTableViewController.m in Sources */,
+				9D79B69F19830FFC00D83CCE /* BLAddItemTableViewCell.m in Sources */,
 				9DC0DD3519777D2F00A2E6F5 /* BLItem.m in Sources */,
 				9DC0DD3619777D2F00A2E6F5 /* BLList.m in Sources */,
 				9DC0DD2819777D2F00A2E6F5 /* BLContactManagerTableViewController.m in Sources */,

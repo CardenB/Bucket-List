@@ -6,67 +6,10 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
+#import "BLAddItemTableViewCell.h"
 #import "BLListManager.h"
 #import "BLList.h"
 #import "BLDesignFactory.h"
-
-@interface BLAddListCell : UITableViewCell
-
-@property (nonatomic, strong) IBOutlet FUITextField *textField;
-
-@property (nonatomic, weak) id<UITextFieldDelegate> textFieldDelegate;
-
-@end
-
-@implementation BLAddListCell
-
-#warning need to work out selection kinks, selecting text field doesn't select the cell, selecting the button makes the cell permanently selected, touching button doesn't set the textfield to first responder
-
-#warning need to set background of load new page cell
-#warning set title color to white
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    FUITextField *textField = [[FUITextField alloc]
-                               initWithFrame:CGRectMake(50, 12,
-                                                        CGRectGetMaxX(self.contentView.bounds) - 80,
-                                                        CGRectGetMaxY(self.contentView.bounds) - 18)];
-    self.textField = textField;
-    return self;
-}
-
-- (void)layoutSubviews
-{
-    FUIButton *addButton = [[FUIButton alloc] init];
-    addButton.frame = CGRectMake(15, 0, 30, 44);
-    [addButton.titleLabel setFont:[UIFont lightFlatFontOfSize:30]];
-    [addButton setTitle:@"+" forState:UIControlStateNormal];
-    [addButton setTitleColor:[BLDesignFactory iconTintColor] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(buttonPressedEvent) forControlEvents:UIControlEventTouchDown];
-    
-
-    self.textField.placeholder = @"Add a new list!";
-    [self.textField setTextColor:[BLDesignFactory textColor]];
-    self.textField.returnKeyType = UIReturnKeyDone;
-    self.textField.frame = CGRectMake(50, 12,
-                                     CGRectGetMaxX(self.contentView.bounds) - 80,
-                                      CGRectGetMaxY(self.contentView.bounds) - 18);
-    
-    [self.contentView addSubview:addButton];
-    [self.contentView addSubview:self.textField];
-    //self.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-}
-
-- (void)buttonPressedEvent
-{
-    [self setSelected:YES];
-    [self.textField becomeFirstResponder];
-}
-
-@end
 
 @interface BLListManager ()
 
@@ -85,7 +28,7 @@ static NSString *addListCellID = @"Add List Cell";
         // Custom initialization
         
         // The className to query on
-        self.parseClassName = @"LSList";
+        self.parseClassName = @"BLList";
         
         // The key of the PFObject to display in the label of the default cell style
         self.textKey = @"name";
@@ -113,7 +56,7 @@ static NSString *addListCellID = @"Add List Cell";
 {
     [super viewDidLoad];
     [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
-    [self.tableView registerClass:[BLAddListCell class] forCellReuseIdentifier:addListCellID];
+    [self.tableView registerClass:[BLAddItemTableViewCell class] forCellReuseIdentifier:addListCellID];
     self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -181,7 +124,7 @@ static NSString *addListCellID = @"Add List Cell";
     if (indexPath.row == 0)
     {
         
-        BLAddListCell *cell = [tableView
+        BLAddItemTableViewCell *cell = [tableView
                                dequeueReusableCellWithIdentifier:addListCellID
                                forIndexPath:indexPath];
         
@@ -215,7 +158,7 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [((BLAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField becomeFirstResponder];
+        [((BLAddItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath]).textField becomeFirstResponder];
     } else {
         for (NSIndexPath *path in tableView.indexPathsForSelectedRows) {
             if (path != indexPath) {
@@ -229,7 +172,7 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        [((BLAddListCell *)[tableView cellForRowAtIndexPath:indexPath]).textField resignFirstResponder];
+        [((BLAddItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath]).textField resignFirstResponder];
     }
 }
 

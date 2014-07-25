@@ -11,6 +11,11 @@
 #import "BLItem.h"
 #import "BLDesignFactory.h"
 
+/********************/
+#warning Move BLListItemCell to it's own file
+#warning Load PFItem into view and populate table with itemArray
+/********************/
+
 @interface BLListItemCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet FUITextField *textField;
