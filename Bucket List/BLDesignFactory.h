@@ -27,4 +27,5 @@
 
 + (UIColor *)textColor;
 
++ (FUITextField *)getLogo:(CGRect)frame;
 @end

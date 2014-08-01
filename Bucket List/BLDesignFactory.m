@@ -14,6 +14,9 @@
 + (void)configureNavBarDesign:(UINavigationController *)nav
 {
     [nav.navigationBar configureFlatNavigationBarWithColor:[UIColor belizeHoleColor]];
+    nav.navigationBar.tintColor = [self cellBackgroundColor];
+    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [self cellBackgroundColor]}];
+    nav.navigationBar.translucent = NO;
     
 }
 
@@ -52,5 +55,16 @@
 + (UIColor *)textColor
 {
     return [UIColor belizeHoleColor];
+}
+
++ (FUITextField *)getLogo:(CGRect)frame
+{
+    FUITextField *logoTextField = [[FUITextField alloc] initWithFrame:frame];
+    [logoTextField setText:@"Bucket List"];
+    [logoTextField setFont:[UIFont lightFlatFontOfSize:40]];
+    [logoTextField setTextAlignment:NSTextAlignmentCenter];
+    [logoTextField setTextColor:[BLDesignFactory loginTextColor]];
+    [logoTextField setUserInteractionEnabled:NO];
+    return logoTextField;
 }
 @end
