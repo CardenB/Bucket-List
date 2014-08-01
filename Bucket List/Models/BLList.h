@@ -23,3 +23,10 @@
 - (PFObject *)returnAsPFObject;
 
 @end
+
+static NSString *kListName = @"name";
+static NSString *kListDateLastUpdated = @"lastUpdated";
+static NSString *kListDateCreated = @"dateCreated";
+static NSString *kListCreatorUserName = @"creatorName";
+static NSString *kListParticipants = @"participantArray";
+static NSString *kListItemArray = @"itemArray";

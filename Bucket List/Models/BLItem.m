@@ -16,12 +16,6 @@
 
 @implementation BLItem
 
-static NSString *kItemName = @"name";
-static NSString *kCompleted = @"completed";
-static NSString *kDateCreated = @"listItemDateCreated";
-static NSString *kCreatorUserName = @"listItemCreatorName";
-static NSString *kStarred = @"starred";
-
 - (id)init
 {
     self = [super init];
@@ -38,10 +32,11 @@ static NSString *kStarred = @"starred";
 - (void)update
 {
     [self.itemModel setObject:self.name forKey:kItemName];
-    [self.itemModel setObject:self.completed forKey:kCompleted];
-    [self.itemModel setObject:self.dateCreated forKey:kDateCreated];
-    [self.itemModel setObject:self.creatorUserName forKey:kCreatorUserName];
-    [self.itemModel setObject:self.starred forKey:kStarred];
+    [self.itemModel setObject:self.completed forKey:kItemCompleted];
+    [self.itemModel setObject:self.dateCreated forKey:kItemDateCreated];
+    [self.itemModel setObject:self.creatorUserName forKey:kItemCreatorUserName];
+    [self.itemModel setObject:self.starred forKey:kItemStarred];
+    [self.itemModel setObject:self.parentList forKey:kItemParentList];
     
 }
 

@@ -547,6 +547,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bucket List/Bucket List-Prefix.pch";
 				INFOPLIST_FILE = "Bucket List/Bucket List-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "Bucket List";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -569,6 +570,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bucket List/Bucket List-Prefix.pch";
 				INFOPLIST_FILE = "Bucket List/Bucket List-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "Bucket List";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

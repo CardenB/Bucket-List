@@ -16,13 +16,6 @@
 
 @implementation BLList
 
-static NSString *kName = @"name";
-static NSString *kDateLastUpdated = @"lastUpdated";
-static NSString *kDateCreated = @"dateCreated";
-static NSString *kCreatorUserName = @"creatorName";
-static NSString *kParticipants = @"participantArray";
-static NSString *kItemArray = @"itemArray";
-
 - (id)init
 {
     self = [super init];
@@ -39,12 +32,12 @@ static NSString *kItemArray = @"itemArray";
 
 - (void)update
 {
-    [self.listModel setObject:self.name forKey:kName];
-    [self.listModel setObject:self.dateLastUpdated forKey:kDateLastUpdated];
-    [self.listModel setObject:self.dateCreated forKey:kDateCreated];
-    [self.listModel setObject:self.creatorUserName forKey:kCreatorUserName];
-    [self.listModel setObject:self.participants forKey:kParticipants];
-    [self.listModel setObject:self.itemArray forKey:kItemArray];
+    [self.listModel setObject:self.name forKey:kListName];
+    [self.listModel setObject:self.dateLastUpdated forKey:kListDateLastUpdated];
+    [self.listModel setObject:self.dateCreated forKey:kListDateCreated];
+    [self.listModel setObject:self.creatorUserName forKey:kListCreatorUserName];
+    [self.listModel setObject:self.participants forKey:kListParticipants];
+    [self.listModel setObject:self.itemArray forKey:kListItemArray];
 
 }
 

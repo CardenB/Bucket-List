@@ -16,9 +16,17 @@
 @property (nonatomic, strong) NSString *creatorUserName;
 @property (nonatomic, strong) NSDate *dateCreated;
 @property (nonatomic, strong) NSNumber *starred; //@YES and @NO instead of YES and No or [NSNumber numberWithBool:YES/NO];
+@property (nonatomic, strong) PFObject *parentList;
 
 - (void)update;
 - (void)save;
 - (PFObject *)returnAsPFObject;
 
 @end
+
+static NSString *kItemName = @"name";
+static NSString *kItemCompleted = @"completed";
+static NSString *kItemDateCreated = @"listItemDateCreated";
+static NSString *kItemCreatorUserName = @"listItemCreatorName";
+static NSString *kItemStarred = @"starred";
+static NSString *kItemParentList = @"parentList";
