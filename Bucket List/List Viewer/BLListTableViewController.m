@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Carden Bagwell. All rights reserved.
 //
 
+#import "BLAddItemTableViewCell.h"
 #import "BLListTableViewController.h"
 #import "BLList.h"
-#import "BLItem.h"
+#import "BLItem.h"https://github.com/lbrendanl/SwiftSwipeView.git
 #import "BLDesignFactory.h"
 
 /********************/
@@ -25,13 +26,11 @@
 
 @property (nonatomic, weak) id<UITextFieldDelegate> textFieldDelegate;
 
+@property (nonatomic, strong) PFObject *list;
+
 @end
 
 @implementation BLListItemCell
-
-#warning need to work out selection kinks, selecting text field doesn't select the cell, selecting the button makes the cell permanently selected, touching button doesn't set the textfield to first responder
-
-#warning need to set background of load new page cell
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
@@ -108,7 +107,7 @@
 
 @interface BLListTableViewController ()
 
-@property (nonatomic, strong) BLList *list;
+@property (nonatomic, strong) PFObject *list;
 @property (nonatomic, strong) NSMutableArray *itemArray;
 
 @end
@@ -116,6 +115,7 @@
 @implementation BLListTableViewController
 
 static NSString *cellID = @"List Item Cell";
+static NSString *addListCellID = @"Add List Item Cell";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -125,13 +125,15 @@ static NSString *cellID = @"List Item Cell";
         // Custom the table
         
         // The className to query on
-        self.parseClassName = @"LSList";
+        self.parseClassName = @"BLItem";
         
         // The key of the PFObject to display in the label of the default cell style
-        self.textKey = @"name";
+        self.textKey = kItemName;
         
         // The title for this table in the Navigation Controller.
-        self.title = self.list.name;
+        self.title = self.list[kListName];
+        self.navigationController.topViewController.title = self.list[kListName];
+        NSLog(self.list[kListName]);
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -145,17 +147,27 @@ static NSString *cellID = @"List Item Cell";
     return self;
 }
 
+- (id)initWithStyle:(UITableViewStyle)style object:(PFObject *)list;
+{
+    self = [self initWithStyle:style];
+    
+    self.list = list;
+    
+    return self;
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [super viewDidLoad];
     [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
+    [self.tableView registerClass:[BLAddItemTableViewCell class] forCellReuseIdentifier:addListCellID];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (void)viewDidUnload
@@ -217,14 +229,10 @@ static NSString *cellID = @"List Item Cell";
 
 // Override to customize what kind of query to perform on the class. The default is to query for
 // all objects ordered by createdAt descending.
-/*
+
 - (PFQuery *)queryForTable {
-    PFQuery *incompleteItemQuery = [PFQuery queryWithClassName:self.parseClassName];
-    [incompleteItemQuery whereKey:@"completed" equalTo:@YES];
-    
-    PFQuery *completeItemQuery = [PFQuery queryWithClassName:self.parseClassName];
-    [completeItemQuery whereKey:@"completed" equalTo:@NO];
-    
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:kItemParentList equalTo:self.list];
     
     
     // If no objects are loaded in memory, we look to the cache first to fill the table
@@ -233,38 +241,62 @@ static NSString *cellID = @"List Item Cell";
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByAscending:@"priority"];
+    [query orderByAscending:kItemDateCreated];
     
     return query;
 }
- */
+
 
 
 
 // Override to customize the look of a cell representing an object. The default is to display
 // a UITableViewCellStyleDefault style cell with the label being the first key in the object.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    static NSString *CellIdentifier = @"Cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                        object:(PFObject *)object {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    
+    if (indexPath.row == 0)
+    {
+        
+        BLAddItemTableViewCell *cell = [tableView
+                                        dequeueReusableCellWithIdentifier:addListCellID
+                                        forIndexPath:indexPath];
+        
+        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
+        cell.textField.delegate = self;
+        
+        return cell;
+        
     }
-    
-    // Configure the cell
-    cell.textLabel.text = [object objectForKey:@"text"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@", [object objectForKey:@"priority"]];
-    
-    return cell;
+    else
+    {
+        PFTableViewCell *cell = [tableView
+                                 dequeueReusableCellWithIdentifier:cellID
+                                 forIndexPath:indexPath];
+        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
+        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
+        
+        [cell.textLabel setFont:[UIFont flatFontOfSize:28]];
+        [cell.textLabel setTextColor:[BLDesignFactory textColor]];
+        cell.textLabel.text = [object objectForKey:self.textKey];
+        return cell;
+    }
 }
 
 
-/*
- // Override if you need to change the ordering of objects in the table.
- - (PFObject *)objectAtIndex:(NSIndexPath *)indexPath {
- return [objects objectAtIndex:indexPath.row];
- }
- */
+
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        return nil;
+    }
+    else {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:0];
+        return [super objectAtIndexPath:path];
+    }
+}
+
 
 /*
  // Override to customize the look of the cell that allows the user to load the next page of objects.
@@ -287,6 +319,18 @@ static NSString *cellID = @"List Item Cell";
 
 #pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"rows in section called");
+    return self.objects.count + 1;
+}
+
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -296,19 +340,17 @@ static NSString *cellID = @"List Item Cell";
  }
  */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        PFObject *object = [self objectAtIndexPath:indexPath];
+#warning display activity indicator and create a background task
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            [self loadObjects];
+        }];
+    }
+}
 
 /*
  // Override to support rearranging the table view.
@@ -331,6 +373,38 @@ static NSString *cellID = @"List Item Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+
+#warning display activity indicator and create a background task
+    NSString *text = [textField.text
+                      stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([text length] > 0) {
+        BLItem *item = [[BLItem alloc] init];
+        item.name = text;
+        item.dateCreated = [NSDate date];
+        item.completed = @NO;
+        item.creatorUserName = [PFUser currentUser].username;
+        item.starred = @NO;
+        item.parentList = self.list;
+        
+        PFObject *pfItem = [item returnAsPFObject];
+        [pfItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            if (succeeded) {
+                [self loadObjects];
+                textField.text = @"";
+                [textField resignFirstResponder];
+            }
+
+        }];
+        
+        return YES;
+    }
+    return NO;
 }
 
 

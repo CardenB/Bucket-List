@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface BLListTableViewController : PFQueryTableViewController
+@interface BLListTableViewController : PFQueryTableViewController<UITextFieldDelegate>
 
+- (id)initWithStyle:(UITableViewStyle)style object:(PFObject *)list;
 @end
