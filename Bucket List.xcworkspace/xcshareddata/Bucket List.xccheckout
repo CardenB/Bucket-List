@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6E8F6CEC-6736-4E24-87E6-EB09DD376363</string>
+	<string>43FDE853-4802-4F04-965E-E95DD11C6F35</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Bucket List</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>E83C6A0D-CCC6-4918-A475-B847DE3EA0C7</key>
+		<key>77A57220-A575-4540-A93B-E1798408015C</key>
 		<string>https://github.com/CardenB/Bucket-List.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Bucket List.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>E83C6A0D-CCC6-4918-A475-B847DE3EA0C7</key>
+		<key>77A57220-A575-4540-A93B-E1798408015C</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E83C6A0D-CCC6-4918-A475-B847DE3EA0C7</string>
+	<string>77A57220-A575-4540-A93B-E1798408015C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E83C6A0D-CCC6-4918-A475-B847DE3EA0C7</string>
+			<string>77A57220-A575-4540-A93B-E1798408015C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Bucket List</string>
 		</dict>
