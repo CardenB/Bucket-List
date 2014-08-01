@@ -7,6 +7,7 @@
 //
 
 #import "BLAddItemTableViewCell.h"
+#import "BLListTableViewController.h"
 #import "BLListManager.h"
 #import "BLList.h"
 #import "BLDesignFactory.h"
@@ -14,6 +15,7 @@
 @interface BLListManager ()
 
 @property (nonatomic, strong) NSMutableArray *listsToBeSaved;
+@property (nonatomic, weak) id<BLPresenterDelegate> delegate;
 @end
 
 @implementation BLListManager
@@ -21,7 +23,7 @@
 static NSString *cellID = @"List Manager Cell";
 static NSString *addListCellID = @"Add List Cell";
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLPresenterDelegate>)delegate
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -47,7 +49,7 @@ static NSString *addListCellID = @"Add List Cell";
         // Default
         //self.objectsPerPage = ;
         
-        self.listsToBeSaved = [[NSMutableArray alloc] init];
+        self.delegate = delegate;
     }
     return self;
 }
@@ -66,8 +68,7 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.lists = [[NSMutableArray alloc] init];
-    self.contacts = [[NSMutableArray alloc] init];
+    [self deselectRows];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +77,12 @@ static NSString *addListCellID = @"Add List Cell";
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void)deselectRows
+{
+    for (NSIndexPath *path in self.tableView.indexPathsForSelectedRows) {
+        [self.tableView deselectRowAtIndexPath:path animated:NO];
+    }
+}
 
 #pragma mark - Parse
 
@@ -160,12 +166,12 @@ static NSString *addListCellID = @"Add List Cell";
     if (indexPath.row == 0) {
         [((BLAddItemTableViewCell *)[tableView cellForRowAtIndexPath:indexPath]).textField becomeFirstResponder];
     } else {
-        for (NSIndexPath *path in tableView.indexPathsForSelectedRows) {
-            if (path != indexPath) {
-                [tableView deselectRowAtIndexPath:path animated:NO];
-            }
-
-        }
+        BLListTableViewController *viewController = [[BLListTableViewController alloc]
+                                                     initWithStyle:UITableViewStylePlain
+                                                     object:[self objectAtIndexPath:indexPath]];
+        
+        [self.navigationController pushViewController:viewController animated:YES];
+        
     }
 }
 
@@ -211,7 +217,6 @@ static NSString *addListCellID = @"Add List Cell";
         return YES;
 }
 
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -224,16 +229,6 @@ static NSString *addListCellID = @"Add List Cell";
             [self loadObjects];
         }];
     }
-    /*
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        if (indexPath.row == 0) {
-            if ([self.addListTextField.text length] > 0) {
-                [self addListTextField];
-            }
-        }
-    }
-     */
 }
 
 
@@ -242,11 +237,12 @@ static NSString *addListCellID = @"Add List Cell";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-#warning trim the text
 #warning display activity indicator and create a background task
-    if ([textField.text length] > 0) {
+    NSString *text = [textField.text
+                      stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([text length] > 0) {
         BLList *listItem = [[BLList alloc] init];
-        listItem.name = textField.text;
+        listItem.name = text;
         listItem.dateLastUpdated = [NSDate date];
         listItem.dateCreated = [NSDate date];
         listItem.creatorUserName = [PFUser currentUser].username;
@@ -254,17 +250,12 @@ static NSString *addListCellID = @"Add List Cell";
         
         PFObject *item = listItem.returnAsPFObject;
         [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            [self loadObjects];
-            textField.text = @"";
-            [textField resignFirstResponder];
+            if (succeeded) {
+                [self loadObjects];
+                textField.text = @"";
+                [textField resignFirstResponder];
+            }
         }];
-        
-        //[self.listsToBeSaved addObject:[listItem saveAsPFObject]];
-        
-        //NSLog( [NSString stringWithFormat:@"%ld, %ld", (unsigned long)[self.listsToBeSaved count], (unsigned long)[self.objects count]]);
-        
-        //unsigned int indexPathRow = self.listsToBeSaved.count + self.objects.count;
-        
 
         return YES;
     }

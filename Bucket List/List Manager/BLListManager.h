@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "BLPresenterDelegate.h"
 
 @interface BLListManager : PFQueryTableViewController <UITextFieldDelegate>
 
-@property (nonatomic, strong) NSMutableArray *contacts;
-@property (nonatomic, strong) NSMutableArray *lists;
+- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLPresenterDelegate>)delegate;
 
 @end
