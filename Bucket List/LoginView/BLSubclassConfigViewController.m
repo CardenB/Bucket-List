@@ -30,7 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([PFUser currentUser]) {
-        [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain]];
+        [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate]];
     } else {
         self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
     }

@@ -24,21 +24,15 @@
 
     [self.logInView setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
     //create logo
-    FUITextField *logoTextField = [[FUITextField alloc] initWithFrame:self.logInView.logo.bounds];
-    [logoTextField setText:@"Bucket List"];
-    [logoTextField setFont:[UIFont lightFlatFontOfSize:40]];
-    [logoTextField setTextAlignment:NSTextAlignmentCenter];
-    [logoTextField setTextColor:[BLDesignFactory loginTextColor]];
-    [logoTextField setUserInteractionEnabled:NO];
+    FUITextField *logoTextField = [BLDesignFactory getLogo:[self.logInView.logo frame]];
     [logoTextField sizeToFit];
     
     [self.logInView setLogo:logoTextField];
-
-    //[self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Logo.png"]]];
+    
+    [self.logInView.dismissButton setHidden:YES];
+    
     /*
     // Set buttons appearance
-    [self.logInView.dismissButton setImage:[UIImage imageNamed:@"Exit.png"] forState:UIControlStateNormal];
-    [self.logInView.dismissButton setImage:[UIImage imageNamed:@"ExitDown.png"] forState:UIControlStateHighlighted];
     
     [self.logInView.facebookButton setImage:nil forState:UIControlStateNormal];
     [self.logInView.facebookButton setImage:nil forState:UIControlStateHighlighted];
@@ -72,9 +66,13 @@
     
     [self.logInView.usernameField setTextColor:[BLDesignFactory loginTextColor]];
     self.logInView.usernameField.placeholder = @"Username";
+    [self.logInView.usernameField setBackgroundColor:[UIColor
+                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                      percentBlend:0.3]];
     if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: color}];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
     } else {
         NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
         // TODO: Add fall-back code to set placeholder color.
@@ -84,10 +82,14 @@
     
     [self.logInView.passwordField setTextColor:[BLDesignFactory loginTextColor]];
     self.logInView.passwordField.placeholder = @"Password";
+    [self.logInView.passwordField setBackgroundColor:[UIColor
+                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                      percentBlend:0.3]];
     textField = self.logInView.passwordField;
     if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: color}];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
     } else {
         NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
         // TODO: Add fall-back code to set placeholder color.

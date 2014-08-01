@@ -7,7 +7,8 @@
 //
 
 #import "BLSignUpViewController.h"
-#import "UIColor+FlatUI.h"
+#import "FlatUIKit.h"
+#import "BLDesignFactory.h"
 
 @interface BLSignUpViewController ()
 
@@ -20,14 +21,67 @@
     [super viewDidLoad];
     
 
+    /*
+    [self.signUpView setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
+    //create logo
+    FUITextField *logoTextField = [BLDesignFactory getLogo:[self.signUpView.logo frame]];
+    [logoTextField sizeToFit];
     
-    [self.signUpView setBackgroundColor:[UIColor turquoiseColor]];
+    [self.signUpView setLogo:logoTextField];
+    [self setFields:( /*PFSignUpFieldsUsernameAndPassword
+                     | PFSignUpFieldsEmail
+                     | PFSignUpFieldsSignUpButton
+                     | PFSignUpFieldsDismissButton)];*/
+    
+    UITextField *textField = self.signUpView.usernameField;
+    
+    self.signUpView.emailAsUsername = NO;
+    
+    [self.signUpView.usernameField setTextColor:[BLDesignFactory loginTextColor]];
+    self.signUpView.usernameField.placeholder = @"Username";
+    [self.signUpView.usernameField setBackgroundColor:[UIColor
+                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                      percentBlend:0.3]];
+    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [BLDesignFactory loginTextColor];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
+    } else {
+        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
+        // TODO: Add fall-back code to set placeholder color.
+    }
+    
+    [self.signUpView.passwordField setTextColor:[BLDesignFactory loginTextColor]];
+    self.signUpView.passwordField.placeholder = @"Password";
+    [self.signUpView.passwordField setBackgroundColor:[UIColor
+                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                      percentBlend:0.3]];
+    textField = self.signUpView.passwordField;
+    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [BLDesignFactory loginTextColor];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
+    } else {
+        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
+        // TODO: Add fall-back code to set placeholder color.
+    }
+    
+    [self.signUpView.emailField setTextColor:[BLDesignFactory loginTextColor]];
+    self.signUpView.emailField.placeholder = @"Email";
+    [self.signUpView.emailField setBackgroundColor:[UIColor
+                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                      percentBlend:0.3]];
+    textField = self.signUpView.emailField;
+    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [BLDesignFactory loginTextColor];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: color}];
+    } else {
+        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
+        // TODO: Add fall-back code to set placeholder color.
+    }
+    
      /*
-    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
-    
-    // Change button apperance
-    [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"Exit.png"] forState:UIControlStateNormal];
-    [self.signUpView.dismissButton setImage:[UIImage imageNamed:@"ExitDown.png"] forState:UIControlStateHighlighted];
     
     [self.signUpView.signUpButton setBackgroundImage:[UIImage imageNamed:@"SignUp.png"] forState:UIControlStateNormal];
     [self.signUpView.signUpButton setBackgroundImage:[UIImage imageNamed:@"SignUpDown.png"] forState:UIControlStateHighlighted];
