@@ -42,10 +42,16 @@
     if (![PFUser currentUser]) { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[BLLoginViewController alloc] init];
+        [logInViewController setFields:PFLogInFieldsDefault | PFLogInFieldsFacebook ];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Create the sign up view controller
         PFSignUpViewController *signUpViewController = [[BLSignUpViewController alloc] init];
+        //PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
+        [signUpViewController setFields: PFSignUpFieldsDismissButton
+         | PFSignUpFieldsSignUpButton
+         | PFSignUpFieldsDismissButton
+         | PFSignUpFieldsUsernameAndPassword ];
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Assign our sign up controller to be displayed from the login controller
@@ -73,8 +79,16 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:^(){
+            if ([PFUser currentUser]) {
+                [self.navigationController pushViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO];
+                /*
+                 [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate]];
+                 */
+            }
+        }];
 }
+
 
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {

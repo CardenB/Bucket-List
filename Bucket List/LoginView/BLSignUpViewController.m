@@ -21,65 +21,15 @@
     [super viewDidLoad];
     
 
-    /*
+    
     [self.signUpView setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
     //create logo
     FUITextField *logoTextField = [BLDesignFactory getLogo:[self.signUpView.logo frame]];
     [logoTextField sizeToFit];
     
     [self.signUpView setLogo:logoTextField];
-    [self setFields:( /*PFSignUpFieldsUsernameAndPassword
-                     | PFSignUpFieldsEmail
-                     | PFSignUpFieldsSignUpButton
-                     | PFSignUpFieldsDismissButton)];*/
-    
-    UITextField *textField = self.signUpView.usernameField;
-    
-    self.signUpView.emailAsUsername = NO;
-    
-    [self.signUpView.usernameField setTextColor:[BLDesignFactory loginTextColor]];
-    self.signUpView.usernameField.placeholder = @"Username";
-    [self.signUpView.usernameField setBackgroundColor:[UIColor
-                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
-                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
-                                                      percentBlend:0.3]];
-    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
-    } else {
-        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
-        // TODO: Add fall-back code to set placeholder color.
-    }
-    
-    [self.signUpView.passwordField setTextColor:[BLDesignFactory loginTextColor]];
-    self.signUpView.passwordField.placeholder = @"Password";
-    [self.signUpView.passwordField setBackgroundColor:[UIColor
-                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
-                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
-                                                      percentBlend:0.3]];
-    textField = self.signUpView.passwordField;
-    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
-    } else {
-        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
-        // TODO: Add fall-back code to set placeholder color.
-    }
-    
-    [self.signUpView.emailField setTextColor:[BLDesignFactory loginTextColor]];
-    self.signUpView.emailField.placeholder = @"Email";
-    [self.signUpView.emailField setBackgroundColor:[UIColor
-                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
-                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
-                                                      percentBlend:0.3]];
-    textField = self.signUpView.emailField;
-    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: color}];
-    } else {
-        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
-        // TODO: Add fall-back code to set placeholder color.
-    }
+    [self setEmailAsUsername:YES];
+   
     
      /*
     
@@ -116,6 +66,87 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
+    
+    float yOffset = [UIScreen mainScreen].bounds.size.height <= 480.0f ? 30.0f : 0.0f;
+    
+    CGRect fieldFrame = self.signUpView.usernameField.frame;
+    
+    //[self.signUpView.dismissButton setFrame:CGRectMake(10.0f, 10.0f, 87.5f, 45.5f)];
+    //[self.signUpView.logo setFrame:CGRectMake(66.5f, 70.0f, 187.0f, 58.5f)];
+    //[self.signUpView.signUpButton setFrame:CGRectMake(35.0f, 385.0f, 250.0f, 40.0f)];
+    //[self.fieldsBackground setFrame:CGRectMake(35.0f, fieldFrame.origin.y + yOffset, 250.0f, 174.0f)];
+    
+    
+    [self.signUpView.usernameField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
+                                                       fieldFrame.origin.y + yOffset,
+                                                       fieldFrame.size.width - 10.0f,
+                                                       fieldFrame.size.height)];
+    yOffset += fieldFrame.size.height;
+    
+    [self.signUpView.passwordField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
+                                                       fieldFrame.origin.y + yOffset,
+                                                       fieldFrame.size.width - 10.0f,
+                                                       fieldFrame.size.height)];
+    yOffset += fieldFrame.size.height;
+    
+    [self.signUpView.emailField setFrame:CGRectMake(fieldFrame.origin.x + 5.0f,
+                                                    fieldFrame.origin.y + yOffset,
+                                                    fieldFrame.size.width - 10.0f,
+                                                    fieldFrame.size.height)];
+    yOffset += fieldFrame.size.height;
+     
+    
+    UITextField *textField = self.signUpView.usernameField;
+    
+    self.signUpView.emailAsUsername = NO;
+    
+    [self.signUpView.usernameField setTextColor:[BLDesignFactory loginTextColor]];
+    self.signUpView.usernameField.placeholder = @"Email";
+    [self.signUpView.usernameField setBackgroundColor:[UIColor
+                                                       blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                       backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                       percentBlend:0.3]];
+    if ([self.signUpView.usernameField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [BLDesignFactory loginTextColor];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
+    } else {
+        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
+        // TODO: Add fall-back code to set placeholder color.
+    }
+    
+    [self.signUpView.passwordField setTextColor:[BLDesignFactory loginTextColor]];
+    self.signUpView.passwordField.placeholder = @"Password";
+    [self.signUpView.passwordField setBackgroundColor:[UIColor
+                                                       blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                       backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                       percentBlend:0.3]];
+    textField = self.signUpView.passwordField;
+    if ([self.signUpView.passwordField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [BLDesignFactory loginTextColor];
+        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
+    } else {
+        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
+        // TODO: Add fall-back code to set placeholder color.
+    }
+    
+    
+    [self.signUpView.emailField setTextColor:[BLDesignFactory loginTextColor]];
+    self.signUpView.emailField.placeholder = @"Email";
+    [self.signUpView.emailField setBackgroundColor:[UIColor
+                                                    blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
+                                                    backgroundColor:[BLDesignFactory loginBackgroundColor]
+                                                    percentBlend:0.3]];
+    if ([self.signUpView.emailField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        UIColor *color = [BLDesignFactory loginTextColor];
+        self.signUpView.emailField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: color}];
+    } else {
+        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
+        // TODO: Add fall-back code to set placeholder color.
+    }
+    
+    [self.signUpView.emailField setEnabled:YES];
+    [self.signUpView.emailField setHidden:NO];
+
     /*
     // Move all fields down on smaller screen sizes
     float yOffset = [UIScreen mainScreen].bounds.size.height <= 480.0f ? 30.0f : 0.0f;
