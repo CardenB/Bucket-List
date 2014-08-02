@@ -7,12 +7,16 @@
 //
 
 #import "BLLoginViewController.h"
+#import "BLListManager.h"
 #import "FlatUIKit.h"
 #import "BLDesignFactory.h"
 
 @interface BLLoginViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, strong) FUIButton *anotherLogInButton;
+
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
+
 @end
 
 @implementation BLLoginViewController
@@ -55,24 +59,26 @@
     */
     
     // Remove text shadow
-    CALayer *layer = self.logInView.usernameField.layer;
-    layer.shadowOpacity = 0.0f;
-    layer = self.logInView.passwordField.layer;
-    layer.shadowOpacity = 0.0f;
+    self.logInView.usernameField.layer.shadowOpacity = 0.0f;
+    self.logInView.passwordField.layer.shadowOpacity = 0.0f;
 
     
     // Set field text color
-    UITextField *textField = self.logInView.usernameField;
     
     [self.logInView.usernameField setTextColor:[BLDesignFactory loginTextColor]];
-    self.logInView.usernameField.placeholder = @"Username";
+    self.logInView.usernameField.placeholder = @"Email";
     [self.logInView.usernameField setBackgroundColor:[UIColor
                                                       blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
                                                       backgroundColor:[BLDesignFactory loginBackgroundColor]
                                                       percentBlend:0.3]];
-    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+    if ([self.logInView.usernameField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Username" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
+        self.logInView.usernameField.attributedPlaceholder = [[NSAttributedString alloc]
+                                                              initWithString:@"Email"
+                                                              attributes:@{
+                                                                           NSForegroundColorAttributeName:
+                                                                               [color colorWithAlphaComponent:.6]
+                                                                           }];
     } else {
         NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
         // TODO: Add fall-back code to set placeholder color.
@@ -86,24 +92,33 @@
                                                       blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
                                                       backgroundColor:[BLDesignFactory loginBackgroundColor]
                                                       percentBlend:0.3]];
-    textField = self.logInView.passwordField;
-    if ([textField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+    if ([self.logInView.passwordField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
         UIColor *color = [BLDesignFactory loginTextColor];
-        textField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Password" attributes:@{NSForegroundColorAttributeName: [color colorWithAlphaComponent:.6]}];
+        self.logInView.passwordField.attributedPlaceholder = [[NSAttributedString alloc]
+                                                              initWithString:@"Password"
+                                                              attributes:@{
+                                                                           NSForegroundColorAttributeName:
+                                                                               [color colorWithAlphaComponent:.6]
+                                                                           }];
     } else {
         NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
         // TODO: Add fall-back code to set placeholder color.
     }
     
-    FUIButton *forgotButton = [[FUIButton alloc] initWithFrame:CGRectMake(
-                                                                          CGRectGetWidth(self.logInView.bounds)/2 - 50,
-                                                                          CGRectGetMaxY(self.logInView.bounds) - 50,
-                                                                          100, 25)];
+
 
     FUIButton *logInButton = [[FUIButton alloc] initWithFrame:self.logInView.logInButton.bounds];
     //[logInButton addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
     self.anotherLogInButton = logInButton;
+    
+    [self.logInView.facebookButton addTarget:self
+                                      action:@selector(loginButtonTouchHandler:)
+                            forControlEvents:UIControlEventTouchUpInside];
 
+    FUIButton *forgotButton = [[FUIButton alloc] initWithFrame:CGRectMake(
+                                                                          CGRectGetWidth(self.logInView.bounds)/2 - 50,
+                                                                          CGRectGetMaxY(self.logInView.bounds) - 10,
+                                                                          100, 25)];
     [self.logInView addSubview:self.anotherLogInButton];
     
     [forgotButton setTitleColor:[BLDesignFactory mainBackgroundColor] forState:UIControlStateNormal];
@@ -113,7 +128,10 @@
     [forgotButton addTarget:self action:@selector(resetPassword) forControlEvents:UIControlEventTouchUpInside];
     [self.logInView addSubview:forgotButton];
     
+
+    
     [self.logInView.signUpLabel setTextColor:[BLDesignFactory mainBackgroundColor]];
+    [self.logInView.externalLogInLabel setTextColor:[BLDesignFactory mainBackgroundColor]];
     
     [self.logInView.passwordForgottenButton setHidden:YES];
     [self.logInView.passwordForgottenButton setEnabled:NO];
@@ -182,6 +200,38 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+/* Login to facebook method */
+- (IBAction)loginButtonTouchHandler:(id)sender  {
+    // Set permissions required from the facebook user account
+    NSArray *permissionsArray = @[ @"public_profile", @"email", @"user_friends"];
+    
+    // Login PFUser using facebook
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+        [_activityIndicator stopAnimating]; // Hide loading indicator
+        
+        if (!user) {
+            if (!error) {
+                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:@"Uh oh. The user cancelled the Facebook login." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            } else {
+                NSLog(@"Uh oh. An error occurred: %@", error);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Log In Error" message:[error description] delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+            }
+        } else if (user.isNew) {
+            NSLog(@"User with facebook signed up and logged in!");
+            [self.delegate logInViewController:self didLogInUser:[PFUser currentUser]];
+
+        } else {
+            NSLog(@"User with facebook logged in!");
+            [self.delegate logInViewController:self didLogInUser:[PFUser currentUser]];
+        }
+    }];
+    [_activityIndicator startAnimating]; // Show loading indicator until login is finished
+
 }
 
 @end
