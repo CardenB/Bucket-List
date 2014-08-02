@@ -12,6 +12,4 @@
 
 @interface BLListManager : PFQueryTableViewController <UITextFieldDelegate>
 
-- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLPresenterDelegate>)delegate;
-
 @end

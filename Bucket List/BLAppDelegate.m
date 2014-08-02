@@ -13,7 +13,7 @@
 #import "BLDesignFactory.h"
 #import <Parse/Parse.h>
 
-@interface BLAppDelegate() <BLPresenterDelegate>
+@interface BLAppDelegate()
 
 //Nav Controllers
 @property (nonatomic, strong) UINavigationController *mainNav;
@@ -92,7 +92,7 @@
     /*self.mainNav = [[UINavigationController alloc] initWithRootViewController:[[LSContactManagerTableViewController
                                                                                 alloc] initWithStyle:UITableViewStylePlain]];*/
     UIViewController *initialController = [[BLSubclassConfigViewController alloc]
-                                           initWithDelegate:self];
+                                           init];
     self.mainNav = [[UINavigationController alloc]
                     initWithRootViewController:initialController];
     [BLDesignFactory configureNavBarDesign:self.mainNav];
@@ -102,6 +102,7 @@
 
 #pragma mark - Delegates
 
+/*
 - (void)presentAsMainViewController:(UIViewController *)viewController
 {
     
@@ -110,6 +111,7 @@
     viewController.navigationItem.leftBarButtonItem = self.window.rootViewController.navigationItem.leftBarButtonItem;
     
 }
+ */
 
 
 

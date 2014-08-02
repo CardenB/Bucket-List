@@ -17,10 +17,17 @@
 
 @implementation BLSubclassConfigViewController
 
+/*
 -(id) initWithDelegate:(id<BLPresenterDelegate>)delegate
 {
     self = [super initWithNibName:@"BLSubclassConfigViewController" bundle:[NSBundle mainBundle]];
     self.delegate = delegate;
+    return self;
+}
+ */
+- (id) init
+{
+    self = [super initWithNibName:@"BLSubclassConfigViewController" bundle:[NSBundle mainBundle]];
     return self;
 }
 
@@ -29,8 +36,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([PFUser currentUser]) {
-        [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate]];
+    if ( [self validateUser] ) {
+        [self presentInitialAppView];
     } else {
         self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
@@ -39,7 +46,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (![PFUser currentUser]) { // No user logged in
+    if (![self validateUser]) { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[BLLoginViewController alloc] init];
         [logInViewController setFields:PFLogInFieldsDefault | PFLogInFieldsFacebook ];
@@ -63,6 +70,16 @@
     
 }
 
+- (BOOL)validateUser
+{
+    return [PFUser currentUser] || [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]];
+}
+
+- (void)presentInitialAppView
+{
+    [self.navigationController pushViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain] animated:NO];
+}
+
 
 #pragma mark - PFLogInViewControllerDelegate
 
@@ -79,14 +96,12 @@
 
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
-    [self dismissViewControllerAnimated:YES completion:^(){
-            if ([PFUser currentUser]) {
-                [self.navigationController pushViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO];
-                /*
-                 [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate]];
-                 */
-            }
+    if ([self validateUser]) {
+
+        [self dismissViewControllerAnimated:YES completion:^(){
+            [self presentInitialAppView];
         }];
+    }
 }
 
 

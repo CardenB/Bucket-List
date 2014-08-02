@@ -12,11 +12,7 @@
 
 @interface BLSubclassConfigViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
-@property (nonatomic, weak) id<BLPresenterDelegate> delegate;
-
 @property (nonatomic, strong) IBOutlet UILabel *welcomeLabel;
-
--(id) initWithDelegate:(id<BLPresenterDelegate>)delegate;
 
 - (IBAction)logOutButtonTapAction:(id)sender;
 

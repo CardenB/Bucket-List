@@ -23,7 +23,7 @@
 static NSString *cellID = @"List Manager Cell";
 static NSString *addListCellID = @"Add List Cell";
 
-- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLPresenterDelegate>)delegate
+- (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -48,8 +48,6 @@ static NSString *addListCellID = @"Add List Cell";
         // The number of objects to show per page
         // Default
         //self.objectsPerPage = ;
-        
-        self.delegate = delegate;
     }
     return self;
 }
@@ -111,10 +109,9 @@ static NSString *addListCellID = @"Add List Cell";
             [[PFUser currentUser] saveInBackground];
             
             [self updateProfile];
-        } else if ([[[[error userInfo] objectForKey:@"error"] objectForKey:@"type"]
-                    isEqualToString: @"OAuthException"]) { // Since the request failed, we can check if it was due to an invalid session
-            NSLog(@"The facebook session was invalidated");
-            //[self logoutButtonTouchHandler:nil];
+        } else if ( [error.userInfo[FBErrorParsedJSONResponseKey][@"body"][@"error"][@"type"] isEqualToString:@"OAuthException"]){ // Since the request failed, we can check if it was due to an invalid session
+            NSLog(@"The Facebook session was invalidated");
+            [self logoutButtonTouchHandler:nil];
         } else {
             NSLog(@"Some other error: %@", error);
         }
@@ -164,6 +161,13 @@ static NSString *addListCellID = @"Add List Cell";
         }
     }
      */
+}
+
+- (void)logoutButtonTouchHandler:(id)sender  {
+    [PFUser logOut]; // Log out
+    
+    // Return to login page
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

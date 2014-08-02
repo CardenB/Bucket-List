@@ -208,7 +208,8 @@
     NSArray *permissionsArray = @[ @"public_profile", @"email", @"user_friends"];
     
     // Login PFUser using facebook
-    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
+    [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error)
+    {
         [_activityIndicator stopAnimating]; // Hide loading indicator
         
         if (!user) {
@@ -230,6 +231,7 @@
             [self.delegate logInViewController:self didLogInUser:[PFUser currentUser]];
         }
     }];
+    
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
 
 }
