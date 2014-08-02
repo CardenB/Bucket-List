@@ -77,7 +77,8 @@
 
 - (void)presentInitialAppView
 {
-    [self.navigationController pushViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain] animated:NO];
+    [self.navigationController setViewControllers:@[[[BLListManager alloc] initWithStyle:UITableViewStylePlain]]];
+    //[self.navigationController pushViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain] animated:NO];
 }
 
 
