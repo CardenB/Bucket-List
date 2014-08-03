@@ -10,6 +10,8 @@
 #import "BLSignUpViewController.h"
 #import "BLLoginViewController.h"
 #import "BLListManager.h"
+#import "BLMainViewContainer.h"
+#import "BLProfileView.h"
 
 @interface BLSubclassConfigViewController ()
 
@@ -30,7 +32,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([PFUser currentUser]) {
-        [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate]];
+        [self presentInitialAppView];
     } else {
         self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
     }
@@ -65,8 +67,14 @@
 
 - (void)presentInitialAppView
 {
-    BLListManager *listManager = [[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate];
-    [self.delegate presentAsMainViewController:listManager];
+    
+    BLMainViewContainer *viewContainer;
+    
+    BLListManager *listManager = [[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:viewContainer];
+    BLProfileView *profileView = [[BLProfileView alloc] init];
+    //viewContainer = [[BLMainViewContainer alloc] initWithViewControllers:@[profileView, listManager] startPage:1];
+    viewContainer = [[BLMainViewContainer alloc] init];
+    [self.delegate presentAsMainViewController:viewContainer];
     //[((UINavigationController *)self.presentingViewController) presentViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO completion:nil];
 }
 

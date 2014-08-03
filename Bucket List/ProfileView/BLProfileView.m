@@ -17,6 +17,12 @@
 
 static NSString *profileCellID = @"Profile Cell";
 
+- (id)init
+{
+    self = [super initWithStyle:UITableViewStylePlain];
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

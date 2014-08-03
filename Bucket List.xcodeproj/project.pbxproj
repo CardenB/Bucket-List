@@ -109,6 +109,7 @@
 		DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAddItemTableViewCell.m; sourceTree = "<group>"; };
 		DDB99228198EBCA800C38D4C /* BLMainViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLMainViewContainer.h; sourceTree = "<group>"; };
 		DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMainViewContainer.m; sourceTree = "<group>"; };
+		DDB9922F198EC2B100C38D4C /* BLNavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNavigationDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				9DC0DD2319777D2F00A2E6F5 /* BLPresenterDelegate.h */,
+				DDB9922F198EC2B100C38D4C /* BLNavigationDelegate.h */,
 			);
 			name = Protocols;
 			path = "Bucket List/Protocols";

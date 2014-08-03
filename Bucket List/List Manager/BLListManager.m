@@ -1,3 +1,4 @@
+
 //
 //  LSListManager.m
 //  ListShare
@@ -16,7 +17,7 @@
 @interface BLListManager ()
 
 @property (nonatomic, strong) NSMutableArray *listsToBeSaved;
-@property (nonatomic, weak) id<BLPresenterDelegate> delegate;
+@property (nonatomic, weak) id<BLNavigationDelegate> navigator;
 @end
 
 @implementation BLListManager
@@ -24,7 +25,7 @@
 static NSString *cellID = @"List Manager Cell";
 static NSString *addListCellID = @"Add List Cell";
 
-- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLPresenterDelegate>)delegate
+- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLNavigationDelegate>)delegate
 {
     self = [super initWithStyle:style];
     if (self) {
@@ -50,7 +51,7 @@ static NSString *addListCellID = @"Add List Cell";
         // Default
         //self.objectsPerPage = ;
         
-        self.delegate = delegate;
+        self.navigator = delegate;
     }
     return self;
 }
@@ -64,7 +65,8 @@ static NSString *addListCellID = @"Add List Cell";
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(pushProfileView)];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self.navigator action:@selector(navigateLeft)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self.navigator action:nil];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Friends >" style:UIBarButtonItemStyleBordered target:self action:nil];
     
     

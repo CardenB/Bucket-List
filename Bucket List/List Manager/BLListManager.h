@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "BLPresenterDelegate.h"
+#import "BLNavigationDelegate.h"
 
 @interface BLListManager : PFQueryTableViewController <UITextFieldDelegate>
 
-- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLPresenterDelegate>)delegate;
+- (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLNavigationDelegate>)delegate;
 
 @end
