@@ -41,6 +41,7 @@
 		DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */; };
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
+		DDB9922A198EBCA800C38D4C /* BLMainViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */; };
 		FE8A60C089E643D7B34A95C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDB07342BF74A288781B44D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,8 @@
 		DDB99221198EB63D00C38D4C /* BLProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLProfileView.m; sourceTree = "<group>"; };
 		DDB99224198EBC4200C38D4C /* BLAddItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAddItemTableViewCell.h; sourceTree = "<group>"; };
 		DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAddItemTableViewCell.m; sourceTree = "<group>"; };
+		DDB99228198EBCA800C38D4C /* BLMainViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLMainViewContainer.h; sourceTree = "<group>"; };
+		DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMainViewContainer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,7 @@
 		9DC5D709196B4F9800F7239C /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
+				DDB99227198EBC9200C38D4C /* ContainerView */,
 				DDB99223198EBC4200C38D4C /* TableViewCells */,
 				DDB9921C198EB5BA00C38D4C /* ProfileView */,
 				9DC0DD0219777D2F00A2E6F5 /* ContactManager */,
@@ -303,6 +307,16 @@
 			);
 			name = TableViewCells;
 			path = "Bucket List/TableViewCells";
+			sourceTree = SOURCE_ROOT;
+		};
+		DDB99227198EBC9200C38D4C /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				DDB99228198EBCA800C38D4C /* BLMainViewContainer.h */,
+				DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */,
+			);
+			name = ContainerView;
+			path = "Bucket List/ContainerView";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -451,6 +465,7 @@
 				9DC0DD2E19777D2F00A2E6F5 /* BLLoginViewController.m in Sources */,
 				9DC0DD2C19777D2F00A2E6F5 /* BLListTableViewController.m in Sources */,
 				9DC0DD3519777D2F00A2E6F5 /* BLItem.m in Sources */,
+				DDB9922A198EBCA800C38D4C /* BLMainViewContainer.m in Sources */,
 				9DC0DD3619777D2F00A2E6F5 /* BLList.m in Sources */,
 				DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */,
 				9DC0DD2819777D2F00A2E6F5 /* BLContactManagerTableViewController.m in Sources */,
