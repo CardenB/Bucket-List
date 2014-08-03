@@ -63,6 +63,11 @@
     
 }
 
+- (void)presentInitialAppView
+{
+    [((UINavigationController *)self.presentingViewController) presentViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO completion:nil];
+}
+
 
 #pragma mark - PFLogInViewControllerDelegate
 
@@ -81,10 +86,7 @@
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     [self dismissViewControllerAnimated:YES completion:^(){
             if ([PFUser currentUser]) {
-                [self.navigationController pushViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO];
-                /*
-                 [self.delegate presentAsMainViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate]];
-                 */
+                [self presentInitialAppView];
             }
         }];
 }
