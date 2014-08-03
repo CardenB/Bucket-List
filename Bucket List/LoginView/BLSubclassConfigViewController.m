@@ -65,7 +65,9 @@
 
 - (void)presentInitialAppView
 {
-    [((UINavigationController *)self.presentingViewController) presentViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO completion:nil];
+    BLListManager *listManager = [[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate];
+    [self.delegate presentAsMainViewController:listManager];
+    //[((UINavigationController *)self.presentingViewController) presentViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO completion:nil];
 }
 
 
