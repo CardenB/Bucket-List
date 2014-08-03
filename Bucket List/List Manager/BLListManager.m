@@ -63,6 +63,9 @@ static NSString *addListCellID = @"Add List Cell";
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Friends >" style:UIBarButtonItemStyleBordered target:self action:nil];
+    
     
     // Send request to Facebook
     FBRequest *request = [FBRequest requestForMe];
