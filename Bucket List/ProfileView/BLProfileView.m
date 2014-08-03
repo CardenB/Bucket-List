@@ -7,12 +7,15 @@
 //
 
 #import "BLProfileView.h"
+#import "UIImageView+Letters.h"
 
 @interface BLProfileView ()
 
 @end
 
 @implementation BLProfileView
+
+static NSString *profileCellID = @"Profile Cell";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,6 +30,7 @@
 {
     [super viewDidLoad];
     
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:profileCellID];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -54,12 +58,20 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGRectGetHeight(self.tableView.frame);
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileCellID forIndexPath:indexPath];
     
     // Configure the cell...
+    NSString *username = @"user name";
+    UIImageView *img = [[UIImageView alloc] initWithFrame:cell.frame];
+    [img setImageWithString:username];
+    [cell addSubview:img];
     
     return cell;
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D79B69F19830FFC00D83CCE /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D79B69E19830FFC00D83CCE /* BLAddItemTableViewCell.m */; };
 		9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFD19777D2F00A2E6F5 /* BLAppDelegate.m */; };
 		9DC0DD2619777D2F00A2E6F5 /* BLDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFF19777D2F00A2E6F5 /* BLDesignFactory.m */; };
 		9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0019777D2F00A2E6F5 /* Bucket List-Info.plist */; };
@@ -41,6 +40,7 @@
 		9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D758196B514C00F7239C /* SystemConfiguration.framework */; };
 		DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */; };
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
+		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
 		FE8A60C089E643D7B34A95C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDB07342BF74A288781B44D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +56,6 @@
 
 /* Begin PBXFileReference section */
 		363954C34A3343099B8B6A02 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		9D79B69D19830FFC00D83CCE /* BLAddItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAddItemTableViewCell.h; sourceTree = "<group>"; };
-		9D79B69E19830FFC00D83CCE /* BLAddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAddItemTableViewCell.m; sourceTree = "<group>"; };
 		9DC0DCFC19777D2F00A2E6F5 /* BLAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLAppDelegate.h; path = "Bucket List/BLAppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		9DC0DCFD19777D2F00A2E6F5 /* BLAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLAppDelegate.m; path = "Bucket List/BLAppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		9DC0DCFE19777D2F00A2E6F5 /* BLDesignFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLDesignFactory.h; path = "Bucket List/BLDesignFactory.h"; sourceTree = SOURCE_ROOT; };
@@ -106,6 +104,8 @@
 		DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		DDB99220198EB63D00C38D4C /* BLProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProfileView.h; sourceTree = "<group>"; };
 		DDB99221198EB63D00C38D4C /* BLProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLProfileView.m; sourceTree = "<group>"; };
+		DDB99224198EBC4200C38D4C /* BLAddItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAddItemTableViewCell.h; sourceTree = "<group>"; };
+		DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAddItemTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,15 +143,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9D79B69C19830FE100D83CCE /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				9D79B69D19830FFC00D83CCE /* BLAddItemTableViewCell.h */,
-				9D79B69E19830FFC00D83CCE /* BLAddItemTableViewCell.m */,
-			);
-			path = TableViewCells;
-			sourceTree = SOURCE_ROOT;
-		};
 		9DC0DD0219777D2F00A2E6F5 /* ContactManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,8 +254,8 @@
 		9DC5D709196B4F9800F7239C /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
+				DDB99223198EBC4200C38D4C /* TableViewCells */,
 				DDB9921C198EB5BA00C38D4C /* ProfileView */,
-				9D79B69C19830FE100D83CCE /* TableViewCells */,
 				9DC0DD0219777D2F00A2E6F5 /* ContactManager */,
 				9DC0DD0919777D2F00A2E6F5 /* List Manager */,
 				9DC0DD0C19777D2F00A2E6F5 /* List Viewer */,
@@ -302,6 +293,16 @@
 			);
 			name = ProfileView;
 			path = "Bucket List/ProfileView";
+			sourceTree = SOURCE_ROOT;
+		};
+		DDB99223198EBC4200C38D4C /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				DDB99224198EBC4200C38D4C /* BLAddItemTableViewCell.h */,
+				DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */,
+			);
+			name = TableViewCells;
+			path = "Bucket List/TableViewCells";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -449,7 +450,6 @@
 				9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */,
 				9DC0DD2E19777D2F00A2E6F5 /* BLLoginViewController.m in Sources */,
 				9DC0DD2C19777D2F00A2E6F5 /* BLListTableViewController.m in Sources */,
-				9D79B69F19830FFC00D83CCE /* BLAddItemTableViewCell.m in Sources */,
 				9DC0DD3519777D2F00A2E6F5 /* BLItem.m in Sources */,
 				9DC0DD3619777D2F00A2E6F5 /* BLList.m in Sources */,
 				DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */,
@@ -458,6 +458,7 @@
 				DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */,
 				9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */,
 				9DC0DD2F19777D2F00A2E6F5 /* BLSignUpViewController.m in Sources */,
+				DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */,
 				9DC0DD3419777D2F00A2E6F5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

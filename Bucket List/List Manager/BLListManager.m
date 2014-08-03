@@ -11,6 +11,7 @@
 #import "BLListManager.h"
 #import "BLList.h"
 #import "BLDesignFactory.h"
+#import "BLProfileView.h"
 
 @interface BLListManager ()
 
@@ -63,7 +64,7 @@ static NSString *addListCellID = @"Add List Cell";
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self action:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self action:@selector(pushProfileView)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Friends >" style:UIBarButtonItemStyleBordered target:self action:nil];
     
     
@@ -125,6 +126,10 @@ static NSString *addListCellID = @"Add List Cell";
     
 }
 
+- (void)pushProfileView
+{
+    [self.navigationController pushViewController:[[BLProfileView alloc] initWithStyle:UITableViewStylePlain] animated:YES];
+}
 // Set received values if they are not nil and reload the table
 - (void)updateProfile {
     /*
