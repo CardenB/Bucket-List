@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "BLNavigationDelegate.h"
+#import "BLChildViewController.h"
 
-@interface BLListManager : PFQueryTableViewController <UITextFieldDelegate>
+@interface BLListManager : PFQueryTableViewController <UITextFieldDelegate, BLChildViewController>
 
 - (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLNavigationDelegate>)delegate;
 

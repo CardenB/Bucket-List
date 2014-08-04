@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BLChildViewController.h"
+#import "BLNavigationDelegate.h"
 
-@interface BLProfileView : UITableViewController
+@interface BLProfileView : UITableViewController<BLChildViewController>
+
+- (id)initWithNavigationDelegate:(id<BLNavigationDelegate>)delegate;
 
 @end

@@ -8,18 +8,29 @@
 
 #import "BLProfileView.h"
 #import "UIImageView+Letters.h"
-
+#import "BLNavigationDelegate.h"
 @interface BLProfileView ()
 
+@property BOOL statusBarHidden;
+@property id<BLNavigationDelegate> navigator;
 @end
 
 @implementation BLProfileView
 
 static NSString *profileCellID = @"Profile Cell";
-
 - (id)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
+    _statusBarHidden = NO;
+    return self;
+}
+
+- (id)initWithNavigationDelegate:(id<BLNavigationDelegate>)delegate
+{
+    self = [super init];
+    if (self) {
+        self.navigator = delegate;
+    }
     return self;
 }
 
@@ -50,6 +61,29 @@ static NSString *profileCellID = @"Profile Cell";
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)updateNavigationBar
+{
+    [self.parentViewController.navigationItem
+     setLeftBarButtonItem:[[UIBarButtonItem alloc]
+                           initWithTitle:@"Sign Out"
+                           style:UIBarButtonItemStyleBordered
+                           target:self
+                           action:nil]
+     animated:YES];
+    [self.parentViewController.navigationItem
+     setRightBarButtonItem:[[UIBarButtonItem alloc]
+                            initWithTitle:@"Lists >"
+                            style:UIBarButtonItemStyleBordered
+                            target:self.navigator
+                            action:@selector(navigateRight)]
+     animated:YES];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -66,6 +100,7 @@ static NSString *profileCellID = @"Profile Cell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // first cell is height of half page?
     return CGRectGetHeight(self.tableView.frame);
 }
 
@@ -74,7 +109,7 @@ static NSString *profileCellID = @"Profile Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileCellID forIndexPath:indexPath];
     
     // Configure the cell...
-    NSString *username = @"user name";
+    NSString *username = @"username";
     UIImageView *img = [[UIImageView alloc] initWithFrame:cell.frame];
     [img setImageWithString:username];
     [cell addSubview:img];

@@ -108,7 +108,8 @@
 
     //self.mainNav
     self.mainNav = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [BLDesignFactory configureNavBarDesign:self.mainNav];
+    //[BLDesignFactory configureNavBarDesign:self.mainNav];
+    [BLDesignFactory configureNavBarDesign:viewController.navigationController];
     self.window.rootViewController = self.mainNav;
     
 }

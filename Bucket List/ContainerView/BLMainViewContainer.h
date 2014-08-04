@@ -12,9 +12,6 @@
 @class BLMainViewContainer;
 @interface BLMainViewContainer : UIViewController<BLNavigationDelegate, UIScrollViewDelegate>
 
-- (id)initWithViewControllers:(NSArray *)viewControllers startPage:(NSInteger)pageNumber;
-
-
 - (void)navigateLeft;
 - (void)navigateRight;
 

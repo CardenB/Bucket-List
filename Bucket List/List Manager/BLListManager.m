@@ -14,10 +14,12 @@
 #import "BLDesignFactory.h"
 #import "BLProfileView.h"
 
+
 @interface BLListManager ()
 
 @property (nonatomic, strong) NSMutableArray *listsToBeSaved;
 @property (nonatomic, weak) id<BLNavigationDelegate> navigator;
+@property BOOL statusBarHidden;
 @end
 
 @implementation BLListManager
@@ -25,11 +27,13 @@
 static NSString *cellID = @"List Manager Cell";
 static NSString *addListCellID = @"Add List Cell";
 
+
 - (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLNavigationDelegate>)delegate
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        _statusBarHidden = NO;
         
         // The className to query on
         self.parseClassName = @"BLList";
@@ -65,8 +69,7 @@ static NSString *addListCellID = @"Add List Cell";
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
-    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self.navigator action:@selector(navigateLeft)];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self.navigator action:nil];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self.navigator action:@selector(navigateLeft)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Friends >" style:UIBarButtonItemStyleBordered target:self action:nil];
     
     
@@ -180,6 +183,26 @@ static NSString *addListCellID = @"Add List Cell";
 {
     [super viewWillAppear:animated];
     [self deselectRows];
+}
+
+- (void)updateNavigationBar
+{
+    [self.parentViewController.navigationItem
+     setLeftBarButtonItem:[[UIBarButtonItem alloc]
+                           initWithTitle:@"< Settings"
+                           style:UIBarButtonItemStyleBordered
+                           target:self.navigator
+                           action:@selector(navigateLeft)]
+     animated:YES];
+    
+    [self.parentViewController.navigationItem
+     setRightBarButtonItem:[[UIBarButtonItem alloc]
+                            initWithTitle:@"Add Friends >"
+                            style:UIBarButtonItemStyleBordered
+                            target:self.navigator
+                            action:@selector(navigateRight)]
+     animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning
