@@ -110,10 +110,6 @@
     self.mainNav = [[UINavigationController alloc] initWithRootViewController:viewController];
     [BLDesignFactory configureNavBarDesign:self.mainNav];
     self.window.rootViewController = self.mainNav;
-    //[self.mainNav setViewControllers:@[viewController] animated:YES];
-    //[((UINavigationController *)viewController.presentingViewController) presentViewController:self.mainNav animated:YES completion:nil];
-    
-    //viewController.navigationItem.leftBarButtonItem = self.window.rootViewController.navigationItem.leftBarButtonItem;
     
 }
 

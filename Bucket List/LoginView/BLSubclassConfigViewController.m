@@ -49,7 +49,6 @@
         
         // Create the sign up view controller
         PFSignUpViewController *signUpViewController = [[BLSignUpViewController alloc] init];
-        //PFSignUpViewController *signUpViewController = [[PFSignUpViewController alloc] init];
         [signUpViewController setFields: PFSignUpFieldsDismissButton
          | PFSignUpFieldsSignUpButton
          | PFSignUpFieldsDismissButton
@@ -67,15 +66,8 @@
 
 - (void)presentInitialAppView
 {
-    
-    BLMainViewContainer *viewContainer;
-    
-    BLListManager *listManager = [[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:viewContainer];
-    BLProfileView *profileView = [[BLProfileView alloc] init];
-    //viewContainer = [[BLMainViewContainer alloc] initWithViewControllers:@[profileView, listManager] startPage:1];
-    viewContainer = [[BLMainViewContainer alloc] init];
+    BLMainViewContainer *viewContainer = [[BLMainViewContainer alloc] init];
     [self.delegate presentAsMainViewController:viewContainer];
-    //[((UINavigationController *)self.presentingViewController) presentViewController:[[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self.delegate] animated:NO completion:nil];
 }
 
 
