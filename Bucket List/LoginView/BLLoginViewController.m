@@ -27,114 +27,17 @@
     
 
     [self.logInView setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
+    
     //create logo
     FUITextField *logoTextField = [BLDesignFactory getLogo:[self.logInView.logo frame]];
     [logoTextField sizeToFit];
-    
     [self.logInView setLogo:logoTextField];
     
     [self.logInView.dismissButton setHidden:YES];
     
-    /*
-    // Set buttons appearance
-    
-    [self.logInView.facebookButton setImage:nil forState:UIControlStateNormal];
-    [self.logInView.facebookButton setImage:nil forState:UIControlStateHighlighted];
-    [self.logInView.facebookButton setBackgroundImage:[UIImage imageNamed:@"FacebookDown.png"] forState:UIControlStateHighlighted];
-    [self.logInView.facebookButton setBackgroundImage:[UIImage imageNamed:@"Facebook.png"] forState:UIControlStateNormal];
-    [self.logInView.facebookButton setTitle:@"" forState:UIControlStateNormal];
-    [self.logInView.facebookButton setTitle:@"" forState:UIControlStateHighlighted];
-    
-    [self.logInView.twitterButton setImage:nil forState:UIControlStateNormal];
-    [self.logInView.twitterButton setImage:nil forState:UIControlStateHighlighted];
-    [self.logInView.twitterButton setBackgroundImage:[UIImage imageNamed:@"Twitter.png"] forState:UIControlStateNormal];
-    [self.logInView.twitterButton setBackgroundImage:[UIImage imageNamed:@"TwitterDown.png"] forState:UIControlStateHighlighted];
-    [self.logInView.twitterButton setTitle:@"" forState:UIControlStateNormal];
-    [self.logInView.twitterButton setTitle:@"" forState:UIControlStateHighlighted];
-    
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"Signup.png"] forState:UIControlStateNormal];
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"SignupDown.png"] forState:UIControlStateHighlighted];
-    [self.logInView.signUpButton setTitle:@"" forState:UIControlStateNormal];
-    [self.logInView.signUpButton setTitle:@"" forState:UIControlStateHighlighted];
-    */
-    
-    // Remove text shadow
-    self.logInView.usernameField.layer.shadowOpacity = 0.0f;
-    self.logInView.passwordField.layer.shadowOpacity = 0.0f;
-
-    
-    // Set field text color
-    
-    [self.logInView.usernameField setTextColor:[BLDesignFactory loginTextColor]];
-    self.logInView.usernameField.placeholder = @"Email";
-    [self.logInView.usernameField setBackgroundColor:[UIColor
-                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
-                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
-                                                      percentBlend:0.3]];
-    if ([self.logInView.usernameField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        UIColor *color = [BLDesignFactory loginTextColor];
-        self.logInView.usernameField.attributedPlaceholder = [[NSAttributedString alloc]
-                                                              initWithString:@"Email"
-                                                              attributes:@{
-                                                                           NSForegroundColorAttributeName:
-                                                                               [color colorWithAlphaComponent:.6]
-                                                                           }];
-    } else {
-        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
-        // TODO: Add fall-back code to set placeholder color.
-    }
-    
-    self.logInView.passwordForgottenButton.imageView.hidden = YES;
-    
-    [self.logInView.passwordField setTextColor:[BLDesignFactory loginTextColor]];
-    self.logInView.passwordField.placeholder = @"Password";
-    [self.logInView.passwordField setBackgroundColor:[UIColor
-                                                      blendedColorWithForegroundColor:[BLDesignFactory loginTextColor]
-                                                      backgroundColor:[BLDesignFactory loginBackgroundColor]
-                                                      percentBlend:0.3]];
-    if ([self.logInView.passwordField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
-        UIColor *color = [BLDesignFactory loginTextColor];
-        self.logInView.passwordField.attributedPlaceholder = [[NSAttributedString alloc]
-                                                              initWithString:@"Password"
-                                                              attributes:@{
-                                                                           NSForegroundColorAttributeName:
-                                                                               [color colorWithAlphaComponent:.6]
-                                                                           }];
-    } else {
-        NSLog(@"Cannot set placeholder text's color, because deployment target is earlier than iOS 6.0");
-        // TODO: Add fall-back code to set placeholder color.
-    }
-    
-
-
-    FUIButton *logInButton = [[FUIButton alloc] initWithFrame:self.logInView.logInButton.bounds];
-    //[logInButton addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
-    self.anotherLogInButton = logInButton;
-    
-    [self.logInView.facebookButton addTarget:self
-                                      action:@selector(loginButtonTouchHandler:)
-                            forControlEvents:UIControlEventTouchUpInside];
-
-    FUIButton *forgotButton = [[FUIButton alloc] initWithFrame:CGRectMake(
-                                                                          CGRectGetWidth(self.logInView.bounds)/2 - 50,
-                                                                          CGRectGetMaxY(self.logInView.bounds) - 10,
-                                                                          100, 25)];
-    [self.logInView addSubview:self.anotherLogInButton];
-    
-    [forgotButton setTitleColor:[BLDesignFactory mainBackgroundColor] forState:UIControlStateNormal];
-    [forgotButton setTitle:@"Forgot Password?" forState:UIControlStateNormal];
-    [forgotButton.titleLabel setFont:[UIFont lightFlatFontOfSize:12]];
-    [forgotButton.titleLabel setEnabled:YES];
-    [forgotButton addTarget:self action:@selector(resetPassword) forControlEvents:UIControlEventTouchUpInside];
-    [self.logInView addSubview:forgotButton];
-    
-
-    
-    [self.logInView.signUpLabel setTextColor:[BLDesignFactory mainBackgroundColor]];
-    [self.logInView.externalLogInLabel setTextColor:[BLDesignFactory mainBackgroundColor]];
-    
-    [self.logInView.passwordForgottenButton setHidden:YES];
-    [self.logInView.passwordForgottenButton setEnabled:NO];
+    [self customizeFields];
+    [self customizeButtons];
+    [self customizeLabels];
 
 }
 
@@ -175,27 +78,87 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+}
+
+- (void)customizeFields
+{
+    // Set field text color
     
+    [self.logInView.usernameField setTextColor:[BLDesignFactory textFieldTextColor]];
+    [self.logInView.usernameField setBackgroundColor:[BLDesignFactory textFieldBackgroundColor]];
+    if ([self.logInView.usernameField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        self.logInView.usernameField.attributedPlaceholder = [[NSAttributedString alloc]
+                                                              initWithString:@"Email"
+                                                              attributes:@{
+                                                                           NSForegroundColorAttributeName:
+                                                                               [BLDesignFactory placeholderTextColor]
+                                                                           }];
+    }
+    
+    self.logInView.passwordForgottenButton.imageView.hidden = YES;
+    
+    [self.logInView.passwordField setTextColor:[BLDesignFactory textFieldTextColor]];
+    [self.logInView.passwordField setBackgroundColor:[BLDesignFactory textFieldBackgroundColor]];
+    if ([self.logInView.passwordField respondsToSelector:@selector(setAttributedPlaceholder:)]) {
+        self.logInView.passwordField.attributedPlaceholder = [[NSAttributedString alloc]
+                                                              initWithString:@"Password"
+                                                              attributes:@{
+                                                                           NSForegroundColorAttributeName:
+                                                                               [BLDesignFactory placeholderTextColor]
+                                                                           }];
+    }
+    
+}
+
+- (void)customizeButtons
+{
     /*
-    [self.logInView.logInButton setEnabled:NO];
-    [self.logInView.logInButton setHidden:YES];
-    [self.anotherLogInButton setFrame:self.logInView.logInButton.bounds];
-    [self.anotherLogInButton setButtonColor:[BLDesignFactory mainBackgroundColor]];
-    self.anotherLogInButton.cornerRadius = 3.0f;
-    [self.anotherLogInButton setTitleColor:[BLDesignFactory textColor] forState:UIControlStateNormal];
+     // Set buttons appearance
+     
+     [self.logInView.facebookButton setImage:nil forState:UIControlStateNormal];
+     [self.logInView.facebookButton setImage:nil forState:UIControlStateHighlighted];
+     [self.logInView.facebookButton setBackgroundImage:[UIImage imageNamed:@"FacebookDown.png"] forState:UIControlStateHighlighted];
+     [self.logInView.facebookButton setBackgroundImage:[UIImage imageNamed:@"Facebook.png"] forState:UIControlStateNormal];
+     [self.logInView.facebookButton setTitle:@"" forState:UIControlStateNormal];
+     [self.logInView.facebookButton setTitle:@"" forState:UIControlStateHighlighted];
+     
+     [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"Signup.png"] forState:UIControlStateNormal];
+     [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"SignupDown.png"] forState:UIControlStateHighlighted];
+     [self.logInView.signUpButton setTitle:@"" forState:UIControlStateNormal];
+     [self.logInView.signUpButton setTitle:@"" forState:UIControlStateHighlighted];
      */
     
-    /*
-    // Set frame for elements
-    [self.logInView.dismissButton setFrame:CGRectMake(10.0f, 10.0f, 87.5f, 45.5f)];
-    [self.logInView.logo setFrame:CGRectMake(66.5f, 70.0f, 187.0f, 58.5f)];
-    [self.logInView.facebookButton setFrame:CGRectMake(35.0f, 287.0f, 120.0f, 40.0f)];
-    [self.logInView.twitterButton setFrame:CGRectMake(35.0f+130.0f, 287.0f, 120.0f, 40.0f)];
-    [self.logInView.signUpButton setFrame:CGRectMake(35.0f, 385.0f, 250.0f, 40.0f)];
-    [self.logInView.usernameField setFrame:CGRectMake(35.0f, 145.0f, 250.0f, 50.0f)];
-    [self.logInView.passwordField setFrame:CGRectMake(35.0f, 195.0f, 250.0f, 50.0f)];
-    [self.fieldsBackground setFrame:CGRectMake(35.0f, 145.0f, 250.0f, 100.0f)];
-     */
+    FUIButton *logInButton = [[FUIButton alloc] initWithFrame:self.logInView.logInButton.bounds];
+    //[logInButton addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+    self.anotherLogInButton = logInButton;
+    
+    [self.logInView.facebookButton addTarget:self
+                                      action:@selector(loginButtonTouchHandler:)
+                            forControlEvents:UIControlEventTouchUpInside];
+    
+    FUIButton *forgotButton = [[FUIButton alloc] initWithFrame:CGRectMake(
+                                                                          CGRectGetWidth(self.logInView.bounds)/2 - 50,
+                                                                          CGRectGetMaxY(self.logInView.bounds) - 10,
+                                                                          100, 25)];
+    
+    [forgotButton setTitleColor:[BLDesignFactory mainBackgroundColor] forState:UIControlStateNormal];
+    [forgotButton setTitle:@"Forgot Password?" forState:UIControlStateNormal];
+    [forgotButton.titleLabel setFont:[UIFont lightFlatFontOfSize:12]];
+    [forgotButton.titleLabel setEnabled:YES];
+    [forgotButton addTarget:self action:@selector(resetPassword) forControlEvents:UIControlEventTouchUpInside];
+    [self.logInView addSubview:forgotButton];
+    [self.logInView.passwordForgottenButton setHidden:YES];
+    [self.logInView.passwordForgottenButton setEnabled:NO];
+    
+    [BLDesignFactory customizeLoginButton:self.logInView.signUpButton color:[BLDesignFactory buttonBackgroundColor] title:@"Sign Up"];
+    
+    [BLDesignFactory customizeLoginButton:self.logInView.logInButton color:[BLDesignFactory buttonBackgroundColor] title:@"Log In"];
+}
+
+- (void)customizeLabels
+{
+    [self.logInView.signUpLabel setTextColor:[BLDesignFactory mainBackgroundColor]];
+    [self.logInView.externalLogInLabel setTextColor:[BLDesignFactory mainBackgroundColor]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

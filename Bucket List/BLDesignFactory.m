@@ -72,12 +72,24 @@
     return [UIColor
             blendedColorWithForegroundColor:[self textFieldTextColor]
             backgroundColor:[self loginBackgroundColor]
-            percentBlend:0.1];
+            percentBlend:0.15];
 }
 
 + (UIColor *)textColor
 {
     return [UIColor belizeHoleColor];
+}
+
++ (void)customizeLoginButton:(UIButton *)button color:(UIColor *)color title:(NSString *)title
+{
+    [button setBackgroundImage:nil forState:UIControlStateNormal];
+    [button setBackgroundColor:color];
+    [button setBackgroundImage:nil forState:UIControlStateHighlighted];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateHighlighted];
+    button.layer.shadowOpacity = 0.15;
+    button.layer.shadowRadius = 3;
+    button.layer.shadowOffset = CGSizeMake(0, 0);
 }
 
 + (FUITextField *)getLogo:(CGRect)frame
@@ -86,7 +98,7 @@
     [logoTextField setText:@"Bucket List"];
     [logoTextField setFont:[UIFont lightFlatFontOfSize:40]];
     [logoTextField setTextAlignment:NSTextAlignmentCenter];
-    [logoTextField setTextColor:[BLDesignFactory loginTextColor]];
+    [logoTextField setTextColor:[self textFieldTextColor]];
     [logoTextField setUserInteractionEnabled:NO];
     return logoTextField;
 }

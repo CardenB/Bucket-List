@@ -29,9 +29,9 @@
 
 + (UIColor *)buttonBackgroundColor;
 
-+ (UIColor *)loginTextColor;
-
 + (FUITextField *)getLogo:(CGRect)frame;
+
++ (void)customizeLoginButton:(UIButton *)button color:(UIColor *)color title:(NSString *)title;
 
 //other
 
