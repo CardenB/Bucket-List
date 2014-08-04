@@ -11,21 +11,33 @@
 
 @interface BLDesignFactory : NSObject
 
-+ (void)configureNavBarDesign:(UINavigationController *)nav;
-
+//tableView
 + (UIColor *)mainBackgroundColor;
-
-+ (UIColor *)loginBackgroundColor;
-
-+ (UIColor *)loginTextColor;
 
 + (UIColor *)cellSeparatorColor;
 
 + (UIColor *)cellBackgroundColor;
 
+//login and signup
++ (UIColor *)loginBackgroundColor;
+
++ (UIColor *)textFieldTextColor;
+
++ (UIColor *)textFieldBackgroundColor;
+
++ (UIColor *)placeholderTextColor;
+
++ (UIColor *)buttonBackgroundColor;
+
++ (UIColor *)loginTextColor;
+
++ (FUITextField *)getLogo:(CGRect)frame;
+
+//other
+
++ (void)configureNavBarDesign:(UINavigationController *)nav;
+
 + (UIColor *)iconTintColor;
 
 + (UIColor *)textColor;
-
-+ (FUITextField *)getLogo:(CGRect)frame;
 @end

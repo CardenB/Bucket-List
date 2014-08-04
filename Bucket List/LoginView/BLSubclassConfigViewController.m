@@ -52,7 +52,8 @@
         [signUpViewController setFields: PFSignUpFieldsDismissButton
          | PFSignUpFieldsSignUpButton
          | PFSignUpFieldsDismissButton
-         | PFSignUpFieldsUsernameAndPassword ];
+         | PFSignUpFieldsUsernameAndPassword
+         | PFSignUpFieldsAdditional];
         [signUpViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Assign our sign up controller to be displayed from the login controller

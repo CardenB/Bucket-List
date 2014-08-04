@@ -30,7 +30,7 @@
     return [UIColor belizeHoleColor];
 }
 
-+ (UIColor *)loginTextColor
++ (UIColor *)textFieldTextColor
 {
     return [UIColor cloudsColor];
 }
@@ -50,6 +50,29 @@
     UIColor *iconColor = [UIColor belizeHoleColor];
     [iconColor colorWithAlphaComponent:.6];
     return iconColor;
+}
+
++ (UIColor *)textFieldBackgroundColor
+{
+    return [UIColor
+     blendedColorWithForegroundColor:[self textFieldTextColor]
+     backgroundColor:[self loginBackgroundColor]
+            percentBlend:0.3];
+    
+}
+
++ (UIColor *)placeholderTextColor
+{
+    return [self.textFieldTextColor colorWithAlphaComponent:.6];
+    
+}
+
++ (UIColor *)buttonBackgroundColor
+{
+    return [UIColor
+            blendedColorWithForegroundColor:[self textFieldTextColor]
+            backgroundColor:[self loginBackgroundColor]
+            percentBlend:0.1];
 }
 
 + (UIColor *)textColor
