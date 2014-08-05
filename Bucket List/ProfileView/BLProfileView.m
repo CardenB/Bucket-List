@@ -10,6 +10,7 @@
 #import "UIImageView+Letters.h"
 #import "BLNavigationDelegate.h"
 #import "BLDesignFactory.h"
+#import "BLUser.h"
 #import "Parse/Parse.h"
 @interface BLProfileView ()
 
@@ -19,6 +20,7 @@
 
 @implementation BLProfileView
 
+static NSString *profileCellPicID = @"Profile Cell Pic";
 static NSString *profileCellID = @"Profile Cell";
 - (id)init
 {
@@ -49,7 +51,7 @@ static NSString *profileCellID = @"Profile Cell";
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:profileCellID];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:profileCellPicID];
     [self.tableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -98,7 +100,7 @@ static NSString *profileCellID = @"Profile Cell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,20 +108,45 @@ static NSString *profileCellID = @"Profile Cell";
     // first cell is height of half page?
     if (indexPath.row == 0) {
         return CGRectGetHeight(self.tableView.frame)/3;
+    } else {
+        return 44.0f;
     }
-    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileCellID forIndexPath:indexPath];
-    
-    // Configure the cell...
-    NSString *name = [PFUser currentUser][@"additional"];
-    UIImageView *img = [[UIImageView alloc] initWithFrame:cell.frame];
-    [img setImageWithString:name color:[BLDesignFactory loginBackgroundColor]];
-    [cell addSubview:img];
+    UITableViewCell *cell;
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:profileCellPicID forIndexPath:indexPath];
+        
+        NSString *name = [BLUser currentUser].name;
+        UIImageView *img = [[UIImageView alloc] initWithFrame:cell.frame];
+        [img setImageWithString:name color:[BLDesignFactory loginBackgroundColor]];
+        [cell addSubview:img];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:profileCellID];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:profileCellID];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [BLDesignFactory mainBackgroundColor];
+
+            }
+        }
+        switch (indexPath.row) {
+            case 1:
+                cell.textLabel.text = @"Email";
+                cell.detailTextLabel.text = [BLUser currentUser].username;
+                break;
+            case 2:
+                cell.textLabel.text = @"Name";
+                cell.detailTextLabel.text = [BLUser currentUser].name;
+                break;
+                
+            default:
+                break;
+    }
+
     
     return cell;
 }
