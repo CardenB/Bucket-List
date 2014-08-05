@@ -11,6 +11,7 @@
 #import "BLSubclassConfigViewController.h"
 #import "BLPresenterDelegate.h"
 #import "BLDesignFactory.h"
+#import "BLUser.h"
 #import <Parse/Parse.h>
 
 @interface BLAppDelegate() <BLPresenterDelegate>
@@ -25,6 +26,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [BLUser registerSubclass];
     // Override point for customization after application launch.
     [Parse setApplicationId:@"3HPUHzjWZjPNd0ZDrYIvdpkdkiYExT69mHCclEoe"
                   clientKey:@"NTQCUlnjQ2P5Wtf0MAkni9eA4BE2xj6epqWYHwkW"];

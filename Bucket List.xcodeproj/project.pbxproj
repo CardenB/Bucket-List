@@ -42,6 +42,7 @@
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
 		DDB9922A198EBCA800C38D4C /* BLMainViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */; };
+		DDFF806C199146C700AB1D3F /* BLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFF806B199146C700AB1D3F /* BLUser.m */; };
 		FE8A60C089E643D7B34A95C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDB07342BF74A288781B44D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,8 @@
 		DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMainViewContainer.m; sourceTree = "<group>"; };
 		DDB9922F198EC2B100C38D4C /* BLNavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNavigationDelegate.h; sourceTree = "<group>"; };
 		DDFF8069198FEEEE00AB1D3F /* BLChildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLChildViewController.h; sourceTree = "<group>"; };
+		DDFF806A199146C700AB1D3F /* BLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLUser.h; sourceTree = "<group>"; };
+		DDFF806B199146C700AB1D3F /* BLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +203,8 @@
 				9DC0DD1F19777D2F00A2E6F5 /* BLItem.m */,
 				9DC0DD2019777D2F00A2E6F5 /* BLList.h */,
 				9DC0DD2119777D2F00A2E6F5 /* BLList.m */,
+				DDFF806A199146C700AB1D3F /* BLUser.h */,
+				DDFF806B199146C700AB1D3F /* BLUser.m */,
 			);
 			name = Models;
 			path = "Bucket List/Models";
@@ -464,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFF806C199146C700AB1D3F /* BLUser.m in Sources */,
 				9DC0DD3019777D2F00A2E6F5 /* BLSubclassConfigViewController.m in Sources */,
 				9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */,
 				9DC0DD2E19777D2F00A2E6F5 /* BLLoginViewController.m in Sources */,
