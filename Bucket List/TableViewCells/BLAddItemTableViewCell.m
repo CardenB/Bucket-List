@@ -12,10 +12,7 @@
 
 @implementation BLAddItemTableViewCell
 
-#warning need to work out selection kinks, selecting text field doesn't select the cell, selecting the button makes the cell permanently selected, touching button doesn't set the textfield to first responder
-
 #warning need to set background of load new page cell
-#warning set title color to white
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

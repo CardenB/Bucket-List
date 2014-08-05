@@ -24,5 +24,5 @@
 
 static NSString *kListName = @"name";
 static NSString *kListCreator = @"creator";
-static NSString *kListParticipants = @"participantArray";
+static NSString *kListParticipants = @"participants";
 static NSString *kListItemArray = @"itemArray";

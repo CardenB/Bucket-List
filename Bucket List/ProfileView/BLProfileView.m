@@ -52,7 +52,8 @@ static NSString *profileCellID = @"Profile Cell";
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:profileCellPicID];
-    [self.tableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
+    [self.tableView setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -141,12 +142,12 @@ static NSString *profileCellID = @"Profile Cell";
         }
         switch (indexPath.row) {
             case 1:
-                cell.textLabel.text = @"Email";
-                cell.detailTextLabel.text = [BLUser currentUser].username;
-                break;
-            case 2:
                 cell.textLabel.text = @"Name";
                 cell.detailTextLabel.text = [BLUser currentUser].name;
+                break;
+            case 2:
+                cell.textLabel.text = @"Email";
+                cell.detailTextLabel.text = [BLUser currentUser].username;
                 break;
                 
             default:

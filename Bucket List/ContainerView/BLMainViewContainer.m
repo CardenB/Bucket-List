@@ -21,6 +21,12 @@
 @property CGFloat initialX;
 @property CGFloat finalX;
 
+@property BOOL preventUpwardScrolling;
+@property BOOL preventLeftScrolling;
+@property BOOL preventRightScrolling;
+@property BOOL preventDownwardScrolling;
+
+
 @end
 @implementation BLMainViewContainer
 
@@ -35,6 +41,10 @@ static NSInteger kNumPages = 2;
 
     if (self) {
         self.pageNum = 0;
+        _preventDownwardScrolling = NO;
+        _preventUpwardScrolling = NO;
+        _preventRightScrolling = NO;
+        _preventLeftScrolling = NO;
     }
     return self;
 
@@ -138,14 +148,68 @@ static NSInteger kNumPages = 2;
     }
 }
 
+- (void)killScroll:(UIScrollView *)scrollView
+{
+    CGPoint offset = self.scrollView.contentOffset;
+    offset.x -= 1.0;
+    offset.y -= 1.0;
+    [scrollView setContentOffset:offset animated:NO];
+    offset.x += 1.0;
+    offset.y += 1.0;
+    [scrollView setContentOffset:offset animated:NO];
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self updatePage];
+    CGPoint offset = scrollView.contentOffset;
+    
+
+    
+    if (scrollView.contentOffset.x >= 0
+        && scrollView.contentOffset.x <= (kNumPages - 1)*scrollView.frame.size.width + 5) {
+        [self updatePage];
+    } else {
+        if (scrollView.contentOffset.x <= 5) {
+            offset.x = 0;
+            [scrollView setContentOffset:offset animated:NO];
+        } else if( scrollView.contentOffset.x >= (kNumPages - 1)*scrollView.frame.size.width - 5) {
+            offset.x = (kNumPages - 1)*scrollView.frame.size.width;
+            [scrollView setContentOffset:offset animated:NO];
+        }
+    }
+
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    //prevent upward scrolling on profile view
+    if (scrollView.contentOffset.x >= 0
+        && scrollView.contentOffset.x <= scrollView.frame.size.width) {
+        _preventUpwardScrolling = YES;
+    }
+    if (scrollView.contentOffset.x <= 5) {
+        _preventLeftScrolling = YES;
+    } else if( scrollView.contentOffset.x >= (kNumPages - 1)*scrollView.frame.size.width - 5) {
+        _preventRightScrolling = YES;
+    }
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     [self updatePage];
+    _preventUpwardScrolling = NO;
+    _preventDownwardScrolling = NO;
+    _preventLeftScrolling = NO;
+    _preventRightScrolling = NO;
+
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    _preventUpwardScrolling = NO;
+    _preventDownwardScrolling = NO;
+    _preventLeftScrolling = NO;
+    _preventRightScrolling = NO;
 }
 
 - (void)presentLogInViewFromPresentingViewController

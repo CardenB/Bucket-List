@@ -43,8 +43,7 @@ static NSString *addListCellID = @"Add List Cell";
         self.textKey = @"name";
         
         // The title for this table in the Navigation Controller.
-#warning Does not work
-        self.title = @"Lists";
+        self.title = @"";
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -239,19 +238,9 @@ static NSString *addListCellID = @"Add List Cell";
 // all objects ordered by createdAt descending.
 - (PFQuery *)queryForTable {
     PFQuery *listQuery = [BLList query];
+    //TODO: find last user to update instead of creator
     [listQuery includeKey:kListCreator];
-    
-    /*
-    [listQuery findObjectsInBackgroundWithBlock:^(NSArray *lists, NSError *error) {
-        if (error) {
-            return;
-        }
-        for (BLList *list in lists) {
-            BLUser *user = list.creator;
-            [user fetchIfNeeded];
-        }
-    }];
-     */
+    [listQuery whereKey:kListParticipants containsAllObjectsInArray:@[[BLUser currentUser]]];
     
     
     //[query whereKey:@"participants" containsString:[PFUser currentUser].username];
