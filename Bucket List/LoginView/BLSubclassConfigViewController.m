@@ -86,7 +86,9 @@
 }
 
 // Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    //TODO: query for friend notifications on login
     [self dismissViewControllerAnimated:YES completion:^(){
             if ([PFUser currentUser]) {
                 [self presentInitialAppView];
@@ -113,11 +115,26 @@
     BOOL informationComplete = YES;
     
     // loop through all of the submitted data
+    //TODO: validate additional information field
+    //key is fieldname
+    //field is text inside field
     for (id key in info) {
         NSString *field = [info objectForKey:key];
         if (!field || !field.length) { // check completion
             informationComplete = NO;
             break;
+        }
+        //TODO: validate email field
+        //validate first/last name field
+        else if ([key isEqualToString:@"additional"]) {
+            NSString *firstAndLastNameRegex = @"[a-zA-Z]+ ++[a-zA-Z]+$";
+            NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", firstAndLastNameRegex];
+            if( ![nameTest evaluateWithObject:(NSString *)field] )
+            {
+                [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out first and last name properly.\n(Ex: \"John Doe\"", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+                return NO;
+            }
+            
         }
     }
     

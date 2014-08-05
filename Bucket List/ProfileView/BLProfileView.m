@@ -9,6 +9,8 @@
 #import "BLProfileView.h"
 #import "UIImageView+Letters.h"
 #import "BLNavigationDelegate.h"
+#import "BLDesignFactory.h"
+#import "Parse/Parse.h"
 @interface BLProfileView ()
 
 @property BOOL statusBarHidden;
@@ -101,7 +103,11 @@ static NSString *profileCellID = @"Profile Cell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // first cell is height of half page?
-    return CGRectGetHeight(self.tableView.frame);
+    if (indexPath.row == 0) {
+        return CGRectGetHeight(self.tableView.frame)/3;
+    }
+    return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,9 +115,9 @@ static NSString *profileCellID = @"Profile Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:profileCellID forIndexPath:indexPath];
     
     // Configure the cell...
-    NSString *username = @"username";
+    NSString *name = [PFUser currentUser][@"additional"];
     UIImageView *img = [[UIImageView alloc] initWithFrame:cell.frame];
-    [img setImageWithString:username];
+    [img setImageWithString:name color:[BLDesignFactory loginBackgroundColor]];
     [cell addSubview:img];
     
     return cell;
