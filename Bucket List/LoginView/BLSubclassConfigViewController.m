@@ -45,7 +45,9 @@
     if (![BLUser currentUser]) { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[BLLoginViewController alloc] init];
-        [logInViewController setFields:PFLogInFieldsDefault | PFLogInFieldsFacebook ];
+        [logInViewController setFields:PFLogInFieldsDefault
+         //| PFLogInFieldsFacebook
+         ];
         [logInViewController setDelegate:self]; // Set ourselves as the delegate
         
         // Create the sign up view controller
