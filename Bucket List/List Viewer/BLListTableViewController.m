@@ -9,7 +9,8 @@
 #import "BLAddItemTableViewCell.h"
 #import "BLListTableViewController.h"
 #import "BLList.h"
-#import "BLItem.h"https://github.com/lbrendanl/SwiftSwipeView.git
+#import "BLItem.h"
+#import "BLUser.h"
 #import "BLDesignFactory.h"
 
 /********************/
@@ -107,7 +108,7 @@
 
 @interface BLListTableViewController ()
 
-@property (nonatomic, strong) PFObject *list;
+@property (nonatomic, strong) BLList *list;
 @property (nonatomic, strong) NSMutableArray *itemArray;
 
 @end
@@ -131,9 +132,9 @@ static NSString *addListCellID = @"Add List Item Cell";
         self.textKey = kItemName;
         
         // The title for this table in the Navigation Controller.
-        self.title = self.list[kListName];
-        self.navigationController.topViewController.title = self.list[kListName];
-        NSLog(self.list[kListName]);
+        self.title = self.list.name;
+        self.navigationController.topViewController.title = self.list.name;
+        NSLog(self.list.name);
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
@@ -231,7 +232,7 @@ static NSString *addListCellID = @"Add List Item Cell";
 // all objects ordered by createdAt descending.
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    PFQuery *query = [BLItem query];
     [query whereKey:kItemParentList equalTo:self.list];
     
     
@@ -241,8 +242,7 @@ static NSString *addListCellID = @"Add List Item Cell";
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByAscending:kItemDateCreated];
-    
+    [query orderByDescending:@"createdAt"];
     return query;
 }
 
@@ -384,16 +384,15 @@ static NSString *addListCellID = @"Add List Item Cell";
     NSString *text = [textField.text
                       stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([text length] > 0) {
-        BLItem *item = [[BLItem alloc] init];
+        BLItem *item = [BLItem object];
         item.name = text;
-        item.dateCreated = [NSDate date];
         item.completed = @NO;
-        item.creatorUserName = [PFUser currentUser].username;
+        item.creator = [BLUser currentUser];
         item.starred = @NO;
         item.parentList = self.list;
         
-        PFObject *pfItem = [item returnAsPFObject];
-        [pfItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        //PFObject *pfItem = [item returnAsPFObject];
+        [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
                 [self loadObjects];
                 textField.text = @"";

@@ -7,15 +7,27 @@
 //
 
 #import "BLItem.h"
+#import "Parse/PFObject+Subclass.h"
 
 @interface BLItem()
 
-@property (nonatomic, strong) PFObject *itemModel;
+//@property (nonatomic, strong) PFObject *itemModel;
 
 @end
 
 @implementation BLItem
 
+@dynamic completed;
+@dynamic name;
+@dynamic creator;
+@dynamic starred;
+@dynamic parentList;
+
++ (NSString *)parseClassName {
+    return @"BLItem";
+}
+
+/*
 - (id)init
 {
     self = [super init];
@@ -51,5 +63,5 @@
     [self update];
     [self.itemModel save];
 }
-
+*/
 @end

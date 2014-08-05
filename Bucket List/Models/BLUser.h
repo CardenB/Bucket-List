@@ -11,11 +11,6 @@
 
 @interface BLUser : PFUser< PFSubclassing >
 
-//+ (NSString *)parseClassName;
-/* already implemented in PFUser
-@property NSString *username;
-@property NSString *email;
- */
 @property NSString *name;
 @property NSMutableArray *friends; //Array of BLUser pointers
 @end

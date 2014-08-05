@@ -11,6 +11,7 @@
 #import "BLListTableViewController.h"
 #import "BLListManager.h"
 #import "BLList.h"
+#import "BLUser.h"
 #import "BLDesignFactory.h"
 #import "BLProfileView.h"
 
@@ -63,7 +64,7 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
+    //[self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
     [self.tableView registerClass:[BLAddItemTableViewCell class] forCellReuseIdentifier:addListCellID];
     self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
@@ -237,19 +238,33 @@ static NSString *addListCellID = @"Add List Cell";
 // Override to customize what kind of query to perform on the class. The default is to query for
 // all objects ordered by createdAt descending.
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
-    [query whereKey:@"creatorName" equalTo:[PFUser currentUser].username];
+    PFQuery *listQuery = [BLList query];
+    [listQuery includeKey:kListCreator];
+    
+    /*
+    [listQuery findObjectsInBackgroundWithBlock:^(NSArray *lists, NSError *error) {
+        if (error) {
+            return;
+        }
+        for (BLList *list in lists) {
+            BLUser *user = list.creator;
+            [user fetchIfNeeded];
+        }
+    }];
+     */
+    
+    
     //[query whereKey:@"participants" containsString:[PFUser currentUser].username];
     
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     if ([self.objects count] == 0) {
-        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+        listQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
-    [query orderByDescending:@"dateCreated"];
+    [listQuery orderByDescending:@"updatedAt"];
     
-    return query;
+    return listQuery;
 }
 
 
@@ -258,7 +273,7 @@ static NSString *addListCellID = @"Add List Cell";
 // a UITableViewCellStyleDefault style cell with the label being the first key in the object.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
-                        object:(PFObject *)object {
+                        object:(BLList *)listObject {
     
 
     if (indexPath.row == 0)
@@ -277,15 +292,33 @@ static NSString *addListCellID = @"Add List Cell";
     else
     {
         PFTableViewCell *cell = [tableView
-                                 dequeueReusableCellWithIdentifier:cellID
-                                 forIndexPath:indexPath];
+                                 dequeueReusableCellWithIdentifier:cellID];
+        if (cell == nil) {
+            cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+        }
         cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         
-        [cell.textLabel setFont:[UIFont flatFontOfSize:28]];
+        [cell.textLabel setFont:[UIFont flatFontOfSize:24]];
         [cell.textLabel setTextColor:[BLDesignFactory textColor]];
+        
+        [cell.detailTextLabel setFont:[UIFont flatFontOfSize:8]];
+        [cell.detailTextLabel setTextColor:[BLDesignFactory textColor]];
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateStyle:NSDateFormatterShortStyle];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+        NSString *stringFromDateTime = [formatter stringFromDate:listObject.updatedAt];
+                                      
+        
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = [object objectForKey:self.textKey];
+        cell.textLabel.text = listObject.name;
+        
+        cell.detailTextLabel.text = [NSString
+                                     stringWithFormat:@"Updated by %@, %@",
+                                     ((BLUser *)listObject.creator).name,
+                                     stringFromDateTime];
+        
         return cell;
     }
 }
@@ -348,7 +381,7 @@ static NSString *addListCellID = @"Add List Cell";
     if (indexPath.row == 0) {
         return NO;
     } else
-        return YES;
+        return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -375,15 +408,13 @@ static NSString *addListCellID = @"Add List Cell";
     NSString *text = [textField.text
                       stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if ([text length] > 0) {
-        BLList *listItem = [[BLList alloc] init];
-        listItem.name = text;
-        listItem.dateLastUpdated = [NSDate date];
-        listItem.dateCreated = [NSDate date];
-        listItem.creatorUserName = [PFUser currentUser].username;
-        listItem.participants = [NSMutableArray arrayWithArray:@[[PFUser currentUser].username]];
+        BLList *list = [BLList object];
+        list.name = text;
+        list.creator = [BLUser currentUser];
+        list.participants = [NSMutableArray arrayWithArray:@[[BLUser currentUser]]];
         
-        PFObject *item = listItem.returnAsPFObject;
-        [item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+
+        [list saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             if (succeeded) {
                 [self loadObjects];
                 textField.text = @"";

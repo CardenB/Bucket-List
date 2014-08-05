@@ -10,6 +10,7 @@
 #import "BLSignUpViewController.h"
 #import "BLLoginViewController.h"
 #import "BLListManager.h"
+#import "BLUser.h"
 #import "BLMainViewContainer.h"
 #import "BLProfileView.h"
 
@@ -41,7 +42,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (![PFUser currentUser]) { // No user logged in
+    if (![BLUser currentUser]) { // No user logged in
         // Create the log in view controller
         PFLogInViewController *logInViewController = [[BLLoginViewController alloc] init];
         [logInViewController setFields:PFLogInFieldsDefault | PFLogInFieldsFacebook ];
@@ -86,11 +87,11 @@
 }
 
 // Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(BLUser *)user
 {
     //TODO: query for friend notifications on login
     [self dismissViewControllerAnimated:YES completion:^(){
-            if ([PFUser currentUser]) {
+            if ([BLUser currentUser]) {
                 [self presentInitialAppView];
             }
         }];

@@ -50,6 +50,7 @@ static NSString *profileCellID = @"Profile Cell";
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:profileCellID];
+    [self.tableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

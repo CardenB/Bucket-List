@@ -12,6 +12,8 @@
 #import "BLPresenterDelegate.h"
 #import "BLDesignFactory.h"
 #import "BLUser.h"
+#import "BLList.h"
+#import "BLItem.h"
 #import <Parse/Parse.h>
 
 @interface BLAppDelegate() <BLPresenterDelegate>
@@ -28,6 +30,13 @@
 {
     
     [BLUser registerSubclass];
+    [BLList registerSubclass];
+    [BLItem registerSubclass];
+    PFACL *defaultACL = [PFACL ACL];
+    // Optionally enable public read access while disabling public write access.
+    // [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+
     // Override point for customization after application launch.
     [Parse setApplicationId:@"3HPUHzjWZjPNd0ZDrYIvdpkdkiYExT69mHCclEoe"
                   clientKey:@"NTQCUlnjQ2P5Wtf0MAkni9eA4BE2xj6epqWYHwkW"];

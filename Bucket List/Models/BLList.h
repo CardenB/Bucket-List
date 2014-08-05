@@ -8,25 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "BLUser.h"
 
-@interface BLList : NSObject
+@interface BLList : PFObject< PFSubclassing >
+
++ (NSString *)parseClassName;
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSDate *dateLastUpdated;
-@property (nonatomic, strong) NSDate *dateCreated;
-@property (nonatomic, strong) NSString *creatorUserName;
+@property (nonatomic, strong) BLUser *creator;
 @property (nonatomic, strong) NSMutableArray *participants;
 @property (nonatomic, strong) NSMutableArray *itemArray;
 
-- (void)update;
-- (void)save;
-- (PFObject *)returnAsPFObject;
-
 @end
 
+
 static NSString *kListName = @"name";
-static NSString *kListDateLastUpdated = @"lastUpdated";
-static NSString *kListDateCreated = @"dateCreated";
-static NSString *kListCreatorUserName = @"creatorName";
+static NSString *kListCreator = @"creator";
 static NSString *kListParticipants = @"participantArray";
 static NSString *kListItemArray = @"itemArray";

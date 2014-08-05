@@ -12,7 +12,6 @@
 
 @implementation BLUser : PFUser
 
-@dynamic name;
 @dynamic friends;
 
 /*
@@ -21,4 +20,13 @@
 }
  */
 
+- (NSString *)name
+{
+    return self[@"additional"];
+}
+
+- (void)setName:(NSString *)name
+{
+    self[@"additional"] = name;
+}
 @end

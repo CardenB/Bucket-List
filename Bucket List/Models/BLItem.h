@@ -8,25 +8,30 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "BLList.h"
+#import "BLUser.h"
 
-@interface BLItem : NSObject
+@interface BLItem : PFObject< PFSubclassing >
+
++ (NSString *)parseClassName;
 
 @property (nonatomic, strong) NSNumber *completed; //generate using [NSNumber numberWithBool:YES/NO];
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *creatorUserName;
-@property (nonatomic, strong) NSDate *dateCreated;
+@property (nonatomic, strong) BLUser *creator;
+//@property (nonatomic, strong) NSDate *dateCreated; //use createdAt
 @property (nonatomic, strong) NSNumber *starred; //@YES and @NO instead of YES and No or [NSNumber numberWithBool:YES/NO];
-@property (nonatomic, strong) PFObject *parentList;
+@property (nonatomic, strong) BLList *parentList;
 
+/*
 - (void)update;
 - (void)save;
 - (PFObject *)returnAsPFObject;
-
+*/
 @end
+
 
 static NSString *kItemName = @"name";
 static NSString *kItemCompleted = @"completed";
-static NSString *kItemDateCreated = @"listItemDateCreated";
-static NSString *kItemCreatorUserName = @"listItemCreatorName";
+static NSString *kItemCreator = @"listItemCreator";
 static NSString *kItemStarred = @"starred";
 static NSString *kItemParentList = @"parentList";
