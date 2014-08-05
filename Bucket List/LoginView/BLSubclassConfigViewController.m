@@ -68,7 +68,7 @@
 
 - (void)presentInitialAppView
 {
-    BLMainViewContainer *viewContainer = [[BLMainViewContainer alloc] init];
+    BLMainViewContainer *viewContainer = [[BLMainViewContainer alloc] initWithPresenterDelegate:self.delegate];
     [self.delegate presentAsMainViewController:viewContainer];
 }
 

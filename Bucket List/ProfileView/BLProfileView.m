@@ -78,7 +78,7 @@ static NSString *profileCellID = @"Profile Cell";
                            initWithTitle:@"Sign Out"
                            style:UIBarButtonItemStyleBordered
                            target:self
-                           action:nil]
+                           action:@selector(signOut)]
      animated:YES];
     [self.parentViewController.navigationItem
      setRightBarButtonItem:[[UIBarButtonItem alloc]
@@ -87,6 +87,12 @@ static NSString *profileCellID = @"Profile Cell";
                             target:self.navigator
                             action:@selector(navigateRight)]
      animated:YES];
+}
+
+- (void)signOut
+{
+    [BLUser logOut];
+    [self.navigator presentLogInViewFromPresentingViewController];
 }
 
 #pragma mark - Table view data source

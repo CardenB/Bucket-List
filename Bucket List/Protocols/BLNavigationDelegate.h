@@ -15,4 +15,6 @@
 
 - (void)navigateRight;
 
+- (void)presentLogInViewFromPresentingViewController;
+
 @end

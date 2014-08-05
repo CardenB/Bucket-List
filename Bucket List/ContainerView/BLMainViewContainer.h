@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BLNavigationDelegate.h"
+#import "BLPresenterDelegate.h"
 
 @class BLMainViewContainer;
 @interface BLMainViewContainer : UIViewController<BLNavigationDelegate, UIScrollViewDelegate>
 
+@property (nonatomic, weak) id<BLPresenterDelegate> delegate;
+
+- (id)initWithPresenterDelegate:(id<BLPresenterDelegate>)delegate;
 - (void)navigateLeft;
 - (void)navigateRight;
 

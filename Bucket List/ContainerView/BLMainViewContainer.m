@@ -10,6 +10,8 @@
 #import "BLListManager.h"
 #import "BLProfileView.h"
 #import "BLChildViewController.h"
+#import "BLDesignFactory.h"
+#import "BLSubclassConfigViewController.h"
 
 @interface BLMainViewContainer ()
 
@@ -21,6 +23,8 @@
 
 @end
 @implementation BLMainViewContainer
+
+static NSInteger kNumPages = 2;
 
 
 - (id)init
@@ -37,9 +41,19 @@
     
 }
 
+- (id)initWithPresenterDelegate:(id<BLPresenterDelegate>)delegate
+{
+    self = [self init];
+    if (self) {
+        self.delegate = delegate;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [self createScrollView];
+    [self.view setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
 
 }
 
@@ -82,6 +96,7 @@
     viewFrame.origin.x = viewFrame.size.width;
     listManager.view.frame = viewFrame;
     [self.view addSubview:self.scrollView];
+    [self.scrollView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
 }
 
 #pragma mark - Paging
@@ -114,7 +129,7 @@
     CGFloat pageWidth = self.scrollView.frame.size.width;
     float fractionalPage = self.scrollView.contentOffset.x / pageWidth;
     NSInteger page = lround(fractionalPage);
-    if (self.pageNum != page) {
+    if (self.pageNum != page && page < kNumPages) {
         // Page has changed, do your thing!
         // ...
         // Finally, update previous page
@@ -131,6 +146,13 @@
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     [self updatePage];
+}
+
+- (void)presentLogInViewFromPresentingViewController
+{
+    UIViewController *initialController = [[BLSubclassConfigViewController alloc]
+                                           initWithDelegate:self.delegate];
+    [self.delegate presentAsMainViewController:initialController];
 }
 /*
 // Only override drawRect: if you perform custom drawing.
