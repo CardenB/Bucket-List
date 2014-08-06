@@ -7,7 +7,7 @@
 //
 
 #import "BLAppDelegate.h"
-#import "BLContactManagerTableViewController.h"
+
 #import "BLSubclassConfigViewController.h"
 #import "BLPresenterDelegate.h"
 #import "BLDesignFactory.h"

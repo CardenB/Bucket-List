@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFD19777D2F00A2E6F5 /* BLAppDelegate.m */; };
 		9DC0DD2619777D2F00A2E6F5 /* BLDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFF19777D2F00A2E6F5 /* BLDesignFactory.m */; };
-		9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0019777D2F00A2E6F5 /* Bucket List-Info.plist */; };
 		9DC0DD2819777D2F00A2E6F5 /* BLContactManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0419777D2F00A2E6F5 /* BLContactManagerTableViewController.m */; };
 		9DC0DD2A19777D2F00A2E6F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0819777D2F00A2E6F5 /* Images.xcassets */; };
 		9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0B19777D2F00A2E6F5 /* BLListManager.m */; };
@@ -375,7 +374,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BL;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Carden Bagwell";
 				TargetAttributes = {
 					9DC5D6FF196B4F9800F7239C = {
@@ -418,7 +417,6 @@
 				9DC0DD3119777D2F00A2E6F5 /* BLSubclassConfigViewController.xib in Resources */,
 				9DC0DD2A19777D2F00A2E6F5 /* Images.xcassets in Resources */,
 				9DC0DD2D19777D2F00A2E6F5 /* ListShare.ipa in Resources */,
-				9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
