@@ -14,7 +14,7 @@
 @dynamic name;
 @dynamic creator;
 @dynamic participants;
-@dynamic itemArray;
+//@dynamic itemArray;
 
 + (NSString *)parseClassName
 {

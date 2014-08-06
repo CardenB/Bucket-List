@@ -240,7 +240,7 @@ static NSString *addListCellID = @"Add List Cell";
     PFQuery *listQuery = [BLList query];
     //TODO: find last user to update instead of creator
     [listQuery includeKey:kListCreator];
-    [listQuery whereKey:kListParticipants containsAllObjectsInArray:@[[BLUser currentUser]]];
+    [listQuery whereKey:kListParticipants equalTo:[BLUser currentUser]];
     
     
     //[query whereKey:@"participants" containsString:[PFUser currentUser].username];
@@ -297,14 +297,14 @@ static NSString *addListCellID = @"Add List Cell";
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterShortStyle];
         [formatter setTimeStyle:NSDateFormatterShortStyle];
-        NSString *stringFromDateTime = [formatter stringFromDate:listObject.updatedAt];
+        NSString *stringFromDateTime = [formatter stringFromDate:listObject.createdAt];
                                       
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = listObject.name;
         
         cell.detailTextLabel.text = [NSString
-                                     stringWithFormat:@"Updated by %@, %@",
+                                     stringWithFormat:@"Created by %@, %@",
                                      ((BLUser *)listObject.creator).name,
                                      stringFromDateTime];
         

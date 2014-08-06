@@ -42,6 +42,7 @@
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
 		DDB9922A198EBCA800C38D4C /* BLMainViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */; };
+		DDE340EA199290C8008DB6A7 /* BLFriendsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE340E9199290C8008DB6A7 /* BLFriendsManager.m */; };
 		DDFF806C199146C700AB1D3F /* BLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFF806B199146C700AB1D3F /* BLUser.m */; };
 		FE8A60C089E643D7B34A95C0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDB07342BF74A288781B44D /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -111,6 +112,8 @@
 		DDB99228198EBCA800C38D4C /* BLMainViewContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLMainViewContainer.h; sourceTree = "<group>"; };
 		DDB99229198EBCA800C38D4C /* BLMainViewContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMainViewContainer.m; sourceTree = "<group>"; };
 		DDB9922F198EC2B100C38D4C /* BLNavigationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLNavigationDelegate.h; sourceTree = "<group>"; };
+		DDE340E8199290C8008DB6A7 /* BLFriendsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLFriendsManager.h; sourceTree = "<group>"; };
+		DDE340E9199290C8008DB6A7 /* BLFriendsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLFriendsManager.m; sourceTree = "<group>"; };
 		DDFF8069198FEEEE00AB1D3F /* BLChildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLChildViewController.h; sourceTree = "<group>"; };
 		DDFF806A199146C700AB1D3F /* BLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLUser.h; sourceTree = "<group>"; };
 		DDFF806B199146C700AB1D3F /* BLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLUser.m; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 		9DC5D709196B4F9800F7239C /* Bucket List */ = {
 			isa = PBXGroup;
 			children = (
+				DDE340E7199290B7008DB6A7 /* FriendsListView */,
 				DDB99227198EBC9200C38D4C /* ContainerView */,
 				DDB99223198EBC4200C38D4C /* TableViewCells */,
 				DDB9921C198EB5BA00C38D4C /* ProfileView */,
@@ -326,6 +330,16 @@
 			);
 			name = ContainerView;
 			path = "Bucket List/ContainerView";
+			sourceTree = SOURCE_ROOT;
+		};
+		DDE340E7199290B7008DB6A7 /* FriendsListView */ = {
+			isa = PBXGroup;
+			children = (
+				DDE340E8199290C8008DB6A7 /* BLFriendsManager.h */,
+				DDE340E9199290C8008DB6A7 /* BLFriendsManager.m */,
+			);
+			name = FriendsListView;
+			path = "Bucket List/FriendsListView";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -475,6 +489,7 @@
 				9DC0DD2E19777D2F00A2E6F5 /* BLLoginViewController.m in Sources */,
 				9DC0DD2C19777D2F00A2E6F5 /* BLListTableViewController.m in Sources */,
 				9DC0DD3519777D2F00A2E6F5 /* BLItem.m in Sources */,
+				DDE340EA199290C8008DB6A7 /* BLFriendsManager.m in Sources */,
 				DDB9922A198EBCA800C38D4C /* BLMainViewContainer.m in Sources */,
 				9DC0DD3619777D2F00A2E6F5 /* BLList.m in Sources */,
 				DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */,

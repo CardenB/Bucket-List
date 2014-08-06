@@ -9,6 +9,7 @@
 #import "BLMainViewContainer.h"
 #import "BLListManager.h"
 #import "BLProfileView.h"
+#import "BLFriendsManager.h"
 #import "BLChildViewController.h"
 #import "BLDesignFactory.h"
 #import "BLSubclassConfigViewController.h"
@@ -30,7 +31,7 @@
 @end
 @implementation BLMainViewContainer
 
-static NSInteger kNumPages = 2;
+static NSInteger kNumPages = 3;
 
 
 - (id)init
@@ -69,7 +70,7 @@ static NSInteger kNumPages = 2;
 
 - (void)createScrollView
 {
-    CGFloat totalWidth = 2*self.view.frame.size.width;
+    CGFloat totalWidth = kNumPages*self.view.frame.size.width;
     CGFloat maxHeight = self.view.frame.size.height;
     //status bar size space added to top of scroll view for some reason, origin.y has to be -20
     CGRect frame = CGRectMake(0, -20, self.view.frame.size.width, maxHeight);
@@ -85,26 +86,39 @@ static NSInteger kNumPages = 2;
     //set frame to start page
 
     
-    
-    BLListManager *listManager = [[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self];
-    [self addChildViewController:listManager];
-    [listManager didMoveToParentViewController:self];
-    [self.scrollView addSubview:listManager.view];
-     
+    //Set up the child view controllers
+    //add in the order you want them to sit, from left to right, for indexing purposes (used in update navigation bar)
     
     BLProfileView *profileView = [[BLProfileView alloc] initWithNavigationDelegate:self];
     [self addChildViewController:profileView];
     [profileView didMoveToParentViewController:self];
     [self.scrollView addSubview:profileView.view];
-    [self.scrollView setAutoresizesSubviews:NO];
-    [self.view setAutoresizesSubviews:NO];
+    
+    BLListManager *listManager = [[BLListManager alloc] initWithStyle:UITableViewStylePlain delegate:self];
+    [self addChildViewController:listManager];
+    [listManager didMoveToParentViewController:self];
+    [self.scrollView addSubview:listManager.view];
+    
+    BLFriendsManager *friendsListView =  [[BLFriendsManager alloc] initWithNavigationDelegate:self];
+    [self addChildViewController:friendsListView];
+    [friendsListView didMoveToParentViewController:self];
+    [self.scrollView addSubview:friendsListView.view];
     
     
     
+
+    //set subview locations
+    CGRect listManagerViewFrame = profileView.view.frame;
+    listManagerViewFrame.origin.x = listManagerViewFrame.size.width;
+    listManager.view.frame = listManagerViewFrame;
+    
+    CGRect friendsListViewFrame = listManager.view.frame;
+    friendsListViewFrame.origin.x = friendsListViewFrame.size.width*2;
+    friendsListView.view.frame = friendsListViewFrame;
+    
+    //scroll to display list manager
     [self scrollFrameToPage:1];
-    CGRect viewFrame = ((UIViewController *)profileView).view.frame;
-    viewFrame.origin.x = viewFrame.size.width;
-    listManager.view.frame = viewFrame;
+    
     [self.view addSubview:self.scrollView];
     [self.scrollView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
 }
@@ -118,19 +132,11 @@ static NSInteger kNumPages = 2;
     [self.scrollView scrollRectToVisible:frame animated:YES];
     
 }
-- (void)navigateLeft
-{
-    [self scrollFrameToPage:self.pageNum-1];
-}
-- (void)navigateRight
-{
-    [self scrollFrameToPage:self.pageNum+1];
-}
 
 - (void)updateNavigationBar
 {
-    unsigned long index = self.childViewControllers.count - self.pageNum - 1;
-    [(id<BLChildViewController>)self.childViewControllers[index] updateNavigationBar];
+    //unsigned long index = kNumPages - 1 - self.pageNum;
+    [(id<BLChildViewController>)self.childViewControllers[self.pageNum] updateNavigationBar];
     
 }
 
@@ -148,21 +154,9 @@ static NSInteger kNumPages = 2;
     }
 }
 
-- (void)killScroll:(UIScrollView *)scrollView
-{
-    CGPoint offset = self.scrollView.contentOffset;
-    offset.x -= 1.0;
-    offset.y -= 1.0;
-    [scrollView setContentOffset:offset animated:NO];
-    offset.x += 1.0;
-    offset.y += 1.0;
-    [scrollView setContentOffset:offset animated:NO];
-}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGPoint offset = scrollView.contentOffset;
-    
-
     
     if (scrollView.contentOffset.x >= 0
         && scrollView.contentOffset.x <= (kNumPages - 1)*scrollView.frame.size.width + 5) {
@@ -180,6 +174,7 @@ static NSInteger kNumPages = 2;
     
 }
 
+/*
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     //prevent upward scrolling on profile view
@@ -193,6 +188,7 @@ static NSInteger kNumPages = 2;
         _preventRightScrolling = YES;
     }
 }
+*/
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
@@ -210,6 +206,18 @@ static NSInteger kNumPages = 2;
     _preventDownwardScrolling = NO;
     _preventLeftScrolling = NO;
     _preventRightScrolling = NO;
+}
+
+#pragma mark - Navigation Delegate
+
+- (void)navigateLeft
+{
+    [self scrollFrameToPage:self.pageNum-1];
+}
+
+- (void)navigateRight
+{
+    [self scrollFrameToPage:self.pageNum+1];
 }
 
 - (void)presentLogInViewFromPresentingViewController

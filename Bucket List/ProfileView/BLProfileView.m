@@ -12,20 +12,21 @@
 #import "BLDesignFactory.h"
 #import "BLUser.h"
 #import "Parse/Parse.h"
+
 @interface BLProfileView ()
 
-@property BOOL statusBarHidden;
 @property id<BLNavigationDelegate> navigator;
+
 @end
 
 @implementation BLProfileView
 
 static NSString *profileCellPicID = @"Profile Cell Pic";
 static NSString *profileCellID = @"Profile Cell";
+
 - (id)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
-    _statusBarHidden = NO;
     return self;
 }
 
@@ -72,23 +73,6 @@ static NSString *profileCellID = @"Profile Cell";
     [super viewWillAppear:animated];
 }
 
-- (void)updateNavigationBar
-{
-    [self.parentViewController.navigationItem
-     setLeftBarButtonItem:[[UIBarButtonItem alloc]
-                           initWithTitle:@"Sign Out"
-                           style:UIBarButtonItemStyleBordered
-                           target:self
-                           action:@selector(signOut)]
-     animated:YES];
-    [self.parentViewController.navigationItem
-     setRightBarButtonItem:[[UIBarButtonItem alloc]
-                            initWithTitle:@"Lists >"
-                            style:UIBarButtonItemStyleBordered
-                            target:self.navigator
-                            action:@selector(navigateRight)]
-     animated:YES];
-}
 
 - (void)signOut
 {
@@ -207,5 +191,25 @@ static NSString *profileCellID = @"Profile Cell";
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - childViewController Delegate
+
+- (void)updateNavigationBar
+{
+    [self.parentViewController.navigationItem
+     setLeftBarButtonItem:[[UIBarButtonItem alloc]
+                           initWithTitle:@"Sign Out"
+                           style:UIBarButtonItemStyleBordered
+                           target:self
+                           action:@selector(signOut)]
+     animated:YES];
+    [self.parentViewController.navigationItem
+     setRightBarButtonItem:[[UIBarButtonItem alloc]
+                            initWithTitle:@"Lists >"
+                            style:UIBarButtonItemStyleBordered
+                            target:self.navigator
+                            action:@selector(navigateRight)]
+     animated:YES];
+}
 
 @end
