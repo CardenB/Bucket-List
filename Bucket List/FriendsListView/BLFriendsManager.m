@@ -11,6 +11,7 @@
 #import "BLDesignFactory.h"
 #import "BLUser.h"
 #import "Parse/Parse.h"
+#import "BLUserTableViewCell.h"
 
 @interface BLFriendsManager ()
 
@@ -70,8 +71,8 @@ static NSString *cellID = @"Friends Cell ID";
     self.tableView.tableHeaderView = self.searchDisplayController.searchBar;
     [self.tableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
-    [self.searchDisplayController.searchResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    [self.tableView registerClass:[BLUserTableViewCell class] forCellReuseIdentifier:cellID];
+    [self.searchDisplayController.searchResultsTableView registerClass:[BLUserTableViewCell class] forCellReuseIdentifier:cellID];
     
     
     
@@ -92,7 +93,7 @@ static NSString *cellID = @"Friends Cell ID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    BLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     BLUser *friend;
     
     if (tableView == self.searchDisplayController.searchResultsTableView ) {
@@ -101,7 +102,8 @@ static NSString *cellID = @"Friends Cell ID";
         friend = [BLUser currentUser].friends[indexPath.row];
     }
     // Configure the cell...
-    cell.textLabel.text = friend.propercaseFullName;
+    [cell setFriend:friend];
+    //cell.textLabel.text = friend.propercaseFullName;
     
     return cell;
 }
