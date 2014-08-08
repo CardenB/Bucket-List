@@ -151,6 +151,14 @@
 
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    BLUser *thisUser = (BLUser *)user;
+    NSString *signUpName = (NSString *)[user objectForKey:@"additional"];
+    thisUser.propercaseFullName = signUpName;
+    thisUser.lowercaseFullName = signUpName.lowercaseString;
+    NSArray *firstNameLastName = [signUpName.lowercaseString componentsSeparatedByString:@" "];
+    thisUser.lowercaseFirstName = firstNameLastName[0];
+    thisUser.lowercaseLastName = firstNameLastName[1];
+    [thisUser save];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 

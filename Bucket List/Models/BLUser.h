@@ -11,6 +11,9 @@
 
 @interface BLUser : PFUser< PFSubclassing >
 
-@property NSString *name;
+@property NSString *propercaseFullName;
+@property NSString *lowercaseFirstName;
+@property NSString *lowercaseLastName;
+@property NSString *lowercaseFullName;
 @property NSMutableArray *friends; //Array of BLUser pointers
 @end

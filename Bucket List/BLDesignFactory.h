@@ -40,4 +40,7 @@
 + (UIColor *)iconTintColor;
 
 + (UIColor *)textColor;
+
++ (void)customizeSearchBars;
++ (void)customizeSearchBar:(UISearchBar *)searchBar;
 @end

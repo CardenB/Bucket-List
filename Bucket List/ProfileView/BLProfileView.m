@@ -111,7 +111,7 @@ static NSString *profileCellID = @"Profile Cell";
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:profileCellPicID forIndexPath:indexPath];
         
-        NSString *name = [BLUser currentUser].name;
+        NSString *name = [BLUser currentUser].propercaseFullName;
         UIImageView *img = [[UIImageView alloc] initWithFrame:cell.frame];
         [img setImageWithString:name color:[BLDesignFactory loginBackgroundColor]];
         [cell addSubview:img];
@@ -127,7 +127,7 @@ static NSString *profileCellID = @"Profile Cell";
         switch (indexPath.row) {
             case 1:
                 cell.textLabel.text = @"Name";
-                cell.detailTextLabel.text = [BLUser currentUser].name;
+                cell.detailTextLabel.text = [BLUser currentUser].propercaseFullName;
                 break;
             case 2:
                 cell.textLabel.text = @"Email";

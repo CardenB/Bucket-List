@@ -20,6 +20,7 @@
 @property NSMutableArray *searchData;
 
 @property UISearchBar *searchBar;
+@property UISearchDisplayController *searchController;
 
 @end
 
@@ -27,20 +28,12 @@
 
 static NSString *cellID = @"Friends Cell ID";
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (id)initWithNavigationDelegate:(id<BLNavigationDelegate>)delegate
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         self.navigator = delegate;
+        self.searchData = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -48,16 +41,38 @@ static NSString *cellID = @"Friends Cell ID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
+
     
+
+    //self.searchBar = [[UISearchBar alloc] initWithFrame:self.tableView.tableHeaderView.frame];
+    //[self.searchBar setTintColor:[BLDesignFactory loginBackgroundColor]];
+    //[self.searchDisplayController.searchBar setFrame:CGRectMake(0, 70, 320, 44)];
+    //dself.searchDisplayController.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 70, 320, 44)];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc]
+                              initWithFrame:self.tableView.tableHeaderView.frame];
+
+    [BLDesignFactory customizeSearchBar:searchBar];
+    
+    self.searchController = [[UISearchDisplayController alloc]
+                             initWithSearchBar:searchBar
+                             contentsController:self];
+    [self.searchDisplayController setSearchResultsDataSource:self];
+    [self.searchDisplayController setSearchResultsDelegate:self];
+    [self.searchDisplayController setDelegate:self];
+    [self.searchDisplayController.searchBar setBarTintColor:[BLDesignFactory loginBackgroundColor]];
+    //self.searchBar.delegate = self;
+    //self.searchController.searchResultsDataSource = self;
+    //self.searchController.searchResultsDelegate = self;
+    
+    self.tableView.tableHeaderView = self.searchDisplayController.searchBar;
     [self.tableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 70, 320, 44)];
-    [self.searchBar setBarTintColor:[BLDesignFactory loginBackgroundColor]];
-    [self setSearchBar:self.searchBar];
-    self.tableView.tableHeaderView = self.searchBar;
-    self.searchBar.delegate = self;
-    self.searchDisplayController.searchResultsDataSource = self;
-    self.searchDisplayController.searchResultsDelegate = self;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    [self.searchDisplayController.searchResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    
     
     
     // Uncomment the following line to preserve selection between presentations.
@@ -78,10 +93,15 @@ static NSString *cellID = @"Friends Cell ID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    BLUser *friend;
     
+    if (tableView == self.searchDisplayController.searchResultsTableView ) {
+        friend = [self.searchData objectAtIndex:indexPath.row];
+    } else {
+        friend = [BLUser currentUser].friends[indexPath.row];
+    }
     // Configure the cell...
-    BLUser *friend = [BLUser currentUser].friends[indexPath.row];
-    cell.textLabel.text = friend.name;
+    cell.textLabel.text = friend.propercaseFullName;
     
     return cell;
 }
@@ -124,20 +144,48 @@ static NSString *cellID = @"Friends Cell ID";
                       scope:(NSString *)scope
 {
     
-    /**stack overflow code**/
+    //self.searchData = [[NSMutableArray alloc] init];
     
-    PFQuery *userQuery = [BLUser query];
+    PFQuery *emailQuery = [BLUser query];
+    [emailQuery whereKey:@"username" hasPrefix:text];
+    PFQuery *firstNameQuery = [BLUser query];
+    PFQuery *lastNameQuery = [BLUser query];
+    PFQuery *fullNameQuery = [BLUser query];
+    [firstNameQuery whereKey:@"lowercaseFirstName" hasPrefix:text.lowercaseString];
+    [lastNameQuery whereKey:@"lowercaseLastName" hasPrefix:text.lowercaseString];
+    [fullNameQuery whereKey:@"lowercaseFullName" hasPrefix:text.lowercaseString];
     
-    NSArray *userArray = [userQuery findObjects];
+    PFQuery *compoundQuery = [PFQuery orQueryWithSubqueries:@[emailQuery, firstNameQuery, lastNameQuery, fullNameQuery]];
+    
+    [compoundQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            [self.searchData removeAllObjects];
+            [self.searchData addObjectsFromArray:objects];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        }
+    }];
+    /*
+    PFQuery *userQuery2 = [BLUser query];
+    
+    [userQuery2 whereKey:@"additional" equalTo:@"Carden Bagwell"];
+    
+    [userQuery2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            [self.searchData addObjectsFromArray:objects];
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        }
+    }];
+     */
     
     //create filter for searching info collection
-    NSPredicate *filterPredicate = [NSPredicate
-                                    predicateWithFormat:@"%@ like self.username OR %@ like self.name",
-                                    text];
+    //NSPredicate *filterPredicate = [NSPredicate
+    //                                predicateWithFormat:@"%@ like username OR %@ like name",
+    //                                text];
     //retrieve search results
-    self.searchData = [NSMutableArray
-                       arrayWithArray:[userArray
+    /*self.searchData = [NSMutableArray
+                       arrayWithArray:[userArray2
                                        filteredArrayUsingPredicate:filterPredicate]];
+     */
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller

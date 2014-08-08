@@ -102,4 +102,49 @@
     [logoTextField setUserInteractionEnabled:NO];
     return logoTextField;
 }
+
++ (void)customizeSearchBars
+{
+    [[UISearchBar appearance] setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
+    [[UISearchBar appearance] setSearchBarStyle:UISearchBarStyleMinimal];
+    [[UISearchBar appearance]
+     setBackgroundImage:[UIImage
+                         imageWithColor:[BLDesignFactory loginBackgroundColor]
+                         cornerRadius:0.0f]
+     forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UISearchBar appearance] setTintAdjustmentMode:UIViewTintAdjustmentModeAutomatic];
+   [[UISearchBar appearance] setTintColor:[self loginBackgroundColor]];
+    
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:[self searchBarButtonAttributes] forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
+     setTitleTextAttributes:[self searchBarButtonAttributes] forState:UIControlStateHighlighted];
+    [[UILabel appearanceWhenContainedIn:[UISearchBar class], nil] setAttributedText:[[NSAttributedString alloc] initWithString:@"Search for friends" attributes:[self placeholderTextAttributes]]];
+    
+    UIImage *searchFieldImage = [[UIImage imageWithColor:[self mainBackgroundColor] cornerRadius:0.0f]
+                                 imageWithMinimumSize:[UISearchBar appearance].frame.size];
+    [[UISearchBar appearance] setSearchFieldBackgroundImage:searchFieldImage forState:UIControlStateNormal];
+    
+
+}
+
++ (void)customizeSearchBar:(UISearchBar *)searchBar
+{
+}
+
++ (NSDictionary *)placeholderTextAttributes
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+     [self placeholderTextColor], NSForegroundColorAttributeName,
+            nil];
+    
+}
+
++ (NSDictionary *)searchBarButtonAttributes
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            [BLDesignFactory mainBackgroundColor], NSForegroundColorAttributeName,
+            nil];
+}
 @end

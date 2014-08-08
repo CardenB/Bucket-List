@@ -305,7 +305,7 @@ static NSString *addListCellID = @"Add List Cell";
         
         cell.detailTextLabel.text = [NSString
                                      stringWithFormat:@"Created by %@, %@",
-                                     ((BLUser *)listObject.creator).name,
+                                     ((BLUser *)listObject.creator).propercaseFullName,
                                      stringFromDateTime];
         
         return cell;

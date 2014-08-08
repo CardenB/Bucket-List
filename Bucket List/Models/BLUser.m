@@ -13,12 +13,57 @@
 @implementation BLUser : PFUser
 
 @dynamic friends;
+/*
+@dynamic propercaseFullName;
+@dynamic lowercaseLastName;
+@dynamic lowercaseFirstName;
+@dynamic lowercaseFullName;
+ */
+
+
+- (NSString *)propercaseFullName
+{
+    return self[@"propercaseFullName"];
+}
+- (void)setPropercaseFullName:(NSString *)name
+{
+    self[@"propercaseFullName"] = name;
+}
+
+- (NSString *)lowercaseFirstName
+{
+    return self[@"lowercaseFirstName"];
+}
+- (void)setLowercaseFirstName:(NSString *)name
+{
+    self[@"lowercaseFirstName"] = name;
+}
+
+- (NSString *)lowercaseLastName
+{
+    return self[@"lowercaseLastName"];
+}
+- (void)setLowercaseLastName:(NSString *)name
+{
+    [self setObject:name forKey:@"lowercaseLastName"];
+
+}
+
+- (NSString *)lowercaseFullName
+{
+    return self[@"lowercaseFullName"];
+}
+- (void)setLowercaseFullName:(NSString *)name
+{
+    self[@"lowercaseFullName"] = name;
+}
+ 
 
 /*
 + (NSString *)parseClassName {
     return @"BLUser";
 }
- */
+
 
 - (NSString *)name
 {
@@ -29,4 +74,5 @@
 {
     self[@"additional"] = name;
 }
+ */
 @end
