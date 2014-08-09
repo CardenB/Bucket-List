@@ -12,16 +12,17 @@
 
 @implementation BLUser : PFUser
 
-/*
+
 @dynamic friends;
+
 @dynamic propercaseFullName;
 @dynamic lowercaseLastName;
 @dynamic lowercaseFirstName;
 @dynamic lowercaseFullName;
- */
+
 
 #warning remove/insert friend from tableview on add
-
+/*
 - (NSString *)propercaseFullName
 {
     return self[@"propercaseFullName"];
@@ -58,7 +59,13 @@
 {
     self[@"lowercaseFullName"] = name;
 }
+*/
+- (NSArray *)friendObjectIdArray
+{
+    return [self.friends valueForKeyPath:@"objectId"];
+}
 
+/*
 - (NSArray *)friends
 {
     return self[@"friends"];
@@ -68,36 +75,5 @@
     self[@"friends"] = friends;
     [self save];
 }
-
-+ (void)addFriend:(BLUser *)user
-{
-    if (![BLUser currentUser].friends) {
-        [BLUser currentUser].friends = [[NSArray alloc] initWithArray:@[user]];
-    } else {
-        [BLUser currentUser].friends = [[BLUser currentUser].friends arrayByAddingObject:user];
-    }
-}
-+ (void)removeFriend:(BLUser *)user
-{
-    NSMutableArray *friendsArray = [[NSMutableArray alloc] initWithCapacity:[BLUser currentUser].friends.count];
-    [friendsArray removeObject:user];
-    [BLUser currentUser].friends = [friendsArray copy];
-    [[BLUser currentUser] saveInBackground];
-}
-/*
-+ (NSString *)parseClassName {
-    return @"BLUser";
-}
-
-
-- (NSString *)name
-{
-    return self[@"additional"];
-}
-
-- (void)setName:(NSString *)name
-{
-    self[@"additional"] = name;
-}
- */
+*/
 @end

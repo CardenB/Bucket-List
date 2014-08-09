@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "BLUser.h"
+#import "BLFriendManagerDelegate.h"
+#import "UIImageView+Letters.h"
+#import "UIImage+FlatUI.h"
+#import "BLDesignFactory.h"
+#import "MKToggleButton.h"
 
 @interface BLUserTableViewCell : UITableViewCell
 
-- (id)initWithUser:(BLUser *)user reuseIdentifier:(NSString *)identifier;
-
-- (void)setFriend:(BLUser *)user;
+@property (strong) BLUser *user;
+@property IBOutlet MKToggleButton *addUserButton;
+@property id<BLFriendManagerDelegate> delegate;
 
 @end

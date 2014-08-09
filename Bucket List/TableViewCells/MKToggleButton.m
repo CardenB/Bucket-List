@@ -19,6 +19,7 @@
 //
 
 #import "MKToggleButton.h"
+#import "BLDesignFactory.h"
 
 @interface RoundView : UIView
 @property (nonatomic, strong) UIBezierPath* path;
@@ -99,7 +100,11 @@
 
 - (void) updateBackground
 {
-    self.backgroundColor = self.selected ? self.tintColor : [UIColor clearColor];
+    if (self.selected) {
+        self.backgroundColor = self.tintColor;
+    } else {
+        self.backgroundColor = [BLDesignFactory mainBackgroundColor];
+    }
 }
 
 - (void) changed:(UIButton*)button

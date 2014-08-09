@@ -109,6 +109,7 @@
 		DD1F43DA19956B5E00065794 /* BLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLUserTableViewCell.m; sourceTree = "<group>"; };
 		DD1F43DC1995902E00065794 /* MKToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKToggleButton.h; sourceTree = "<group>"; };
 		DD1F43DD1995902E00065794 /* MKToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKToggleButton.m; sourceTree = "<group>"; };
+		DD1F43DF19967FC700065794 /* BLFriendManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLFriendManagerDelegate.h; sourceTree = "<group>"; };
 		DDB9921D198EB5CD00C38D4C /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		DDB99220198EB63D00C38D4C /* BLProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProfileView.h; sourceTree = "<group>"; };
@@ -225,6 +226,7 @@
 				9DC0DD2319777D2F00A2E6F5 /* BLPresenterDelegate.h */,
 				DDB9922F198EC2B100C38D4C /* BLNavigationDelegate.h */,
 				DDFF8069198FEEEE00AB1D3F /* BLChildViewController.h */,
+				DD1F43DF19967FC700065794 /* BLFriendManagerDelegate.h */,
 			);
 			name = Protocols;
 			path = "Bucket List/Protocols";

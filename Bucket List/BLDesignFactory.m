@@ -126,6 +126,9 @@
                                  imageWithMinimumSize:[UISearchBar appearance].frame.size];
     [[UISearchBar appearance] setSearchFieldBackgroundImage:searchFieldImage forState:UIControlStateNormal];
     
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[self mainBackgroundColor]];
+    [[UISearchBar appearance] setBarTintColor:[self mainBackgroundColor]];
+    
 
 }
 

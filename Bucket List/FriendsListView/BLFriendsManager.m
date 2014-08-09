@@ -13,6 +13,7 @@
 #import "Parse/Parse.h"
 #import "BLUserTableViewCell.h"
 
+
 @interface BLFriendsManager ()
 
 @property id<BLNavigationDelegate> navigator;
@@ -42,15 +43,6 @@ static NSString *cellID = @"Friends Cell ID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
-
-    
-
-    //self.searchBar = [[UISearchBar alloc] initWithFrame:self.tableView.tableHeaderView.frame];
-    //[self.searchBar setTintColor:[BLDesignFactory loginBackgroundColor]];
-    //[self.searchDisplayController.searchBar setFrame:CGRectMake(0, 70, 320, 44)];
-    //dself.searchDisplayController.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 70, 320, 44)];
     
     UISearchBar *searchBar = [[UISearchBar alloc]
                               initWithFrame:self.tableView.tableHeaderView.frame];
@@ -64,20 +56,18 @@ static NSString *cellID = @"Friends Cell ID";
     [self.searchDisplayController setSearchResultsDelegate:self];
     [self.searchDisplayController setDelegate:self];
     [self.searchDisplayController.searchBar setBarTintColor:[BLDesignFactory loginBackgroundColor]];
-    //self.searchBar.delegate = self;
-    //self.searchController.searchResultsDataSource = self;
-    //self.searchController.searchResultsDelegate = self;
+
     
     self.tableView.tableHeaderView = self.searchDisplayController.searchBar;
     [self.tableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
+    [self.tableView setSeparatorColor:[BLDesignFactory loginBackgroundColor]];
+    
+    [self.searchDisplayController.searchResultsTableView setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
+    [self.searchDisplayController.searchResultsTableView setSeparatorColor:[BLDesignFactory loginBackgroundColor]];
     
     [self.tableView registerClass:[BLUserTableViewCell class] forCellReuseIdentifier:cellID];
     [self.searchDisplayController.searchResultsTableView registerClass:[BLUserTableViewCell class] forCellReuseIdentifier:cellID];
     
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -93,7 +83,8 @@ static NSString *cellID = @"Friends Cell ID";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    BLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    BLUserTableViewCell *cell = (BLUserTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+
     BLUser *friend;
     
     if (tableView == self.searchDisplayController.searchResultsTableView ) {
@@ -101,11 +92,32 @@ static NSString *cellID = @"Friends Cell ID";
     } else {
         friend = [BLUser currentUser].friends[indexPath.row];
     }
-    // Configure the cell...
-    [cell setFriend:friend];
-    //cell.textLabel.text = friend.propercaseFullName;
+    
+    [friend fetchIfNeeded];
+    
+    cell.delegate = self;
+    cell.user = friend;
+    
+    cell.textLabel.text = friend.propercaseFullName;
+    cell.detailTextLabel.text = friend.username;
+    
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [img setImageWithString:friend.propercaseFullName];
+    
+    [cell.imageView setImage:img.image];
+    
+    if ([[[BLUser currentUser] friendObjectIdArray] containsObject:friend.objectId]) {
+        [cell.addUserButton setSelected:YES];
+    } else {
+        [cell.addUserButton setSelected:NO];
+    }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[BLDesignFactory mainBackgroundColor]];
 }
 
 
@@ -132,13 +144,6 @@ static NSString *cellID = @"Friends Cell ID";
      setRightBarButtonItem:nil
      animated:YES];
 }
-
-
-#pragma mark - UISearchBar Delegate
-
-#pragma mark - UISearchDisplayController DataSource
-
-#pragma mark - UISearchDisplayController Delegate
 
 #pragma mark - Search Bar
 
@@ -168,15 +173,6 @@ static NSString *cellID = @"Friends Cell ID";
         }
     }];
     
-    //create filter for searching info collection
-    //NSPredicate *filterPredicate = [NSPredicate
-    //                                predicateWithFormat:@"%@ like username OR %@ like name",
-    //                                text];
-    //retrieve search results
-    /*self.searchData = [NSMutableArray
-                       arrayWithArray:[userArray2
-                                       filteredArrayUsingPredicate:filterPredicate]];
-     */
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller
@@ -225,57 +221,41 @@ shouldReloadTableForSearchScope:(NSInteger)searchOption
     }
 }
 
+#pragma mark - Friend management data source
 
-/*
-//used to load each individual cell
-//override if sections are presented in a different way
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    UITableViewCell *cell;
-    NSMutableArray *cellDataCollection;
-    
-    CTManagerCell *mCell;
-    if (tableView == [[self searchDisplayController] searchResultsTableView])
-    {
-        cellDataCollection = self.filteredCollection;
-        
-        mCell = [[[self searchDisplayController]
-                  searchResultsTableView] dequeueReusableCellWithIdentifier:self.CellID
-                 forIndexPath:indexPath];
-    }
-    else
-    {
-        cellDataCollection = self.infoCollection;
-        //override the getter for CellID to create with the proper identifier
-        mCell = [tableView
-                 dequeueReusableCellWithIdentifier:self.CellID
-                 forIndexPath:indexPath];
-    }
-    
-    
-    //override the getter for name in the object model to create the proper title
-    mCell.TitleLabel.text = ((NSObject<CTModelProtocol> *)[cellDataCollection objectAtIndex:indexPath.row]).labelName;
-    cell = mCell;
-    return cell;
-}
-*/
 
-/*
-//used to push detail view
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)addFriend:(BLUser *)user cell:(UITableViewCell *)cell
 {
-    if(tableView == [[self searchDisplayController] searchResultsTableView])
-    {
-        [self.delegate presentViewAsDetail:[self initializeDetailView:[self.filteredCollection objectAtIndex:indexPath.row]]];
+    if (![BLUser currentUser].friends) {
+        [BLUser currentUser].friends = @[user];
+    } else {
+        [BLUser currentUser].friends = [[BLUser currentUser].friends arrayByAddingObject:user];
     }
-    else
-    {
-        [self.delegate presentViewAsDetail:[self initializeDetailView:[self.infoCollection objectAtIndex:indexPath.row]]];
-    }
-    
+    [[BLUser currentUser] save];
+
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[[BLUser currentUser].friends indexOfObject:user] inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
 }
-*/
+- (void)removeFriend:(BLUser *)user cell:(UITableViewCell *)cell
+{
+
+    NSMutableArray *friendsArray = [[NSMutableArray alloc] initWithCapacity:[BLUser currentUser].friends.count];
+    [friendsArray addObjectsFromArray:[BLUser currentUser].friends];
+
+    for (BLUser *friend in friendsArray)
+    {
+        if ([friend.objectId isEqualToString:user.objectId]) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[[BLUser currentUser].friends indexOfObject:friend] inSection:0];
+            [friendsArray removeObject:friend];
+            [BLUser currentUser].friends = friendsArray;
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        }
+    }
+    [[BLUser currentUser] save];
+
+
+}
+
 @end
