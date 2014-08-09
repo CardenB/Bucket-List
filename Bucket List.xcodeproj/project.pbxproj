@@ -10,7 +10,6 @@
 		9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFD19777D2F00A2E6F5 /* BLAppDelegate.m */; };
 		9DC0DD2619777D2F00A2E6F5 /* BLDesignFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DCFF19777D2F00A2E6F5 /* BLDesignFactory.m */; };
 		9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0019777D2F00A2E6F5 /* Bucket List-Info.plist */; };
-		9DC0DD2819777D2F00A2E6F5 /* BLContactManagerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0419777D2F00A2E6F5 /* BLContactManagerTableViewController.m */; };
 		9DC0DD2A19777D2F00A2E6F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0819777D2F00A2E6F5 /* Images.xcassets */; };
 		9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0B19777D2F00A2E6F5 /* BLListManager.m */; };
 		9DC0DD2C19777D2F00A2E6F5 /* BLListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DD0E19777D2F00A2E6F5 /* BLListTableViewController.m */; };
@@ -67,8 +66,6 @@
 		9DC0DCFF19777D2F00A2E6F5 /* BLDesignFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLDesignFactory.m; path = "Bucket List/BLDesignFactory.m"; sourceTree = SOURCE_ROOT; };
 		9DC0DD0019777D2F00A2E6F5 /* Bucket List-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Bucket List-Info.plist"; path = "Bucket List/Bucket List-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9DC0DD0119777D2F00A2E6F5 /* Bucket List-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bucket List-Prefix.pch"; path = "Bucket List/Bucket List-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		9DC0DD0319777D2F00A2E6F5 /* BLContactManagerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLContactManagerTableViewController.h; sourceTree = "<group>"; };
-		9DC0DD0419777D2F00A2E6F5 /* BLContactManagerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLContactManagerTableViewController.m; sourceTree = "<group>"; };
 		9DC0DD0819777D2F00A2E6F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Bucket List/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		9DC0DD0A19777D2F00A2E6F5 /* BLListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLListManager.h; sourceTree = "<group>"; };
 		9DC0DD0B19777D2F00A2E6F5 /* BLListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLListManager.m; sourceTree = "<group>"; };
@@ -161,16 +158,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9DC0DD0219777D2F00A2E6F5 /* ContactManager */ = {
-			isa = PBXGroup;
-			children = (
-				9DC0DD0319777D2F00A2E6F5 /* BLContactManagerTableViewController.h */,
-				9DC0DD0419777D2F00A2E6F5 /* BLContactManagerTableViewController.m */,
-			);
-			name = ContactManager;
-			path = "Bucket List/ContactManager";
-			sourceTree = SOURCE_ROOT;
-		};
 		9DC0DD0919777D2F00A2E6F5 /* List Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +268,6 @@
 				DDB99227198EBC9200C38D4C /* ContainerView */,
 				DDB99223198EBC4200C38D4C /* TableViewCells */,
 				DDB9921C198EB5BA00C38D4C /* ProfileView */,
-				9DC0DD0219777D2F00A2E6F5 /* ContactManager */,
 				9DC0DD0919777D2F00A2E6F5 /* List Manager */,
 				9DC0DD0C19777D2F00A2E6F5 /* List Viewer */,
 				9DC0DD1019777D2F00A2E6F5 /* LoginView */,
@@ -507,7 +493,6 @@
 				DD1F43DB19956B5E00065794 /* BLUserTableViewCell.m in Sources */,
 				9DC0DD3619777D2F00A2E6F5 /* BLList.m in Sources */,
 				DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */,
-				9DC0DD2819777D2F00A2E6F5 /* BLContactManagerTableViewController.m in Sources */,
 				9DC0DD2619777D2F00A2E6F5 /* BLDesignFactory.m in Sources */,
 				DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */,
 				9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */,
