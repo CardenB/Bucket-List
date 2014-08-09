@@ -12,14 +12,15 @@
 
 @implementation BLUser : PFUser
 
-@dynamic friends;
 /*
+@dynamic friends;
 @dynamic propercaseFullName;
 @dynamic lowercaseLastName;
 @dynamic lowercaseFirstName;
 @dynamic lowercaseFullName;
  */
 
+#warning remove/insert friend from tableview on add
 
 - (NSString *)propercaseFullName
 {
@@ -57,8 +58,32 @@
 {
     self[@"lowercaseFullName"] = name;
 }
- 
 
+- (NSArray *)friends
+{
+    return self[@"friends"];
+}
+- (void)setFriends:(NSArray *)friends
+{
+    self[@"friends"] = friends;
+    [self save];
+}
+
++ (void)addFriend:(BLUser *)user
+{
+    if (![BLUser currentUser].friends) {
+        [BLUser currentUser].friends = [[NSArray alloc] initWithArray:@[user]];
+    } else {
+        [BLUser currentUser].friends = [[BLUser currentUser].friends arrayByAddingObject:user];
+    }
+}
++ (void)removeFriend:(BLUser *)user
+{
+    NSMutableArray *friendsArray = [[NSMutableArray alloc] initWithCapacity:[BLUser currentUser].friends.count];
+    [friendsArray removeObject:user];
+    [BLUser currentUser].friends = [friendsArray copy];
+    [[BLUser currentUser] saveInBackground];
+}
 /*
 + (NSString *)parseClassName {
     return @"BLUser";

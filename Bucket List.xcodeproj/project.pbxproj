@@ -39,6 +39,7 @@
 		9DC5D755196B513E00F7239C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D754196B513E00F7239C /* Social.framework */; };
 		9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D758196B514C00F7239C /* SystemConfiguration.framework */; };
 		DD1F43DB19956B5E00065794 /* BLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43DA19956B5E00065794 /* BLUserTableViewCell.m */; };
+		DD1F43DE1995902E00065794 /* MKToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43DD1995902E00065794 /* MKToggleButton.m */; };
 		DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */; };
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
@@ -106,6 +107,8 @@
 		AEDB07342BF74A288781B44D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD1F43D919956B5E00065794 /* BLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLUserTableViewCell.h; sourceTree = "<group>"; };
 		DD1F43DA19956B5E00065794 /* BLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLUserTableViewCell.m; sourceTree = "<group>"; };
+		DD1F43DC1995902E00065794 /* MKToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKToggleButton.h; sourceTree = "<group>"; };
+		DD1F43DD1995902E00065794 /* MKToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKToggleButton.m; sourceTree = "<group>"; };
 		DDB9921D198EB5CD00C38D4C /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		DDB99220198EB63D00C38D4C /* BLProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProfileView.h; sourceTree = "<group>"; };
@@ -318,6 +321,8 @@
 		DDB99223198EBC4200C38D4C /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				DD1F43DC1995902E00065794 /* MKToggleButton.h */,
+				DD1F43DD1995902E00065794 /* MKToggleButton.m */,
 				DDB99224198EBC4200C38D4C /* BLAddItemTableViewCell.h */,
 				DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */,
 				DD1F43D919956B5E00065794 /* BLUserTableViewCell.h */,
@@ -491,6 +496,7 @@
 				DDFF806C199146C700AB1D3F /* BLUser.m in Sources */,
 				9DC0DD3019777D2F00A2E6F5 /* BLSubclassConfigViewController.m in Sources */,
 				9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */,
+				DD1F43DE1995902E00065794 /* MKToggleButton.m in Sources */,
 				9DC0DD2E19777D2F00A2E6F5 /* BLLoginViewController.m in Sources */,
 				9DC0DD2C19777D2F00A2E6F5 /* BLListTableViewController.m in Sources */,
 				9DC0DD3519777D2F00A2E6F5 /* BLItem.m in Sources */,

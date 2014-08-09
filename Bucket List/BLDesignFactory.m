@@ -147,4 +147,17 @@
             [BLDesignFactory mainBackgroundColor], NSForegroundColorAttributeName,
             nil];
 }
+
++ (UIButton *)createAddUserButton
+{
+    FUIButton *button = [[FUIButton alloc] initWithFrame:CGRectMake(250, 10, 40, 20)];
+    [button setTitleColor:[self loginBackgroundColor] forState:UIControlStateNormal];
+    [button setTitleColor:[self mainBackgroundColor] forState:UIControlStateHighlighted];
+    [button setBackgroundImage:[UIImage imageWithColor:[self mainBackgroundColor] cornerRadius:button.cornerRadius] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageWithColor:[self loginBackgroundColor] cornerRadius:button.cornerRadius] forState:UIControlStateHighlighted];
+    [button setTitle:@ "+" forState:UIControlStateNormal];
+    [button setTitle:@"added" forState:UIControlStateHighlighted];
+    
+    return button;
+}
 @end

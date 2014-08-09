@@ -158,6 +158,7 @@ static NSString *cellID = @"Friends Cell ID";
     [fullNameQuery whereKey:@"lowercaseFullName" hasPrefix:text.lowercaseString];
     
     PFQuery *compoundQuery = [PFQuery orQueryWithSubqueries:@[emailQuery, firstNameQuery, lastNameQuery, fullNameQuery]];
+    [compoundQuery whereKey:@"objectId" notEqualTo:[BLUser currentUser].objectId];
     
     [compoundQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
@@ -166,18 +167,6 @@ static NSString *cellID = @"Friends Cell ID";
             [self.searchDisplayController.searchResultsTableView reloadData];
         }
     }];
-    /*
-    PFQuery *userQuery2 = [BLUser query];
-    
-    [userQuery2 whereKey:@"additional" equalTo:@"Carden Bagwell"];
-    
-    [userQuery2 findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if (!error) {
-            [self.searchData addObjectsFromArray:objects];
-            [self.searchDisplayController.searchResultsTableView reloadData];
-        }
-    }];
-     */
     
     //create filter for searching info collection
     //NSPredicate *filterPredicate = [NSPredicate

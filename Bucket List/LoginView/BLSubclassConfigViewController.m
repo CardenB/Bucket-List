@@ -158,6 +158,7 @@
     NSArray *firstNameLastName = [signUpName.lowercaseString componentsSeparatedByString:@" "];
     thisUser.lowercaseFirstName = firstNameLastName[0];
     thisUser.lowercaseLastName = firstNameLastName[1];
+    thisUser.friends = [[NSArray alloc] initWithArray:@[]];
     [thisUser save];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

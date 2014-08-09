@@ -43,4 +43,7 @@
 
 + (void)customizeSearchBars;
 + (void)customizeSearchBar:(UISearchBar *)searchBar;
+
++ (UIButton *)createAddUserButton;
+
 @end

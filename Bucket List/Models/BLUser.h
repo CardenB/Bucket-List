@@ -15,5 +15,9 @@
 @property NSString *lowercaseFirstName;
 @property NSString *lowercaseLastName;
 @property NSString *lowercaseFullName;
-@property NSMutableArray *friends; //Array of BLUser pointers
+@property NSArray *friends; //Array of BLUser pointers
+
++ (void)addFriend:(BLUser *)user;
++ (void)removeFriend:(BLUser *)user;
+
 @end
