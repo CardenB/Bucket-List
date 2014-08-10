@@ -13,11 +13,6 @@
 #import "BLUser.h"
 #import "BLDesignFactory.h"
 
-/********************/
-#warning Move BLListItemCell to it's own file
-#warning Load PFItem into view and populate table with itemArray
-/********************/
-
 @interface BLListItemCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet FUITextField *textField;
@@ -49,7 +44,7 @@
 
 - (void)layoutSubviews
 {
-#warning replace completed and star buttons with icons
+    [super layoutSubviews];
     //replace with imageview for completion icon
     self.completedButton.frame = CGRectMake(15, 0, 30, 44);
     [self.completedButton.titleLabel setFont:[UIFont lightFlatFontOfSize:30]];
@@ -120,7 +115,6 @@ static NSString *addListCellID = @"Add List Item Cell";
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-#warning allow for multiple selection
     self = [super initWithStyle:style];
     if (self) {
         // Custom the table
@@ -148,7 +142,7 @@ static NSString *addListCellID = @"Add List Item Cell";
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style object:(PFObject *)list;
+- (id)initWithStyle:(UITableViewStyle)style object:(BLList *)list;
 {
     self = [self initWithStyle:style];
     
