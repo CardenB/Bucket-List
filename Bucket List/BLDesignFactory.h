@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FlatUIKit.h"
+#import "BLUserTableViewCell.h"
 
 @interface BLDesignFactory : NSObject
 
@@ -45,5 +46,7 @@
 + (void)customizeSearchBar:(UISearchBar *)searchBar;
 
 + (UIButton *)createAddUserButton;
+
++ (void)customizeUserCell:(UITableViewCell *)cell user:(BLUser *)user;
 
 @end

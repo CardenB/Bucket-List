@@ -104,6 +104,7 @@ static NSString *cellID = @"cell id";
         BLUser *participant = (BLUser *)self.list.participants[indexPath.row];
         [participant fetchIfNeeded];
         cell.textLabel.text = participant.propercaseFullName;
+        [BLDesignFactory customizeUserCell:cell user:participant];
     } else {
         cell.textLabel.text = @"Add members to share your list.";
     }
@@ -117,12 +118,14 @@ static NSString *cellID = @"cell id";
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    if ( [((BLUser *)self.list.participants[indexPath.row]).objectId isEqualToString:[BLUser currentUser].objectId] ) {
-        return NO;
+    if ([[BLUser currentUser].objectId isEqualToString:self.list.creator.objectId]) {
+        if ( [((BLUser *)self.list.participants[indexPath.row]).objectId isEqualToString:[BLUser currentUser].objectId] ) {
+            return NO;
+        }
+        
+        return YES;
     }
-    
-    return YES;
-    
+    return NO;
 }
 
 // Override to support editing the table view.

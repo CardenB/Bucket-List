@@ -163,4 +163,22 @@
     
     return button;
 }
+
++ (void)customizeUserCell:(UITableViewCell *)cell user:(BLUser *)user
+{
+
+    cell.textLabel.text = user.propercaseFullName;
+    cell.detailTextLabel.text = user.username;
+    
+    CGRect frame = CGRectMake(0, 0, 40, 40);
+    cell.imageView.layer.cornerRadius = frame.size.height/2;
+    cell.imageView.layer.masksToBounds = YES;
+    cell.imageView.layer.borderWidth = 0;
+    
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [img setImageWithString:user.propercaseFullName];
+    
+    [cell.imageView setImage:img.image];
+}
+
 @end

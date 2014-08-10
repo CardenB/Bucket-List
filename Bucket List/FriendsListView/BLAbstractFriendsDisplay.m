@@ -76,14 +76,7 @@ static NSString *cellID = @"Friends Cell ID";
     
     cell.delegate = self;
     cell.user = friend;
-    
-    cell.textLabel.text = friend.propercaseFullName;
-    cell.detailTextLabel.text = friend.username;
-    
-    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    [img setImageWithString:friend.propercaseFullName];
-    
-    [cell.imageView setImage:img.image];
+    [BLDesignFactory customizeUserCell:cell user:friend];
     
     if ([self.friendObjectIdArray containsObject:friend.objectId]) {
         [cell.addUserButton setSelected:YES];
