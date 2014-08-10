@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BLFriendManagerDelegate.h"
+#import "BLAbstractFriendsDisplay.h"
 #import "BLChildViewController.h"
 #import "BLNavigationDelegate.h"
 
-@interface BLFriendsManager : UITableViewController< BLChildViewController, UISearchBarDelegate, UISearchDisplayDelegate, BLFriendManagerDelegate >
+@interface BLFriendsManager : BLAbstractFriendsDisplay< BLChildViewController >
 
 - (id)initWithNavigationDelegate:(id<BLNavigationDelegate>)delegate;
 

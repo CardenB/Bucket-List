@@ -39,6 +39,9 @@
 		9DC5D759196B514C00F7239C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC5D758196B514C00F7239C /* SystemConfiguration.framework */; };
 		DD1F43DB19956B5E00065794 /* BLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43DA19956B5E00065794 /* BLUserTableViewCell.m */; };
 		DD1F43DE1995902E00065794 /* MKToggleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43DD1995902E00065794 /* MKToggleButton.m */; };
+		DD1F43E31997BC0400065794 /* BLAddParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E21997BC0400065794 /* BLAddParticipantView.m */; };
+		DD1F43E61997BFAB00065794 /* BLAbstractFriendsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E51997BFAB00065794 /* BLAbstractFriendsDisplay.m */; };
+		DD1F43EA1997CB4400065794 /* BLParticipantManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E91997CB4400065794 /* BLParticipantManager.m */; };
 		DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */; };
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
@@ -107,6 +110,12 @@
 		DD1F43DC1995902E00065794 /* MKToggleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKToggleButton.h; sourceTree = "<group>"; };
 		DD1F43DD1995902E00065794 /* MKToggleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKToggleButton.m; sourceTree = "<group>"; };
 		DD1F43DF19967FC700065794 /* BLFriendManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLFriendManagerDelegate.h; sourceTree = "<group>"; };
+		DD1F43E11997BC0400065794 /* BLAddParticipantView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAddParticipantView.h; sourceTree = "<group>"; };
+		DD1F43E21997BC0400065794 /* BLAddParticipantView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAddParticipantView.m; sourceTree = "<group>"; };
+		DD1F43E41997BFAB00065794 /* BLAbstractFriendsDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAbstractFriendsDisplay.h; sourceTree = "<group>"; };
+		DD1F43E51997BFAB00065794 /* BLAbstractFriendsDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAbstractFriendsDisplay.m; sourceTree = "<group>"; };
+		DD1F43E81997CB4400065794 /* BLParticipantManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLParticipantManager.h; sourceTree = "<group>"; };
+		DD1F43E91997CB4400065794 /* BLParticipantManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLParticipantManager.m; sourceTree = "<group>"; };
 		DDB9921D198EB5CD00C38D4C /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		DDB99220198EB63D00C38D4C /* BLProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProfileView.h; sourceTree = "<group>"; };
@@ -171,6 +180,8 @@
 		9DC0DD0C19777D2F00A2E6F5 /* List Viewer */ = {
 			isa = PBXGroup;
 			children = (
+				DD1F43E71997CB3400065794 /* ParticipantManager */,
+				DD1F43E01997BBF300065794 /* AddParticipantView */,
 				9DC0DD0D19777D2F00A2E6F5 /* BLListTableViewController.h */,
 				9DC0DD0E19777D2F00A2E6F5 /* BLListTableViewController.m */,
 			);
@@ -294,6 +305,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DD1F43E01997BBF300065794 /* AddParticipantView */ = {
+			isa = PBXGroup;
+			children = (
+				DD1F43E11997BC0400065794 /* BLAddParticipantView.h */,
+				DD1F43E21997BC0400065794 /* BLAddParticipantView.m */,
+			);
+			path = AddParticipantView;
+			sourceTree = "<group>";
+		};
+		DD1F43E71997CB3400065794 /* ParticipantManager */ = {
+			isa = PBXGroup;
+			children = (
+				DD1F43E81997CB4400065794 /* BLParticipantManager.h */,
+				DD1F43E91997CB4400065794 /* BLParticipantManager.m */,
+			);
+			path = ParticipantManager;
+			sourceTree = "<group>";
+		};
 		DDB9921C198EB5BA00C38D4C /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +364,8 @@
 			children = (
 				DDE340E8199290C8008DB6A7 /* BLFriendsManager.h */,
 				DDE340E9199290C8008DB6A7 /* BLFriendsManager.m */,
+				DD1F43E41997BFAB00065794 /* BLAbstractFriendsDisplay.h */,
+				DD1F43E51997BFAB00065794 /* BLAbstractFriendsDisplay.m */,
 			);
 			name = FriendsListView;
 			path = "Bucket List/FriendsListView";
@@ -481,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD1F43E61997BFAB00065794 /* BLAbstractFriendsDisplay.m in Sources */,
 				DDFF806C199146C700AB1D3F /* BLUser.m in Sources */,
 				9DC0DD3019777D2F00A2E6F5 /* BLSubclassConfigViewController.m in Sources */,
 				9DC0DD2B19777D2F00A2E6F5 /* BLListManager.m in Sources */,
@@ -491,11 +523,13 @@
 				DDE340EA199290C8008DB6A7 /* BLFriendsManager.m in Sources */,
 				DDB9922A198EBCA800C38D4C /* BLMainViewContainer.m in Sources */,
 				DD1F43DB19956B5E00065794 /* BLUserTableViewCell.m in Sources */,
+				DD1F43E31997BC0400065794 /* BLAddParticipantView.m in Sources */,
 				9DC0DD3619777D2F00A2E6F5 /* BLList.m in Sources */,
 				DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */,
 				9DC0DD2619777D2F00A2E6F5 /* BLDesignFactory.m in Sources */,
 				DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */,
 				9DC0DD2519777D2F00A2E6F5 /* BLAppDelegate.m in Sources */,
+				DD1F43EA1997CB4400065794 /* BLParticipantManager.m in Sources */,
 				9DC0DD2F19777D2F00A2E6F5 /* BLSignUpViewController.m in Sources */,
 				DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */,
 				9DC0DD3419777D2F00A2E6F5 /* main.m in Sources */,

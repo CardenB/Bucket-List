@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) BLUser *creator;
-@property (nonatomic, strong) NSMutableArray *participants;
+@property (nonatomic, strong) NSArray *participants;
 //@property (nonatomic, strong) NSMutableArray *itemArray;
 
 @end

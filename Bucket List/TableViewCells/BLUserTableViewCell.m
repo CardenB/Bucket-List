@@ -63,12 +63,12 @@
 - (void)selected
 {
     if (self.addUserButton.selected) {
-        if (![[[BLUser currentUser] friendObjectIdArray] containsObject:self.user.objectId])
+        if (![[self.delegate friendObjectIdArray] containsObject:self.user.objectId])
         {
             [self.delegate addFriend:self.user cell:self];
         }
     } else {
-        if ([[[BLUser currentUser] friendObjectIdArray] containsObject:self.user.objectId])
+        if ([[self.delegate friendObjectIdArray] containsObject:self.user.objectId])
         {
             [self.delegate removeFriend:self.user cell:self];
         }

@@ -91,7 +91,7 @@ static NSString *profileCellID = @"Profile Cell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,6 +107,7 @@ static NSString *profileCellID = @"Profile Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger editListsCellIndex = 3;
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:profileCellPicID forIndexPath:indexPath];
@@ -132,6 +133,10 @@ static NSString *profileCellID = @"Profile Cell";
             case 2:
                 cell.textLabel.text = @"Email";
                 cell.detailTextLabel.text = [BLUser currentUser].username;
+                break;
+            case 3:
+                cell.textLabel.text = @"Edit Lists";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
                 
             default:

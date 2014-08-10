@@ -12,6 +12,7 @@
 #import "BLItem.h"
 #import "BLUser.h"
 #import "BLDesignFactory.h"
+#import "BLParticipantManager.h"
 
 @interface BLListItemCell : UITableViewCell
 
@@ -163,12 +164,21 @@ static NSString *addListCellID = @"Add List Item Cell";
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
     self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Details" style:UIBarButtonItemStyleBordered target:self action:@selector(presentListDetails)];
+    
+
 }
 
+- (void)presentListDetails
+{
+    UIViewController *participantManager = [[BLParticipantManager alloc] initWithList:self.list];
+    [self.navigationController pushViewController:participantManager animated:YES];
+    
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self.tableView registerClass:[BLListItemCell class] forCellReuseIdentifier:cellID];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

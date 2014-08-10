@@ -11,6 +11,9 @@
 
 @protocol BLFriendManagerDelegate <NSObject>
 
+@property NSArray *friendCollection;
+@property NSArray *friendObjectIdArray;
+
 - (void)addFriend:(BLUser *)user cell:(UITableViewCell *)cell;
 
 - (void)removeFriend:(BLUser *)user cell:(UITableViewCell *)cell;
