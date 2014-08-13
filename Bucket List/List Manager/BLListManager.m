@@ -240,7 +240,7 @@ static NSString *addListCellID = @"Add List Cell";
     PFQuery *listQuery = [BLList query];
     //TODO: find last user to update instead of creator
     [listQuery includeKey:kListCreator];
-    [listQuery whereKey:kListParticipants equalTo:[BLUser currentUser]];
+    [listQuery whereKey:kListParticipants equalTo:[BLUser currentUser].objectId];
     
     
     //[query whereKey:@"participants" containsString:[PFUser currentUser].username];
@@ -400,7 +400,7 @@ static NSString *addListCellID = @"Add List Cell";
         BLList *list = [BLList object];
         list.name = text;
         list.creator = [BLUser currentUser];
-        list.participants = [NSMutableArray arrayWithArray:@[[BLUser currentUser]]];
+        list.participants = [NSMutableArray arrayWithArray:@[[BLUser currentUser].objectId]];
         
 
         [list saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
