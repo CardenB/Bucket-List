@@ -159,7 +159,7 @@ static NSString *addListCellID = @"Add List Item Cell";
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
     [self.tableView registerClass:[BLAddItemTableViewCell class] forCellReuseIdentifier:addListCellID];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
@@ -275,15 +275,17 @@ static NSString *addListCellID = @"Add List Item Cell";
     }
     else
     {
-        PFTableViewCell *cell = [tableView
+        UITableViewCell *cell = [tableView
                                  dequeueReusableCellWithIdentifier:cellID
                                  forIndexPath:indexPath];
         cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         
-        [cell.textLabel setFont:[UIFont flatFontOfSize:28]];
-        [cell.textLabel setTextColor:[BLDesignFactory textColor]];
-        cell.textLabel.text = [object objectForKey:self.textKey];
+        //[cell.textLabel setFont:[UIFont flatFontOfSize:28]];
+        //[cell.textLabel setTextColor:[BLDesignFactory textColor]];
+        //cell.textLabel.text = [self objectAtIndexPath:indexPath][self.textKey];
+        //cell.textLabel.text = [object objectForKey:self.textKey];
+        [BLDesignFactory customizeListItemCell:cell];
         return cell;
     }
 }

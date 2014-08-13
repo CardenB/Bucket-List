@@ -42,6 +42,8 @@
 		DD1F43E31997BC0400065794 /* BLAddParticipantView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E21997BC0400065794 /* BLAddParticipantView.m */; };
 		DD1F43E61997BFAB00065794 /* BLAbstractFriendsDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E51997BFAB00065794 /* BLAbstractFriendsDisplay.m */; };
 		DD1F43EA1997CB4400065794 /* BLParticipantManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E91997CB4400065794 /* BLParticipantManager.m */; };
+		DD56B561199BC7FC00BCD4D9 /* BLChecklistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD56B560199BC7FC00BCD4D9 /* BLChecklistCell.m */; };
+		DD56B563199BD3EC00BCD4D9 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD56B562199BD3EC00BCD4D9 /* View.xib */; };
 		DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */; };
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
@@ -116,6 +118,9 @@
 		DD1F43E51997BFAB00065794 /* BLAbstractFriendsDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAbstractFriendsDisplay.m; sourceTree = "<group>"; };
 		DD1F43E81997CB4400065794 /* BLParticipantManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLParticipantManager.h; sourceTree = "<group>"; };
 		DD1F43E91997CB4400065794 /* BLParticipantManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLParticipantManager.m; sourceTree = "<group>"; };
+		DD56B55F199BC7FC00BCD4D9 /* BLChecklistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLChecklistCell.h; sourceTree = "<group>"; };
+		DD56B560199BC7FC00BCD4D9 /* BLChecklistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLChecklistCell.m; sourceTree = "<group>"; };
+		DD56B562199BD3EC00BCD4D9 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		DDB9921D198EB5CD00C38D4C /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		DDB99220198EB63D00C38D4C /* BLProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProfileView.h; sourceTree = "<group>"; };
@@ -344,6 +349,9 @@
 				DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */,
 				DD1F43D919956B5E00065794 /* BLUserTableViewCell.h */,
 				DD1F43DA19956B5E00065794 /* BLUserTableViewCell.m */,
+				DD56B55F199BC7FC00BCD4D9 /* BLChecklistCell.h */,
+				DD56B560199BC7FC00BCD4D9 /* BLChecklistCell.m */,
+				DD56B562199BD3EC00BCD4D9 /* View.xib */,
 			);
 			name = TableViewCells;
 			path = "Bucket List/TableViewCells";
@@ -459,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC0DD3119777D2F00A2E6F5 /* BLSubclassConfigViewController.xib in Resources */,
+				DD56B563199BD3EC00BCD4D9 /* View.xib in Resources */,
 				9DC0DD2A19777D2F00A2E6F5 /* Images.xcassets in Resources */,
 				9DC0DD2D19777D2F00A2E6F5 /* ListShare.ipa in Resources */,
 				9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */,
@@ -512,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD56B561199BC7FC00BCD4D9 /* BLChecklistCell.m in Sources */,
 				DD1F43E61997BFAB00065794 /* BLAbstractFriendsDisplay.m in Sources */,
 				DDFF806C199146C700AB1D3F /* BLUser.m in Sources */,
 				9DC0DD3019777D2F00A2E6F5 /* BLSubclassConfigViewController.m in Sources */,

@@ -181,4 +181,31 @@
     [cell.imageView setImage:img.image];
 }
 
++ (void)customizeListItemCell:(UITableViewCell *)cell
+{
+    CGRect frame = CGRectMake(0, 0, 40, 40);
+    UIView *imageView = [[UIView alloc] initWithFrame:cell.imageView.frame];
+    imageView.layer.cornerRadius = frame.size.height/2;
+    imageView.layer.masksToBounds = YES;
+    imageView.layer.borderWidth = 0;
+    NSLog(@"Imageview frame: %f, %f", cell.imageView.frame.size.width, cell.imageView.frame.size.height);
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setFrame:CGRectMake(12, 6, 31, 31)];
+    CGFloat cornerRad = button.bounds.size.width/2.0;
+    
+    [button setBackgroundImage:[UIImage imageWithColor:[self mainBackgroundColor] cornerRadius:cornerRad] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageWithColor:[self loginBackgroundColor] cornerRadius:cornerRad] forState:UIControlStateSelected];
+    
+    button.userInteractionEnabled = YES;
+    [button addTarget:self action:@selector(selectedButton:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.contentView addSubview:button];
+}
+
++ (void)selectedButton:(id)sender
+{
+    [sender setSelected:!((UIButton *)sender).selected];
+    
+}
+
 @end

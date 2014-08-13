@@ -49,4 +49,6 @@
 
 + (void)customizeUserCell:(UITableViewCell *)cell user:(BLUser *)user;
 
++ (void)customizeListItemCell:(UITableViewCell *)cell;
+
 @end
