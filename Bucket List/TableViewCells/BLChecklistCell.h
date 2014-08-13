@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BLItem.h"
 
-@interface BLChecklistCell : UITableViewCell
+@interface BLChecklistCell : UITableViewCell< UITextFieldDelegate >
 
 @property IBOutlet UITextField *itemNameField;
 @property IBOutlet UIButton *completeButton;

@@ -33,6 +33,7 @@
         
         [self.contentView addSubview:self.completeButton];
         [self.contentView addSubview:self.itemNameField];
+        [self.itemNameField setDelegate:self];
     }
     return self;
 }
@@ -69,6 +70,22 @@
          self.item.completed = @YES;
      }
      [self.item saveInBackground];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSString *oldText = self.item.name;
+    self.item.name = textField.text;
+    [self.item saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            [textField resignFirstResponder];
+        } else {
+            NSLog(@"could not save changes to textfield");
+            textField.text = oldText;
+        }
+    }];
+
+     return YES;
 }
 
 
