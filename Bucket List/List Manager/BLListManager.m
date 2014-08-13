@@ -239,8 +239,13 @@ static NSString *addListCellID = @"Add List Cell";
 - (PFQuery *)queryForTable {
     PFQuery *listQuery = [BLList query];
     //TODO: find last user to update instead of creator
-    [listQuery includeKey:kListCreator];
-    [listQuery whereKey:kListParticipants equalTo:[BLUser currentUser].objectId];
+    //[listQuery includeKey:kListCreator];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"BLUser.objectId = x"];
+    //[listQuery whereKey:kListParticipants equalTo:[BLUser currentUser]];
+    NSLog([BLUser currentUser].objectId);
+    [listQuery whereKey:kListParticipants equalTo:[BLUser currentUser]];
+    for (BLUser *user in [BLUser currentUser].friends)
+        NSLog(user.objectId);
     
     
     //[query whereKey:@"participants" containsString:[PFUser currentUser].username];
@@ -302,7 +307,10 @@ static NSString *addListCellID = @"Add List Cell";
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = listObject.name;
+        for (BLUser *user in listObject.participants)
+            NSLog(user.objectId);
         
+        [listObject.creator fetchIfNeeded];
         cell.detailTextLabel.text = [NSString
                                      stringWithFormat:@"Created by %@, %@",
                                      ((BLUser *)listObject.creator).propercaseFullName,
@@ -400,7 +408,7 @@ static NSString *addListCellID = @"Add List Cell";
         BLList *list = [BLList object];
         list.name = text;
         list.creator = [BLUser currentUser];
-        list.participants = [NSMutableArray arrayWithArray:@[[BLUser currentUser].objectId]];
+        list.participants = @[[BLUser currentUser]];
         
 
         [list saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){

@@ -92,7 +92,7 @@ static NSString *cellID = @"User Cell";
     if (!self.list.participants) {
         self.list.participants = @[user];
     } else {
-        self.list.participants = [self.list.participants arrayByAddingObject:user.objectId];
+        self.list.participants = [self.list.participants arrayByAddingObject:user];
     }
     [self.list save];
     
