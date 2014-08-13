@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BLItem.h"
 
 @interface BLChecklistCell : UITableViewCell
+
+@property IBOutlet UITextField *itemNameField;
+@property IBOutlet UIButton *completeButton;
+@property BLItem *item;
 
 @end

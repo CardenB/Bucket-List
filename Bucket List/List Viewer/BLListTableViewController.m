@@ -13,6 +13,7 @@
 #import "BLUser.h"
 #import "BLDesignFactory.h"
 #import "BLParticipantManager.h"
+#import "BLChecklistCell.h"
 
 @interface BLListItemCell : UITableViewCell
 
@@ -159,7 +160,7 @@ static NSString *addListCellID = @"Add List Item Cell";
 {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellID];
+    [self.tableView registerClass:[BLChecklistCell class] forCellReuseIdentifier:cellID];
     [self.tableView registerClass:[BLAddItemTableViewCell class] forCellReuseIdentifier:addListCellID];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
@@ -275,21 +276,14 @@ static NSString *addListCellID = @"Add List Item Cell";
     }
     else
     {
-        UITableViewCell *cell = [tableView
+        BLChecklistCell *cell = [tableView
                                  dequeueReusableCellWithIdentifier:cellID
                                  forIndexPath:indexPath];
-        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
-        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
-        
-        //[cell.textLabel setFont:[UIFont flatFontOfSize:28]];
-        //[cell.textLabel setTextColor:[BLDesignFactory textColor]];
-        //cell.textLabel.text = [self objectAtIndexPath:indexPath][self.textKey];
-        //cell.textLabel.text = [object objectForKey:self.textKey];
-        [BLDesignFactory customizeListItemCell:cell];
+        cell.item = (BLItem *)[self objectAtIndexPath:indexPath];
+        //cell.itemNameField.text = [self objectAtIndexPath:indexPath][self.textKey];
         return cell;
     }
 }
-
 
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath
