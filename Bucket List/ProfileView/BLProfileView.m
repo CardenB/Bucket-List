@@ -13,10 +13,7 @@
 #import "BLUser.h"
 #import "Parse/Parse.h"
 #import "BLEditListManager.h"
-
-
-
-
+#import "BLEditProfileView.h"
 
 @interface BLProfileView ()
 
@@ -30,7 +27,7 @@ static NSString *profileCellPicID = @"Profile Cell Pic";
 static NSString *profileCellID = @"Profile Cell";
 
 typedef enum {
-    
+    pictureCell = 0,
     listEditCell = 3,
     profileEditCell = 4,
     
@@ -78,7 +75,7 @@ typedef enum {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 4;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,7 +139,8 @@ typedef enum {
         BLEditListManager *editListManager = [[BLEditListManager alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:editListManager animated:YES];
     } else if (indexPath.row == profileEditCell) {
-        
+        BLEditProfileView *profileManager = [[BLEditProfileView alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:profileManager animated:YES];
     }
 }
 
@@ -178,6 +176,7 @@ typedef enum {
      setRightBarButtonItem:[[UIBarButtonItem alloc]
                             initWithTitle:@"Lists >"
                             style:UIBarButtonItemStyleBordered
+                            
                             target:self.navigator
                             action:@selector(navigateRight)]
      animated:YES];

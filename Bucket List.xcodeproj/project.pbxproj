@@ -44,6 +44,9 @@
 		DD1F43EA1997CB4400065794 /* BLParticipantManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1F43E91997CB4400065794 /* BLParticipantManager.m */; };
 		DD56B561199BC7FC00BCD4D9 /* BLChecklistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD56B560199BC7FC00BCD4D9 /* BLChecklistCell.m */; };
 		DD56B568199D0D0B00BCD4D9 /* BLEditListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD56B567199D0D0B00BCD4D9 /* BLEditListManager.m */; };
+		DD56B56D199D146F00BCD4D9 /* BLEditFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD56B56C199D146F00BCD4D9 /* BLEditFieldTableViewCell.xib */; };
+		DD56B570199D166C00BCD4D9 /* BLEditFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD56B56F199D166C00BCD4D9 /* BLEditFieldTableViewCell.m */; };
+		DD56B573199D17E500BCD4D9 /* BLEditProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD56B572199D17E500BCD4D9 /* BLEditProfileView.m */; };
 		DDB9921F198EB5CD00C38D4C /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */; };
 		DDB99222198EB63D00C38D4C /* BLProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99221198EB63D00C38D4C /* BLProfileView.m */; };
 		DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB99225198EBC4200C38D4C /* BLAddItemTableViewCell.m */; };
@@ -122,6 +125,11 @@
 		DD56B560199BC7FC00BCD4D9 /* BLChecklistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLChecklistCell.m; sourceTree = "<group>"; };
 		DD56B566199D0D0B00BCD4D9 /* BLEditListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEditListManager.h; sourceTree = "<group>"; };
 		DD56B567199D0D0B00BCD4D9 /* BLEditListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEditListManager.m; sourceTree = "<group>"; };
+		DD56B56C199D146F00BCD4D9 /* BLEditFieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLEditFieldTableViewCell.xib; sourceTree = "<group>"; };
+		DD56B56E199D166C00BCD4D9 /* BLEditFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEditFieldTableViewCell.h; sourceTree = "<group>"; };
+		DD56B56F199D166C00BCD4D9 /* BLEditFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEditFieldTableViewCell.m; sourceTree = "<group>"; };
+		DD56B571199D17E500BCD4D9 /* BLEditProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEditProfileView.h; sourceTree = "<group>"; };
+		DD56B572199D17E500BCD4D9 /* BLEditProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEditProfileView.m; sourceTree = "<group>"; };
 		DDB9921D198EB5CD00C38D4C /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 		DDB99220198EB63D00C38D4C /* BLProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLProfileView.h; sourceTree = "<group>"; };
@@ -338,9 +346,22 @@
 			path = "Edit List Manager";
 			sourceTree = "<group>";
 		};
+		DD56B569199D142000BCD4D9 /* Edit Profile View */ = {
+			isa = PBXGroup;
+			children = (
+				DD56B56C199D146F00BCD4D9 /* BLEditFieldTableViewCell.xib */,
+				DD56B56E199D166C00BCD4D9 /* BLEditFieldTableViewCell.h */,
+				DD56B56F199D166C00BCD4D9 /* BLEditFieldTableViewCell.m */,
+				DD56B571199D17E500BCD4D9 /* BLEditProfileView.h */,
+				DD56B572199D17E500BCD4D9 /* BLEditProfileView.m */,
+			);
+			path = "Edit Profile View";
+			sourceTree = "<group>";
+		};
 		DDB9921C198EB5BA00C38D4C /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
+				DD56B569199D142000BCD4D9 /* Edit Profile View */,
 				DD56B565199D0CF200BCD4D9 /* Edit List Manager */,
 				DDB9921D198EB5CD00C38D4C /* UIImageView+Letters.h */,
 				DDB9921E198EB5CD00C38D4C /* UIImageView+Letters.m */,
@@ -479,6 +500,7 @@
 				9DC0DD3119777D2F00A2E6F5 /* BLSubclassConfigViewController.xib in Resources */,
 				9DC0DD2A19777D2F00A2E6F5 /* Images.xcassets in Resources */,
 				9DC0DD2D19777D2F00A2E6F5 /* ListShare.ipa in Resources */,
+				DD56B56D199D146F00BCD4D9 /* BLEditFieldTableViewCell.xib in Resources */,
 				9DC0DD2719777D2F00A2E6F5 /* Bucket List-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,6 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD56B570199D166C00BCD4D9 /* BLEditFieldTableViewCell.m in Sources */,
 				DD56B561199BC7FC00BCD4D9 /* BLChecklistCell.m in Sources */,
 				DD1F43E61997BFAB00065794 /* BLAbstractFriendsDisplay.m in Sources */,
 				DDFF806C199146C700AB1D3F /* BLUser.m in Sources */,
@@ -552,6 +575,7 @@
 				DD1F43EA1997CB4400065794 /* BLParticipantManager.m in Sources */,
 				9DC0DD2F19777D2F00A2E6F5 /* BLSignUpViewController.m in Sources */,
 				DDB99226198EBC4200C38D4C /* BLAddItemTableViewCell.m in Sources */,
+				DD56B573199D17E500BCD4D9 /* BLEditProfileView.m in Sources */,
 				9DC0DD3419777D2F00A2E6F5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
