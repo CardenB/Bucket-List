@@ -10,7 +10,6 @@
 #import "BLAddItemTableViewCell.h"
 #import "BLListTableViewController.h"
 #import "BLListManager.h"
-#import "BLList.h"
 #import "BLUser.h"
 #import "BLDesignFactory.h"
 #import "BLProfileView.h"
@@ -63,17 +62,14 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self.tableView registerClass:[PFTableViewCell class] forCellReuseIdentifier:cellID];
     [self.tableView registerClass:[BLAddItemTableViewCell class] forCellReuseIdentifier:addListCellID];
-    self.tableView.separatorColor = [BLDesignFactory cellSeparatorColor];
-    self.tableView.backgroundColor = [BLDesignFactory mainBackgroundColor];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"< Settings" style:UIBarButtonItemStyleBordered target:self.navigator action:@selector(navigateLeft)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Friends >" style:UIBarButtonItemStyleBordered target:self action:nil];
     
     
     // Send request to Facebook
+    /*
     FBRequest *request = [FBRequest requestForMe];
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         // handle response
@@ -128,13 +124,10 @@ static NSString *addListCellID = @"Add List Cell";
             NSLog(@"Some other error: %@", error);
         }
     }];
+    */
     
 }
 
-- (void)pushProfileView
-{
-    [self.navigationController pushViewController:[[BLProfileView alloc] initWithStyle:UITableViewStylePlain] animated:YES];
-}
 // Set received values if they are not nil and reload the table
 - (void)updateProfile {
     /*
@@ -239,7 +232,6 @@ static NSString *addListCellID = @"Add List Cell";
 - (PFQuery *)queryForTable {
     PFQuery *listQuery = [BLList query];
     //TODO: find last user to update instead of creator
-    [listQuery includeKey:kListCreator];
     [listQuery whereKey:kListParticipants equalTo:[BLUser currentUser]];
     
     
@@ -274,44 +266,50 @@ static NSString *addListCellID = @"Add List Cell";
         
         cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
         cell.textField.delegate = self;
-        
         return cell;
         
     }
     else
     {
-        PFTableViewCell *cell = [tableView
-                                 dequeueReusableCellWithIdentifier:cellID];
-        if (cell == nil) {
-            cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
-        }
-        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
-        cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
-        
-        [cell.textLabel setFont:[UIFont flatFontOfSize:24]];
-        [cell.textLabel setTextColor:[BLDesignFactory textColor]];
-        
-        [cell.detailTextLabel setFont:[UIFont flatFontOfSize:8]];
-        [cell.detailTextLabel setTextColor:[BLDesignFactory textColor]];
-        
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateStyle:NSDateFormatterShortStyle];
-        [formatter setTimeStyle:NSDateFormatterShortStyle];
-        NSString *stringFromDateTime = [formatter stringFromDate:listObject.createdAt];
-                                      
-        
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = listObject.name;
-        
-        cell.detailTextLabel.text = [NSString
-                                     stringWithFormat:@"Created by %@, %@",
-                                     ((BLUser *)listObject.creator).propercaseFullName,
-                                     stringFromDateTime];
-        
-        return cell;
+        return [self tableView:tableView createListCellAtIndexPath:indexPath object:listObject];
     }
 }
 
+- (PFTableViewCell *)tableView:(UITableView *)tableView
+         createListCellAtIndexPath:(NSIndexPath *)indexPath
+                        object:(BLList *)listObject
+{
+    PFTableViewCell *cell = [tableView
+                             dequeueReusableCellWithIdentifier:cellID];
+    if (cell == nil) {
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
+    }
+    cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
+    cell.backgroundColor = [BLDesignFactory cellBackgroundColor];
+    
+    [cell.textLabel setFont:[UIFont flatFontOfSize:24]];
+    [cell.textLabel setTextColor:[BLDesignFactory textColor]];
+    
+    [cell.detailTextLabel setFont:[UIFont flatFontOfSize:8]];
+    [cell.detailTextLabel setTextColor:[BLDesignFactory textColor]];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    NSString *stringFromDateTime = [formatter stringFromDate:listObject.createdAt];
+    
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.text = listObject.name;
+    
+    [listObject.creator fetchIfNeeded];
+    cell.detailTextLabel.text = [NSString
+                                 stringWithFormat:@"Created by %@, %@",
+                                 ((BLUser *)listObject.creator).propercaseFullName,
+                                 stringFromDateTime];
+    
+    return cell;
+}
 
 
 
@@ -348,7 +346,6 @@ static NSString *addListCellID = @"Add List Cell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"rows in section called");
     return self.objects.count + 1;
 }
 
@@ -360,6 +357,15 @@ static NSString *addListCellID = @"Add List Cell";
     else {
         NSIndexPath *path = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:0];
         return [super objectAtIndexPath:path];
+    }
+}
+
+- (PFObject *)filterObjectAtIndexPath:(BOOL)useSuper indexPath:(NSIndexPath *)indexPath
+{
+    if (useSuper) {
+        return [super objectAtIndexPath:indexPath];
+    } else {
+        return [self objectAtIndexPath:indexPath];
     }
 }
 
@@ -376,18 +382,42 @@ static NSString *addListCellID = @"Add List Cell";
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-#warning Will need to handle the case where a list with multiple owners is deleted
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        PFObject *object = [self objectAtIndexPath:indexPath];
-#warning display activity indicator and create a background task
-        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-            [self loadObjects];
-        }];
+        BLList *list = (BLList *)[self objectAtIndexPath:indexPath];
+        [self removeParticipant:list];
+
     }
 }
 
+- (void)removeParticipant:(BLList *)list
+{
+    
+    NSMutableArray *participantArray = [[NSMutableArray alloc] initWithCapacity:list.participants.count];
+    [participantArray addObjectsFromArray:list.participants];
+    
+    #warning display activity indicator and create a background task
+    for (BLUser *user in participantArray)
+    {
+        if ([user.objectId isEqualToString:[BLUser currentUser].objectId]) {
+            [participantArray removeObject:user];
+            if (participantArray.count == 0) {
+                [list deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+                }];
+            } else {
+                list.participants = participantArray;
+                [list save];
+                
+            }
 
+            break;
+        }
+    }
+    [self loadObjects];
+    
+    
+    
+}
 
 #pragma mark - UITextField Delegate
 

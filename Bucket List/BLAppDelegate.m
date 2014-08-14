@@ -106,10 +106,12 @@
                                            initWithDelegate:self];
     self.mainNav = [[UINavigationController alloc]
                     initWithRootViewController:initialController];
-    [BLDesignFactory configureNavBarDesign:self.mainNav];
-    [BLDesignFactory customizeSearchBars];
+    //[BLDesignFactory configureNavBarDesign:self.mainNav];
+    //[BLDesignFactory customizeSearchBars];
+
     self.window.rootViewController = self.mainNav;
-    
+    [BLDesignFactory setupDesignByProxy];
+
 }
 
 #pragma mark - Delegates

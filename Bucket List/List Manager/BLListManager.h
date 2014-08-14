@@ -10,9 +10,15 @@
 #import <Parse/Parse.h>
 #import "BLNavigationDelegate.h"
 #import "BLChildViewController.h"
+#import "BLList.h"
 
 @interface BLListManager : PFQueryTableViewController <UITextFieldDelegate, BLChildViewController>
 
 - (id)initWithStyle:(UITableViewStyle)style delegate:(id<BLNavigationDelegate>)delegate;
+- (PFTableViewCell *)tableView:(UITableView *)tableView
+     createListCellAtIndexPath:(NSIndexPath *)indexPath
+                        object:(BLList *)listObject;
+
+- (PFObject *)filterObjectAtIndexPath:(BOOL)useSuper indexPath:(NSIndexPath *)indexPath;
 
 @end

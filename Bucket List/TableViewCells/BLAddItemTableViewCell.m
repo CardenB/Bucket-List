@@ -27,6 +27,7 @@
 
 - (void)layoutSubviews
 {
+    [super layoutSubviews];
     FUIButton *addButton = [[FUIButton alloc] init];
     addButton.frame = CGRectMake(15, 0, 30, 44);
     [addButton.titleLabel setFont:[UIFont lightFlatFontOfSize:30]];

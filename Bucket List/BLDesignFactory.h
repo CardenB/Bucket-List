@@ -53,4 +53,6 @@
 
 + (UIColor *)incompleteItemColor;
 
++ (void)setupDesignByProxy;
+
 @end

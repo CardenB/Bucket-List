@@ -190,4 +190,25 @@
 {
     return [[self loginBackgroundColor] colorWithAlphaComponent:0.8f];
 }
+
++ (NSDictionary *)titleTextAttributes
+{
+    return @{ NSForegroundColorAttributeName : [self cellBackgroundColor] };
+}
+
++ (void)setupDesignByProxy
+{
+    //nav bar
+    [[UINavigationBar appearance] configureFlatNavigationBarWithColor:[self loginBackgroundColor]];
+    [[UINavigationBar appearance] setTintColor:[self cellBackgroundColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:[self titleTextAttributes]];
+    //[[UINavigationBar appearance] setTranslucent:NO];
+    
+    //table view
+    [[UITableView appearance] setBackgroundColor:[self mainBackgroundColor]];
+    [[UITableView appearance] setSeparatorColor:[self loginBackgroundColor]];
+    
+    //search bars
+    [self customizeSearchBars];
+}
 @end

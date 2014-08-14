@@ -130,7 +130,6 @@ static NSString *addListCellID = @"Add List Item Cell";
         // The title for this table in the Navigation Controller.
         self.title = self.list.name;
         self.navigationController.topViewController.title = self.list.name;
-        NSLog(self.list.name);
         
         // Whether the built-in pull-to-refresh is enabled
         self.pullToRefreshEnabled = YES;
