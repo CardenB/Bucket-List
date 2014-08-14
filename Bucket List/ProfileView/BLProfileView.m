@@ -12,6 +12,11 @@
 #import "BLDesignFactory.h"
 #import "BLUser.h"
 #import "Parse/Parse.h"
+#import "BLEditListManager.h"
+
+
+
+
 
 @interface BLProfileView ()
 
@@ -23,6 +28,13 @@
 
 static NSString *profileCellPicID = @"Profile Cell Pic";
 static NSString *profileCellID = @"Profile Cell";
+
+typedef enum {
+    
+    listEditCell = 3,
+    profileEditCell = 4,
+    
+} profileViewCellIndices;
 
 - (id)init
 {
@@ -39,40 +51,15 @@ static NSString *profileCellID = @"Profile Cell";
     return self;
 }
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:profileCellPicID];
-    [self.tableView setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[UITableView appearanceWhenContainedIn:[BLProfileView class], nil] setBackgroundColor:[BLDesignFactory loginBackgroundColor]];
+    [[UITableView appearanceWhenContainedIn:[BLProfileView class], nil] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
 
 - (void)signOut
 {
@@ -107,7 +94,7 @@ static NSString *profileCellID = @"Profile Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger editListsCellIndex = 3;
+
     UITableViewCell *cell;
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:profileCellPicID forIndexPath:indexPath];
@@ -134,11 +121,13 @@ static NSString *profileCellID = @"Profile Cell";
                 cell.textLabel.text = @"Email";
                 cell.detailTextLabel.text = [BLUser currentUser].username;
                 break;
-            case 3:
-                cell.textLabel.text = @"Edit Lists";
+            case listEditCell:
+                cell.textLabel.text = @"Manage Lists";
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
-                
+            case profileEditCell:
+                cell.textLabel.text = @"Edit Profile";
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             default:
                 break;
     }
@@ -147,55 +136,32 @@ static NSString *profileCellID = @"Profile Cell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == listEditCell) {
+        BLEditListManager *editListManager = [[BLEditListManager alloc] initWithStyle:UITableViewStylePlain];
+        [self.navigationController pushViewController:editListManager animated:YES];
+    } else if (indexPath.row == profileEditCell) {
+        
+    }
+}
 
-/*
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return NO;
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - childViewController Delegate
 
