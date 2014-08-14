@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BLEditProfileView : UITableViewController
+@interface BLEditProfileView : UITableViewController< UITextFieldDelegate >
 
 @end

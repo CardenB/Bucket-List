@@ -58,6 +58,11 @@ typedef enum {
     [[UITableView appearanceWhenContainedIn:[BLProfileView class], nil] setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
 - (void)signOut
 {
     [BLUser logOut];
@@ -93,6 +98,7 @@ typedef enum {
 {
 
     UITableViewCell *cell;
+    [[BLUser currentUser] fetchIfNeeded];
     if (indexPath.row == 0) {
         cell = [tableView dequeueReusableCellWithIdentifier:profileCellPicID forIndexPath:indexPath];
         

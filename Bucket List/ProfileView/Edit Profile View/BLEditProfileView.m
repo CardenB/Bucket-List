@@ -89,10 +89,16 @@ typedef enum {
             case nameCell:
                 cell.fieldLabel.text = @"Name";
                 cell.fieldTextField.text = [BLUser currentUser].propercaseFullName;
+                cell.fieldTextField.tag = nameCell;
+                cell.fieldTextField.keyboardType = UIKeyboardTypeDefault;
+                cell.fieldTextField.delegate = self;
                 break;
             case emailCell:
                 cell.fieldLabel.text = @"Email";
                 cell.fieldTextField.text = [BLUser currentUser].username;
+                cell.fieldTextField.tag = emailCell;
+                cell.fieldTextField.keyboardType = UIKeyboardTypeDefault;
+                cell.fieldTextField.delegate = self;
                 break;
             default:
                 break;
@@ -153,5 +159,41 @@ typedef enum {
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITextField Delegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.tag == nameCell) {
+        NSString *firstAndLastNameRegex = @"[a-zA-Z]+ ++[a-zA-Z]+$";
+        NSPredicate *nameTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", firstAndLastNameRegex];
+        if( ![nameTest evaluateWithObject:(NSString *)textField.text] )
+        {
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Missing Information", nil) message:NSLocalizedString(@"Make sure you fill out first and last name properly.\n(Ex: \"John Doe\"", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+            return NO;
+        } else {
+            /*
+            [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure?", nil) message:NSLocalizedString(@"This will change your name. Are you sure you want to proceed?.\n(Ex: \"John Doe\"", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil] show];
+             */
+            BLUser *thisUser = [BLUser currentUser];
+            //TODO: set activity view for save operation
+            NSString *name = textField.text;
+            NSArray *firstNameLastName = [name componentsSeparatedByString:@" "];
+            thisUser.propercaseFullName = [NSString stringWithFormat:@"%@ %@", firstNameLastName[0], firstNameLastName[1]];
+            thisUser.lowercaseFullName = thisUser.propercaseFullName.lowercaseString;
+            thisUser.lowercaseFirstName = ((NSString *)firstNameLastName[0]).lowercaseString;
+            thisUser.lowercaseLastName = ((NSString *)firstNameLastName[1]).lowercaseString;
+            [thisUser save];
+            return YES;
+        }
+        //TODO: create confirmation alert view
+        return YES;
+    } else if (textField.tag == emailCell ) {
+        //TODO: validate email and store in data model
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 @end
